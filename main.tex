@@ -1,0 +1,466 @@
+%% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
+%% ---------------------------------
+%% This template should be used for copernicus.cls
+%% The class file and some style files are bundled in the Copernicus Latex Package, which can be downloaded from the different journal webpages.
+%% For further assistance please contact Copernicus Publications at: production@copernicus.org
+%% https://publications.copernicus.org/for_authors/manuscript_preparation.html
+
+
+%% Please use the following documentclass and journal abbreviations for preprints and final revised papers.
+
+%% 2-column papers and preprints
+\documentclass[journal abbreviation, manuscript]{copernicus}
+
+
+
+%% Journal abbreviations (please use the same for preprints and final revised papers)
+
+
+% Advances in Geosciences (adgeo)
+% Advances in Radio Science (ars)
+% Advances in Science and Research (asr)
+% Advances in Statistical Climatology, Meteorology and Oceanography (ascmo)
+% Aerosol Research (ar)
+% Annales Geophysicae (angeo)
+% Archives Animal Breeding (aab)
+% Atmospheric Chemistry and Physics (acp)
+% Atmospheric Measurement Techniques (amt)
+% Biogeosciences (bg)
+% Climate of the Past (cp)
+% DEUQUA Special Publications (deuquasp)
+% Earth Surface Dynamics (esurf)
+% Earth System Dynamics (esd)
+% Earth System Science Data (essd)
+% E&G Quaternary Science Journal (egqsj)
+% EGUsphere (egusphere) | This is only for EGUsphere preprints submitted without relation to an EGU journal.
+% European Journal of Mineralogy (ejm)
+% Fossil Record (fr)
+% Geochronology (gchron)
+% Geographica Helvetica (gh)
+% Geoscience Communication (gc)
+% Geoscientific Instrumentation, Methods and Data Systems (gi)
+% Geoscientific Model Development (gmd)
+% History of Geo- and Space Sciences (hgss)
+% Hydrology and Earth System Sciences (hess)
+% Journal of Bone and Joint Infection (jbji)
+% Journal of Micropalaeontology (jm)
+% Journal of Sensors and Sensor Systems (jsss)
+% Magnetic Resonance (mr)
+% Mechanical Sciences (ms)
+% Natural Hazards and Earth System Sciences (nhess)
+% Nonlinear Processes in Geophysics (npg)
+% Ocean Science (os)
+% Polarforschung - Journal of the German Society for Polar Research (polf)
+% Primate Biology (pb)
+% Proceedings of the International Association of Hydrological Sciences (piahs)
+% Safety of Nuclear Waste Disposal (sand)
+% Scientific Drilling (sd)
+% SOIL (soil)
+% Solid Earth (se)
+% State of the Planet (sp)
+% The Cryosphere (tc)
+% Weather and Climate Dynamics (wcd)
+% Web Ecology (we)
+% Wind Energy Science (wes)
+
+
+%% \usepackage commands included in the copernicus.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+
+
+\begin{document}
+
+\title{Idealized Particle-Resolved Large-Eddy Simulations to Evaluate the Impact of Emissions Spatial Heterogeneity on CCN Activity}
+
+\Author[1]{Samuel}{Frederick}
+%\Author[]{}{}
+\Author[2]{Matthew}{West}
+\Author[1][nriemer@illinois.edu]{Nicole}{Riemer} %% correspondence author
+
+
+\affil[1]{Department of Climate, Meteorology, and Atmospheric Sciences, University of Illinois Urbana--Champaign, 105 S Gregory St., Urbana, IL 61801, USA}
+\affil[2]{Department of Mechanical Science and Engineering, University of Illinois Urbana--Champaign, 1206 W. Green St., Urbana, IL, 61801,USA}
+
+%% If authors contributed equally, please mark the respective author names with an asterisk, e.g. "\Author[2,*]{Anton}{Smith}" and "\Author[3,*]{Bradley}{Miller}" and add a further affiliation: "\affil[*]{These authors contributed equally to this work.}".
+
+\runningtitle{TEXT}
+
+\runningauthor{TEXT}
+
+\received{}
+\pubdiscuss{} %% only important for two-stage journals
+\revised{}
+\accepted{}
+\published{}
+
+%% These dates will be inserted by Copernicus Publications during the typesetting process.
+
+\firstpage{1}
+
+\maketitle
+
+
+
+\begin{abstract}
+Aerosol-cloud interactions remain a large source of uncertainty in global climate models (GCMs) due to complex, nonlinear processes that alter aerosol properties and the inability to represent the full compositional complexity of aerosol populations within large-scale modeling frameworks. The spatial resolution of GCMs is often coarser than the scale of the spatially varying emissions in the modeled geographic region. This results in diffuse, uniform concentration fields of primary aerosol and gas-phase species instead of spatially heterogeneous concentrations. Aerosol processes such as gas-particle partitioning and coagulation are concentration-dependent in a non-linear manner, and thus the representation of spatially heterogeneous emissions impacts aerosol aging and properties. This includes climate-relevant quantities key to aerosol-cloud interactions including particle hygroscopicity and cloud condensation nuclei (CCN) activity. We investigate the impact of emissions spatial heterogeneity on aerosol properties including CCN activity via a series of first-of-a-kind particle-resolved large-eddy simulations with the modeling framework WRF-PartMC-MOSAIC-LES. CCN concentrations within the planetary boundary layer (PBL) are compared across numerous scenarios ranging in emissions spatial heterogeneity. We find that CCN concentrations at low supersaturations ($S=0.1\mbox{--}0.3\%$) increase in the upper PBL by up to 25\%
+for emissions scenarios with high spatial heterogeneity when compared to a uniform emissions base case.
+\end{abstract}
+
+
+\copyrightstatement{TEXT} %% This section is optional and can be used for copyright transfers.
+
+
+\introduction  %% \introduction[modified heading if necessary]
+
+
+\begin{itemize}
+
+\item Impact of aerosols on climate, focus on aerosol-cloud interactions
+\begin{itemize}
+\item Aerosols alter Earth's radiative budget both directly through scattering and absorption of radiation and indirectly through aerosol-cloud interactions. 
+\item Hygroscopic aerosol particles act as cloud condensation nuclei (CCN), allowing water vapor to condense onto their surface at ambient supersaturations $S$ typical of the troposphere. 
+\item Abundance of CCN affects cloud properties (morphology, lifetime, indirect radiative effects), thus important to constrain estimates of CCN concentrations due to impact on ACI.
+\end{itemize}
+
+\item GCMs do a poor job of predicting CCN activity
+\begin{itemize}
+\item Inability to represent the scales of transport 
+\item Do not resolve scale of emissions, result in diffuse and uniform concentrations that lead to different conclusions than what actually results from spatially heterogeneous distributions of gases and aerosols that vary in concentration (this matters because coagulation and gas particle partitioning are concentration dependent processes)
+\item Numerous studies have investigated the sub-grid variability present in domain scales typical of GCM grids, found that climate relevant properties like aerosol optical properties and CCN activity differ from GCM-resolution modeled values.
+Note that the scale of these studies often does not extend down to the sub-kilometer range (scale of emissions heterogeneity and turbulent transport) 
+\end{itemize}
+
+\item Relevance of the aerosol representation
+\begin{itemize}
+\item Structural uncertainty resulting from the use of coarse aerosol treatments (i.e., modal or sectional) impact aerosol properties like optical properties (Crippa 2017) and CCN activity (Zaveri 2010, Fierce 2024). 
+\item Particle resolved treatment, allows per particle aging and process level analysis of changes to aerosol properties such as CCN activity
+\end{itemize}
+
+\item State of aerosol-transport models
+\begin{itemize}
+\item Coarse-scale models: RANS for transport and sectional or modal treatments for aerosols
+\item Recent developments in turbulence-resolving aerosol aware models (UCLALES-SALSA, DALES, others?)
+\item Development of regional scale particle-resolved simulations with WRF-PartMC
+\item No modeling framework has yet to leverage particle resolved aerosol treatment alongside turbulence resolving transport models such as LES
+\end{itemize}
+
+\item Objectives of this paper
+\begin{itemize}
+\item Present a first of a kind particle-resolved large-eddy simulation model, WRF-PartMC-MOSAIC-LES
+\item Investigate impacts of emissions spatial heterogeneity on aerosol state including CCN activity via numerous idealized simulations
+\end{itemize}
+
+\end{itemize}
+
+
+
+\section{Methods}
+
+\subsection{WRF-PartMC-MOSAIC-LES}
+\begin{itemize}
+\item Extension of Jeff's work in developing WRF-PartMC (Curtis et al. 2024), briefly describe stochastic advection algorithm work to couple WRF and PartMC
+\item Discuss the LES model (using Deardorff's TKE scheme for sub-grid scale parameterization of eddy diffusivity, spatial resolution of the domain etc.)
+\item MOSAIC: handles gas phase chemistry, gas-particle partitioning and aerosol thermodynamics, and simplified radiation for photolysis reactions 
+\end{itemize}
+
+\subsection{Computational domain setup}
+\begin{itemize}
+\item Idealized configuration: Domain is homogeneous with no topography or variations in surface characteristics (i.e., surface roughness, heat fluxes, etc.)
+\item Initial conditions (meteorology, gas and aerosols), mention spin up period as well
+\end{itemize}
+
+\subsection{Emissions Scenarios}
+\begin{itemize}
+\item Scenarios chosen across a range of spatial heterogeneity, note that emission rates are scaled by 1 over the fraction of area covered by emissions relative to the uniform base case in which emissions cover the entire domain surface
+\item Spatial heterogeneity is quantified using SH metric (Mohebalhojeh et al. 2024)
+\end{itemize}
+
+\section{Results}
+
+\subsection{Aerosol size distributions}
+\begin{itemize}
+\item Number distributions: Number concentration of Aitken mode particles reduced as SH increases due to brownian coagulation, correspondingly, number of accumulation mode particles increases 
+\item Mass distribution: Mass concentrations in accumulation mode increase for high SH scenarios due to both coagulation of smaller particles and gas-particle partitioning of ammonia, nitric acid
+\end{itemize}
+
+\subsection{Aerosol composition}
+\begin{itemize}
+\item Sulfate time-height plot: Sulfate levels decrease as SH increases due to greater competition for OH in high-concentration plumes resulting in less H2SO4
+\item Ammonium and Nitrate time-height plots: Notable increase in the upper boundary layer for each under high SH scenarios. Present in upper boundary layer because of strong temperature dependence on ammonium nitrate formation. Under high SH scenarios with less sulfate, there will exist more free ammonia available to neutralize nitrate thus resulting in ammonium nitrate formation.
+\item Mass fraction figures: Comparing particles in the size range 50-100 nm, particles in the base case are primarily composed of BC and OC (low hygroscopicity), whereas sulfate, nitrate, and ammonium dominate the mass fraction in the same size range for high heterogeneity scenarios. This indicates that particles in the size range whose CCN activity hinges on aerosol hygroscopicity are more hygroscopic under high SH scenarios and thus activate at lower supersaturations.
+\item 2D kappa distributions: Supporting the conclusions of the mass fraction figures, there are considerably more particles with high kappa at ~100 nm compared to the base case. We also find that enhancement of coagulation and gas-particle partitioning in high SH scenarios increases the hygroscopicity of emitted primary aerosol. 
+\end{itemize}
+
+\subsection{CCN activity}
+\begin{itemize}
+\item Vertical profiles of CCN concentrations at each supersaturation: Competition between coagulation enhancement under high emissions SH and increased ammonium nitrate formation results in a complex effect on CCN that is dependent on supersaturation. At lower supersaturations characterized by larger, hygroscopic particles, CCN activity increases with with emissions SH. Smaller particles will activate at higher supersaturations, and we find that the enhancement of coagulation for scenarios with high emissions SH wins out, resulting in fewer CCN activating at high supersaturations.
+\item Time height plots for percent difference in CCN concentrations relative to the base case
+\end{itemize}
+
+\subsection{Influence of ammonia on aerosol composition and CCN activity}
+\begin{itemize}
+\item Vertical profile for CCN concentrations in absence of ammonia 
+\end{itemize}
+
+\conclusions  %% \conclusions[modified heading if necessary]
+\begin{itemize}
+\item Restate the motivation for this work
+\item Summarize key contributions
+\item Summarize findings and implications
+\item Limitations and future work
+\end{itemize}
+
+%% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
+%% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+
+\codeavailability{TEXT} %% use this section when having only software code available
+
+
+\dataavailability{TEXT} %% use this section when having only data sets available
+
+
+\codedataavailability{TEXT} %% use this section when having data sets and software code available
+
+
+\sampleavailability{TEXT} %% use this section when having geoscientific samples available
+
+
+\videosupplement{TEXT} %% use this section when having video supplements available
+
+
+\appendix
+\section{}    %% Appendix A
+
+\subsection{}     %% Appendix A1, A2, etc.
+
+
+\noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
+
+%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+
+%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+%% They will be correctly named automatically.
+
+%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+
+\appendixfigures  %% needs to be added in front of appendix figures
+
+\appendixtables   %% needs to be added in front of appendix tables
+
+%% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
+
+
+
+\authorcontribution{TEXT} %% this section is mandatory
+
+\competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
+
+\disclaimer{TEXT} %% optional section
+
+\begin{acknowledgements}
+TEXT
+\end{acknowledgements}
+
+
+
+
+%% REFERENCES
+
+%% The reference list is compiled as follows:
+
+\begin{thebibliography}{}
+
+\bibitem[AUTHOR(YEAR)]{LABEL1}
+REFERENCE 1
+
+\bibitem[AUTHOR(YEAR)]{LABEL2}
+REFERENCE 2
+
+\end{thebibliography}
+
+%% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
+%% authors experienced with BibTeX only have to include the following two lines:
+%%
+%% \bibliographystyle{copernicus}
+%% \bibliography{example.bib}
+%%
+%% URLs and DOIs can be entered in your BibTeX file as:
+%%
+%% URL = {http://www.xyz.org/~jones/idx_g.htm}
+%% DOI = {10.5194/xyz}
+
+
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+
+
+%% FIGURES
+
+%% When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage
+%% between bibliography and first table and/or figure as well as between each table and/or figure.
+
+% The figure files should be labelled correctly with Arabic numerals (e.g. fig01.jpg, fig02.png).
+
+
+%% ONE-COLUMN FIGURES
+
+%%f
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure}
+%
+%%% TWO-COLUMN FIGURES
+%
+%%f
+%\begin{figure*}[t]
+%\includegraphics[width=12cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure*}
+%
+%
+%%% TABLES
+%%%
+%%% The different columns must be seperated with a & command and should
+%%% end with \\ to identify the column brake.
+%
+%%% ONE-COLUMN TABLE
+%
+%%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table}
+%
+%%% TWO-COLUMN TABLE
+%
+%%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table*}
+%
+%%% LANDSCAPE TABLE
+%
+%%t
+%\begin{sidewaystable*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{sidewaystable*}
+%
+%
+%%% MATHEMATICAL EXPRESSIONS
+%
+%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
+%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
+%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+%%%
+%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
+%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+%%% Vectors are identified in bold italic font using \vec{x}
+%%% Matrices are identified in bold roman font
+%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
+%%% The character * should not be applied as mutliplication sign
+%
+%
+%%% EQUATIONS
+%
+%%% Single-row equation
+%
+%\begin{equation}
+%
+%\end{equation}
+%
+%%% Multiline equation
+%
+%\begin{align}
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8
+%\end{align}
+%
+%
+%%% MATRICES
+%
+%\begin{matrix}
+%x & y & z\\
+%x & y & z\\
+%x & y & z\\
+%\end{matrix}
+%
+%
+%%% ALGORITHM
+%
+%\begin{algorithm}
+%\caption{...}
+%\label{a1}
+%\begin{algorithmic}
+%...
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%%% CHEMICAL FORMULAS AND REACTIONS
+%
+%%% For formulas embedded in the text, please use \chem{}
+%
+%%% The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
+%
+%\begin{reaction}
+%%% \rightarrow should be used for normal (one-way) chemical reactions
+%%% \rightleftharpoons should be used for equilibria
+%%% \leftrightarrow should be used for resonance structures
+%\end{reaction}
+%
+%
+%%% PHYSICAL UNITS
+%%%
+%%% Please use \unit{} and apply the exponential notation
+
+
+\end{document}
