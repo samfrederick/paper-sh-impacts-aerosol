@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: copernicus.bst
+Database file #1: all-references.bib
+Warning--can't use both author and editor fields in ipcc_report_2021
+Warning--empty journal in skamarock_description_2008
+You've used 30 entries,
+            2932 wiz_defined-function locations,
+            1246 strings with 19384 characters,
+and the built_in function-call counts, 34824 in all, are:
+= -- 3751
+> -- 1683
+< -- 3
++ -- 720
+- -- 532
+* -- 2398
+:= -- 3578
+add.period$ -- 30
+call.type$ -- 30
+change.case$ -- 253
+chr.to.int$ -- 31
+cite$ -- 92
+duplicate$ -- 3267
+empty$ -- 1632
+format.name$ -- 621
+if$ -- 6827
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 390
+newline$ -- 99
+num.names$ -- 120
+pop$ -- 1457
+preamble$ -- 1
+purify$ -- 237
+quote$ -- 0
+skip$ -- 1998
+stack$ -- 0
+substring$ -- 1421
+swap$ -- 2857
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 267
+warning$ -- 2
+while$ -- 146
+width$ -- 0
+write$ -- 377
+(There were 2 warnings)
