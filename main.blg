@@ -5,45 +5,45 @@ The style file: copernicus.bst
 Database file #1: all-references.bib
 Warning--can't use both author and editor fields in ipcc_report_2021
 Warning--empty journal in skamarock_description_2008
-You've used 30 entries,
+You've used 32 entries,
             2932 wiz_defined-function locations,
-            1246 strings with 19384 characters,
-and the built_in function-call counts, 34824 in all, are:
-= -- 3751
-> -- 1683
+            1258 strings with 21191 characters,
+and the built_in function-call counts, 41212 in all, are:
+= -- 4281
+> -- 2319
 < -- 3
-+ -- 720
-- -- 532
-* -- 2398
-:= -- 3578
-add.period$ -- 30
-call.type$ -- 30
-change.case$ -- 253
-chr.to.int$ -- 31
-cite$ -- 92
-duplicate$ -- 3267
-empty$ -- 1632
-format.name$ -- 621
-if$ -- 6827
++ -- 948
+- -- 742
+* -- 2918
+:= -- 4364
+add.period$ -- 32
+call.type$ -- 32
+change.case$ -- 329
+chr.to.int$ -- 33
+cite$ -- 98
+duplicate$ -- 3683
+empty$ -- 1814
+format.name$ -- 837
+if$ -- 8041
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 390
-newline$ -- 99
-num.names$ -- 120
-pop$ -- 1457
+missing$ -- 476
+newline$ -- 105
+num.names$ -- 128
+pop$ -- 1764
 preamble$ -- 1
-purify$ -- 237
+purify$ -- 311
 quote$ -- 0
-skip$ -- 1998
+skip$ -- 2301
 stack$ -- 0
-substring$ -- 1421
-swap$ -- 2857
+substring$ -- 1549
+swap$ -- 3251
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 267
+type$ -- 285
 warning$ -- 2
-while$ -- 146
+while$ -- 158
 width$ -- 0
-write$ -- 377
+write$ -- 403
 (There were 2 warnings)

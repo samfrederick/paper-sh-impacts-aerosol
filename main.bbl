@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -6,16 +6,6 @@
   \providecommand{\doi}[1]{https://doi.org/\discretionary{}{}{}#1}\else
   \providecommand{\doi}{https://doi.org/\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
-
-\bibitem[{Asher et~al.(2022)Asher, Thornberry, Fahey, McComiskey, Carslaw,
-  Grunau, Chang, Telg, Chen, and Gao}]{asher_novel_2022}
-Asher, E., Thornberry, T., Fahey, D.~W., McComiskey, A., Carslaw, K., Grunau,
-  S., Chang, K.-L., Telg, H., Chen, P., and Gao, R.-S.: A {Novel}
-  {Network}-{Based} {Approach} to {Determining} {Measurement} {Representation}
-  {Error} for {Model} {Evaluation} of {Aerosol} {Microphysical} {Properties},
-  Journal of Geophysical Research: Atmospheres, 127, e2021JD035\,485,
-  \doi{10.1029/2021JD035485}, \_eprint:
-  https://onlinelibrary.wiley.com/doi/pdf/10.1029/2021JD035485, 2022.
 
 \bibitem[{Brasseur et~al.(2023)Brasseur, Barth, Kazil, Patton, and
   Wang}]{brasseur_segregation_2023}
@@ -62,15 +52,17 @@ Deardorff, J.~W.: Stratocumulus-capped mixed layers derived from a
   three-dimensional model, Boundary-Layer Meteorology, 18, 495--527,
   \doi{10.1007/BF00119502}, 1980.
 
-\bibitem[{Fast et~al.(2022)Fast, Bell, Kulkarni, Liu, Mei, Saliba, Shilling,
-  Suski, Tomlinson, Wang, Zaveri, and Zelenyuk}]{fast_using_2022}
-Fast, J.~D., Bell, D.~M., Kulkarni, G., Liu, J., Mei, F., Saliba, G., Shilling,
-  J.~E., Suski, K., Tomlinson, J., Wang, J., Zaveri, R., and Zelenyuk, A.:
-  Using aircraft measurements to characterize subgrid-scale variability of
-  aerosol properties near the {Atmospheric} {Radiation} {Measurement}
-  {Southern} {Great} {Plains} site, Atmospheric Chemistry and Physics, 22,
-  11\,217--11\,238, \doi{10.5194/acp-22-11217-2022}, publisher: Copernicus
-  GmbH, 2022.
+\bibitem[{Fierce et~al.(2013)Fierce, Riemer, and Bond}]{fierce_when_2013}
+Fierce, L., Riemer, N., and Bond, T.~C.: When is cloud condensation nuclei
+  activity sensitive to particle characteristics at emission?, Journal of
+  Geophysical Research: Atmospheres, 118, 13,476--13,488,
+  \doi{10.1002/2013JD020608}, \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1002/2013JD020608, 2013.
+
+\bibitem[{Fierce et~al.(2015)Fierce, Riemer, and Bond}]{fierce_explaining_2015}
+Fierce, L., Riemer, N., and Bond, T.~C.: Explaining variance in black carbon's
+  aging timescale, Atmospheric Chemistry and Physics, 15, 3173--3191,
+  \doi{10.5194/acp-15-3173-2015}, publisher: Copernicus GmbH, 2015.
 
 \bibitem[{Fierce et~al.(2024)Fierce, Yao, Easter, Ma, Sun, Wan, and
   Zhang}]{fierce_quantifying_2024}
@@ -86,6 +78,32 @@ Forster, P., Storelvmo, T., Armour, K., Collins, W., Dufresne, J.-L., Frame,
   H.: The Earth’s Energy Budget, Climate Feedbacks, and Climate Sensitivity,
   p. 923–1054, Cambridge University Press, Cambridge, United Kingdom and New
   York, NY, USA, \doi{10.1017/9781009157896.009}, 2021.
+
+\bibitem[{Golaz et~al.(2022)Golaz, Van~Roekel, Zheng, Roberts, Wolfe, Lin,
+  Bradley, Tang, Maltrud, Forsyth, Zhang, Zhou, Zhang, Zender, Wu, Wang,
+  Turner, Singh, Richter, Qin, Petersen, Mametjanov, Ma, Larson, Krishna, Keen,
+  Jeffery, Hunke, Hannah, Guba, Griffin, Feng, Engwirda, Di~Vittorio, Dang,
+  Conlon, Chen, Brunke, Bisht, Benedict, Asay‐Davis, Zhang, Zhang, Zeng, Xie,
+  Wolfram, Vo, Veneziani, Tesfa, Sreepathi, Salinger, Reeves~Eyre, Prather,
+  Mahajan, Li, Jones, Jacob, Huebler, Huang, Hillman, Harrop, Foucar, Fang,
+  Comeau, Caldwell, Bartoletti, Balaguru, Taylor, McCoy, Leung, and
+  Bader}]{golaz_doe_2022}
+Golaz, J., Van~Roekel, L.~P., Zheng, X., Roberts, A.~F., Wolfe, J.~D., Lin, W.,
+  Bradley, A.~M., Tang, Q., Maltrud, M.~E., Forsyth, R.~M., Zhang, C., Zhou,
+  T., Zhang, K., Zender, C.~S., Wu, M., Wang, H., Turner, A.~K., Singh, B.,
+  Richter, J.~H., Qin, Y., Petersen, M.~R., Mametjanov, A., Ma, P., Larson,
+  V.~E., Krishna, J., Keen, N.~D., Jeffery, N., Hunke, E.~C., Hannah, W.~M.,
+  Guba, O., Griffin, B.~M., Feng, Y., Engwirda, D., Di~Vittorio, A.~V., Dang,
+  C., Conlon, L.~M., Chen, C., Brunke, M.~A., Bisht, G., Benedict, J.~J.,
+  Asay‐Davis, X.~S., Zhang, Y., Zhang, M., Zeng, X., Xie, S., Wolfram, P.~J.,
+  Vo, T., Veneziani, M., Tesfa, T.~K., Sreepathi, S., Salinger, A.~G.,
+  Reeves~Eyre, J. E.~J., Prather, M.~J., Mahajan, S., Li, Q., Jones, P.~W.,
+  Jacob, R.~L., Huebler, G.~W., Huang, X., Hillman, B.~R., Harrop, B.~E.,
+  Foucar, J.~G., Fang, Y., Comeau, D.~S., Caldwell, P.~M., Bartoletti, T.,
+  Balaguru, K., Taylor, M.~A., McCoy, R.~B., Leung, L.~R., and Bader, D.~C.:
+  The {DOE} {E3SM} {Model} {Version} 2: {Overview} of the {Physical} {Model}
+  and {Initial} {Model} {Evaluation}, Journal of Advances in Modeling Earth
+  Systems, 14, e2022MS003\,156, \doi{10.1029/2022MS003156}, 2022.
 
 \bibitem[{Gustafson~Jr. et~al.(2011)Gustafson~Jr., Qian, and
   Fast}]{gustafson_jr_downscaling_2011}
@@ -130,6 +148,15 @@ Lin, G., Qian, Y., Yan, H., Zhao, C., Ghan, S.~J., Easter, R., and Zhang, K.:
   clouds based on high-resolution regional modeling, Journal of Geophysical
   Research: Atmospheres, 122, 6329--6346, \doi{10.1002/2017JD026567}, 2017.
 
+\bibitem[{Ma et~al.(2015)Ma, Rasch, Wang, Wang, Ghan, Easter, Gustafson~Jr.,
+  Liu, Zhang, and Ma}]{ma_how_2015}
+Ma, P.-L., Rasch, P.~J., Wang, M., Wang, H., Ghan, S.~J., Easter, R.~C.,
+  Gustafson~Jr., W.~I., Liu, X., Zhang, Y., and Ma, H.-Y.: How does increasing
+  horizontal resolution in a global climate model improve the simulation of
+  aerosol-cloud interactions?, Geophysical Research Letters, 42, 5058--5065,
+  \doi{10.1002/2015GL064183}, \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1002/2015GL064183, 2015.
+
 \bibitem[{Mohebalhojeh et~al.(2024)Mohebalhojeh, Frederick, Riemer, and
   West}]{mohebalhojeh_2024}
 Mohebalhojeh, M., Frederick, S., Riemer, N., and West, M.: A Measure of Spatial
@@ -161,6 +188,14 @@ Riemer, N., West, M., Zaveri, R.~A., and Easter, R.~C.: Simulating the
 Skamarock, C., Klemp, B., Dudhia, J., Gill, O., Barker, D., Duda, G., Huang,
   X.-y., Wang, W., and Powers, G.: A {Description} of the {Advanced} {Research}
   {WRF} {Version} 3, \doi{10.5065/D68S4MVH}, 2008.
+
+\bibitem[{Tilmes et~al.(2023)Tilmes, Mills, Zhu, Bardeen, Vitt, Yu, Fillmore,
+  Liu, Toon, and Deshler}]{tilmes_description_2023}
+Tilmes, S., Mills, M.~J., Zhu, Y., Bardeen, C.~G., Vitt, F., Yu, P., Fillmore,
+  D., Liu, X., Toon, B., and Deshler, T.: Description and performance of a
+  sectional aerosol microphysical model in the {Community} {Earth} {System}
+  {Model} ({CESM2}), Geoscientific Model Development, 16, 6087--6125,
+  \doi{10.5194/gmd-16-6087-2023}, publisher: Copernicus GmbH, 2023.
 
 \bibitem[{Tonttila et~al.(2017)Tonttila, Maalick, Raatikainen, Kokkola, Kühn,
   and Romakkaniemi}]{tonttila_uclalessalsa_2017}
@@ -217,10 +252,5 @@ Zaveri, R.~A., Barnard, J.~C., Easter, R.~C., Riemer, N., and West, M.:
   the associated optical and cloud condensation nuclei activation properties in
   an evolving urban plume, Journal of Geophysical Research: Atmospheres, 115,
   \doi{10.1029/2009JD013616}, 2010.
-
-\bibitem[{Zhu et~al.(2002)Zhu, Hinds, Kim, Shen, and Sioutas}]{zhu_study_2002}
-Zhu, Y., Hinds, W.~C., Kim, S., Shen, S., and Sioutas, C.: Study of ultrafine
-  particles near a major highway with heavy-duty diesel traffic, Atmospheric
-  Environment, 36, 4323--4335, \doi{10.1016/S1352-2310(02)00354-0}, 2002.
 
 \end{thebibliography}
