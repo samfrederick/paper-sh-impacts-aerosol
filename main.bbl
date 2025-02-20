@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -252,5 +252,15 @@ Zaveri, R.~A., Barnard, J.~C., Easter, R.~C., Riemer, N., and West, M.:
   the associated optical and cloud condensation nuclei activation properties in
   an evolving urban plume, Journal of Geophysical Research: Atmospheres, 115,
   \doi{10.1029/2009JD013616}, 2010.
+
+\bibitem[{Zaveri et~al.(2021)Zaveri, Easter, Singh, Wang, Lu, Tilmes, Emmons,
+  Vitt, Zhang, Liu, Ghan, and Rasch}]{zaveri_development_2021}
+Zaveri, R.~A., Easter, R.~C., Singh, B., Wang, H., Lu, Z., Tilmes, S., Emmons,
+  L.~K., Vitt, F., Zhang, R., Liu, X., Ghan, S.~J., and Rasch, P.~J.:
+  Development and {Evaluation} of {Chemistry}-{Aerosol}-{Climate} {Model}
+  {CAM5}-{Chem}-{MAM7}-{MOSAIC}: {Global} {Atmospheric} {Distribution} and
+  {Radiative} {Effects} of {Nitrate} {Aerosol}, Journal of Advances in Modeling
+  Earth Systems, 13, e2020MS002\,346, \doi{10.1029/2020MS002346}, \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1029/2020MS002346, 2021.
 
 \end{thebibliography}
