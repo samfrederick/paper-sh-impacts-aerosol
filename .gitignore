@@ -1,8 +1,9 @@
 *.aux
 *.log
 *.bbl
+*.blg
 *.gz
 *.txt
-1_submitted_paper/old/
+1_submitted_paper/figures/old
 1_submitted_paper/paper_sh_impacts_aerosol.pdf
 
