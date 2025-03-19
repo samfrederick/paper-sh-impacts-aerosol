@@ -1,5 +1,8 @@
 *.aux
 *.log
+*.bbl
 *.gz
 *.txt
-old/
+1_submitted_paper/old/
+1_submitted_paper/paper_sh_impacts_aerosol.pdf
+
