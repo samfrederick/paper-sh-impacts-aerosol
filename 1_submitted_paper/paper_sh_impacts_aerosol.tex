@@ -125,43 +125,132 @@ for emissions scenarios with high spatial heterogeneity when compared to a unifo
 
 \introduction  %% \introduction[modified heading if necessary]
 
-Aerosols are known to impose a net negative radiative forcing, however considerable uncertainty persists in the representation of radiative forcing due to aerosol-cloud interactions (ACI) \citep{ipcc_report_2021}. Advancements in computing power have allowed modelers to investigate key contributing factors which alter the intensity of radiative forcing due to ACI such as spatial resolution \citep{ma_how_2015}. Simultaneously, improvements in computational power have advanced the representation of aerosols in climate models through inclusion of more complex chemical mechanisms \citep{zaveri_development_2021} and detailed aerosol treatments such as the Community Aerosol and Radiation Model for Atmospheres (CARMA) , which is a 40 bin sectional model used by the Community Earth System Model 2 (CESM2) \citep{tilmes_description_2023} and has shown improvements in representing aerosol properties when compared to the 4 bin Modal Aerosol Model (MAM4). While these two key structural components to models---the treatment of aerosols and the effect of spatial resolution---have improved representation of aerosols and their radiative forcing, these aspects have yet to be explored in tandem to investigate the role of spatial heterogeneities typically below the grid scale of current climate models alongside detailed aerosol treatments in modifying the depiction of climate-relevant aerosol properties key to ACI such as cloud condensation nuclei (CCN) activity.
+Aerosols exert a net negative radiative forcing, but significant
+uncertainty remains in how aerosol-cloud interactions are
+represented in climate models \citep{ipcc_report_2021}. Two major
+factors contribute to this uncertainty: (1) the spatial resolution of
+models and (2) the treatment of aerosol representation. Advances in
+computational power have allowed modelers to investigate how spatial
+resolution affects radiative forcing due to aerosol-cloud interactions
+\citep{ma_how_2015}. At the same time, increasing computational
+capabilities have enabled more sophisticated aerosol representations
+\citep{zaveri_development_2021, tilmes_description_2023}. While both
+spatial resolution and aerosol representation have advanced, they have
+largely been studied in isolation. The combined effect of
+sub-grid-scale spatial heterogeneity and detailed aerosol
+representation on relevant properties, such as cloud
+condensation nuclei (CCN) activity, remains largely unexplored.
 
-%Aerosol concentrations and properties vary at scales ranging from global and regional variability down to local and hyper-local spatial heterogeneity near emissions sources. Numerous lines of evidence point to the multi-scale spatial variability of aerosols. At the global-scale, satellite remote sensing with platforms such as MODIS have shown large-scale variability in bulk quantities including aerosol optical depth (\hl{cite}). At the regional scale, field campaigns have shown considerable variability in aerosol properties such as concentration, size distributions, CCN concentrations, and composition \citep{fast_using_2022}. Local in-situ measurements of aerosol properties are highly dependent on proximity to emission sources such as vehicular combustion, and past studies have shown that aerosol abundance and composition vary on the scale of 10s to 100s of meters downwind of sources due to non-linear processes such as coagulation \citep{zhu_study_2002}. Indeed, hyper-local heterogeneity in aerosol properties frustrates traditional comparison between point-source measurements and grid-cell averaged model quantities, and distributed measurement networks such as the Portable Optical Particle Spectrometer network in the Southern Great Plains (POPSnet-SGP) campaign aim to elucidate climate model uncertainty associated with sub-grid scale aerosol spatial heterogeneity \citep{asher_novel_2022}. 
+Aerosol-aware climate models typically include a sub-model that
+governs aerosol representation and associated processes. Due to
+computational constraints, these aerosol treatments often simplify
+compositional diversity. For instance, the Energy Exascale Earth
+System Model (E3SM) uses the MAM4 scheme, which represents aerosols
+using four internally mixed, lognormally distributed modes
+\citep{golaz_doe_2022}. This approach inherently constrains the
+diversity of aerosol populations, as all particles within a given mode
+share identical composition. In reality, however, aerosols age
+independently, leading to complex, highly heterogeneous
+mixtures. Particle-resolved aerosol models address this limitation by
+explicitly tracking the composition and evolution of individual
+particles. The Particle Monte Carlo model (PartMC) has been
+extensively used to study the sensitivity of CCN activity to aerosol
+composition \citep{fierce_when_2013}, aging timescales due to
+condensation and coagulation for carbonaceous CCN
+\citep{fierce_explaining_2015}, and the impact of mixing state on CCN
+estimates \citep{ching_metrics_2017}. Furthermore, PartMC has been
+leveraged to quantify errors in CCN predictions from modal and
+sectional models by comparing CCN concentrations against those derived
+from fully resolved aerosol compositions
+\citep{zaveri_particle-resolved_2010, ching_metrics_2017}. Comparisons
+between PartMC and MAM4 have revealed substantial discrepancies in CCN
+activity, particularly in polluted regions where coagulation and
+gas-particle partitioning amplify model differences
+\citep{fierce_quantifying_2024}.
 
-%\hl{Could also note that aerosol heterogeneities are coupled to other sources of heterogeneity by inducing feedbacks on, for instance, heterogeneous surface properties such as radiative heating and soil moisture, which have been shown to induce secondary circulations (Lee et al. 2019, Tian et al. 2022)}
+Despite these advancements in aerosol representation, a critical gap
+remains: the combined effects of high-resolution aerosol treatment and
+fine-scale spatial heterogeneity have yet to be systematically
+explored. Understanding this interaction is essential, as the
+variability in surface properties, emissions, and resulting aerosol
+plumes influences particle aging and CCN activity. The goal of this
+study is to bridge this gap by conducting the first particle-resolved
+large-eddy simulations (LES) to analyze how sub-grid-scale spatial
+heterogeneity affects aerosol composition, aging, and CCN activation.
 
-Aerosol-aware climate models typically contain a sub-model which governs the aerosol representation and associated processes. Given computational constraints, the aerosol treatment is often highly simplified with regard to aerosol compositional diversity. For instance, E3SM uses the modal aerosol model MAM4 which contains four lognormally distributed modes \citep{golaz_doe_2022}. Such a treatment constrains the diversity of the aerosol population to four internally-mixed modes (i.e., all particles within a mode are compositionally identical). As a result, modal and sectional aerosol treatments underrepresent the true compositional complexity of an aerosol population in which each particle ages independently. Particle-resolved aerosol models allow representation of the full compositional diversity of an aerosol population via a set of computational particles which are allowed to compositionally vary and age independently. Particle resolved models such as the Particle Monte Carlo model (PartMC) have been used extensively to investigate the sensitivity of CCN activity to the composition of emitted aerosol particles \citep{fierce_when_2013}, aging timescales due to condensation and coagulation for carbonaceous CCN \citep{fierce_explaining_2015}, and the sensitivity of CCN estimates to mixing state (i.e., the compositional diversity within and across aerosols) \citep{ching_metrics_2017}. Furthermore, given that a particle-resolved model can fully represent aerosol composition space, PartMC has been used to estimate error in CCN activity for coarser aerosol treatments by comparing depicted CCN concentrations against compositionally-averaged output reminiscent of a sectional or modal model \citep{zaveri_particle-resolved_2010, ching_metrics_2017}. Furthermore, direct comparison of CCN activity depicted by PartMC and MAM4 has shown considerable divergence, especially in polluted regions where high rates of coagulation and gas-particle partitioning amplify model disagreement \citep{fierce_quantifying_2024}. 
+Existing regional and global-scale aerosol-aware models lack the
+resolution to fully capture fine-scale spatial heterogeneities,
+leading to artificially uniform concentrations within grid cells. This
+oversimplification distorts the representation of non-linear aerosol
+processes such as coagulation and gas-particle partitioning. Studies
+have demonstrated that climate-relevant aerosol properties, including
+aerosol optical properties \citep{gustafson_jr_downscaling_2011} and
+CCN activity \citep{weigum_effect_2016}, are highly sensitive to model
+resolution. Much of the sub-grid-scale variability arises from
+spatially heterogeneous emissions \citep{qian_investigation_2010}, yet
+many climate models fail to resolve this variability adequately.
 
-In addition to the treatment of aerosols, the depiction of spatial heterogeneity---including that of surface properties, emissions of gas phase species and primary aerosol, and heterogeneous distributions of their resulting plumes---influences particle aging and associated properties including CCN activity. Present aerosol-aware models at regional and global scales possess insufficient resolution to capture the full spatial heterogeneity of aerosols and the emissions of primary aerosols and gas phase precursors. In turn, these models depict artificially dilute and uniform concentrations within grid cells. This alters the representation of concentration-dependent, non-linear aerosol processes such as coagulation and gas particle partitioning. Past studies have shown that climate-relevant aerosol properties such as aerosol optical properties \citep{gustafson_jr_downscaling_2011} and CCN activity \citep{weigum_effect_2016} are highly sensitive to the model’s grid resolution with a large contribution of sub-grid scale variability resulting from the spatially varying pattern of emissions \citep{qian_investigation_2010}. 
+Prior research on sub-grid variability of aerosol properties has
+typically compared coarse-resolution global climate models (50–100 km)
+against higher-resolution simulations (1–10 km)
+\citep{qian_investigation_2010, gustafson_jr_downscaling_2011,
+  weigum_effect_2016, crippa_impact_2017,
+  lin_quantification_2017}. While increasing model resolution improves
+the representation of emission heterogeneities, unresolved spatial
+variability persists at sub-kilometer scales. Additionally,
+climate models rely on Reynolds-averaged Navier-Stokes
+parameterizations to represent boundary-layer turbulence, which fail
+to capture the full complexity of turbulent transport and its
+influence on aerosol processes.
 
-%Given large uncertainties in the effective radiative forcing resulting from aerosol-cloud interactions \citep{ipcc_report_2021}, constraining model estimates of CCN activity remains an important focus. 
+Another approach to addressing sub-grid heterogeneity has been to use
+LES, which explicitly captures fine-scale turbulent mixing and
+chemical segregation.  \citet{brasseur_segregation_2023} review LES
+applications investigating turbulence-chemistry interactions in
+spatially heterogeneous environments.  Many LES studies have focused
+on gas-phase chemistry, particularly the oxidation of reactive
+volatile organic compounds (VOCs) such as isoprene, demonstrating that
+spatially heterogeneous emissions contribute to chemical segregation
+between reactive species in the boundary layer
+\citep{ouwersloot_segregation_2011, kaser_chemistry-turbulence_2015}.
+Given the coupling between gas and aerosol phases through gas-particle
+partitioning, it is likely that chemical segregation due to spatially
+heterogeneous emissions also influences aerosol properties. While some
+LES-based studies have incorporated aerosols, they have largely relied
+on simplified treatments. Recent efforts have coupled
+turbulence-resolving frameworks with aerosol models, such as the
+Sectional Aerosol Model for Large Scale Applications (SALSA)
+\citep{kokkola_salsa_2008} with UCLALES
+\citep{tonttila_uclalessalsa_2017}, the Parallelized Large-Eddy
+Simulation Model (PALM) \citep{kurppa_implementation_2019}, and the
+modal aerosol model M7 \citep{vignati_m7_2004} with the Dutch
+Atmospheric Large-Eddy Simulation model (DALES)
+\citep{de_bruine_explicit_2019}. However, despite their
+high-resolution transport schemes, these models rely on relatively
+coarse aerosol representations. For example, UCLALES-SALSA employs a
+10-bin sectional scheme, while DALES modifies the seven-mode M7 model
+to incorporate additional hydrometeor modes. To our knowledge, no
+turbulence-resolving model has yet incorporated a particle-resolved
+aerosol treatment, which would enable a fully detailed representation
+of aerosol composition, properties, and aging alongside LES-resolved
+turbulent transport.
 
-Past studies evaluating the sub-grid variability of aerosol properties often compare outputs from models with coarse resolution typical of global climate models ($\sim 50$--$100$ km) against higher resolution model outputs with resolution on the order of $\sim 1$--$10$ km 
-\citep{qian_investigation_2010, gustafson_jr_downscaling_2011, weigum_effect_2016, crippa_impact_2017, lin_quantification_2017}. While such improvements in resolution better resolve heterogeneities in emissions, there still exists considerable unresolved spatial heterogeneity in the sub-kilometer scale. In addition, such modeling studies do not explicitly resolve the scales of turbulent transport in the boundary layer, instead fully parameterizing turbulence via Reynolds-averaged Navier Stokes. 
+This study aims to analyze the coupled effects of spatial
+heterogeneity in surface emissions (including both gas-phase species
+and primary aerosols), aerosol aging processes, and their impact on
+CCN activity. To achieve this, we conduct the first particle-resolved
+LES simulations, establishing a high-resolution aerosol-transport
+modeling framework that explicitly represents both turbulent transport
+and aerosol composition.
 
-%Furthermore, these models use simplified representations of aerosols such as modal or sectional treatments. Comparing these aerosol treatments against particle-resolved models which represent the broad compositional complexity of aerosols, past studies have shown that simplified aerosol representations impact modeled aerosol properties including CCN activity \citep{zaveri_particle-resolved_2010, ching_metrics_2017, fierce_quantifying_2024}.
-
-The evolution of emission plumes containing gas phase compounds and aerosols is highly dependent on turbulent mixing at fine spatial scales and the proximity of reactive species. A considerable body of literature has investigated the role of turbulence-chemistry interactions and chemical segregation on gas phase reactions in the planetary boundary layer via the use of large-eddy simulations (LES). \citet{brasseur_segregation_2023} review recent applications of LES to investigate chemical segregation and turbulence chemistry interactions in a variety of spatially heterogeneous geographic regions. Past studies tend to focus on the oxidation of highly reactive volatile organic compounds (VOCs) such as isoprene and have shown that spatially heterogeneous emissions contribute to the chemical segregation between reactive gas phase species in the boundary layer \citep{ouwersloot_segregation_2011, kaser_chemistry-turbulence_2015}. Note, however, that these studies do not model aerosols, although the coupling between the gas phase and aerosols through gas-particle partitioning suggests chemical segregation due to the spatial heterogeneity of emissions likely influences the aerosol state. 
-%\hl{Also note Jeff Pierce's work}
-
-
-Recently, numerous turbulence-resolving frameworks have been coupled to aerosol models including the use of the Sectional Aerosol model for Large Scale Applications (SALSA) \citep{kokkola_salsa_2008} alongside UCLALES \citep{tonttila_uclalessalsa_2017} and the Parallelized Large-Eddy Simulation Model (PALM) \citep{kurppa_implementation_2019} as well as the coupling between the modal model M7 \citep{vignati_m7_2004} and the Dutch Atmospheric Large-Eddy Simulation model (DALES) \citep{de_bruine_explicit_2019}.
-%Both models have been used to investigate aerosol-cloud interactions and compare model outputs against field campaign measurements. 
-Although these models have high-resolution transport schemes, they each possess relatively coarse-resolution aerosol treatments. For instance, UCLALES-SALSA uses a 10-bin sectional treatment while DALES implements a modified version of the seven-mode M7 model to allow two additional hydrometeor modes. To our knowledge, no aerosol-aware transport model has yet to leverage a high-resolution particle resolved aerosol treatment alongside turbulence resolving transport frameworks such as LES. 
-
-%\hl{I don't really consider LES models that couple microphysics schemes (such as the microphysics scheme of Feingold 1996) since they simply parameterize the aerosols and number of CCN but there are more of such models in existence than purely aerosol-aware LES.}
-
-%\begin{itemize}
-%\item SAM + modal Aitken mode aerosol microphysics scheme (Wyant et al. 2022)
-%\item PNNL-LES + 2D binned microphysics (Ovchinnikov and Easter 2010)
-%\end{itemize}
-
-The aim of this work is to conduct a process-level analysis of the the complex coupling between the spatial heterogeneity of surface emissions (including both gas compounds and primary aerosol), aerosol aging processes, and the resulting impact on aerosol properties including CCN activity via a set of first-of-a-kind particle-resolved LES. This establishes a high resolution aerosol-transport model framework in both explicit representation of turbulent transport as well as aerosol composition, properties, and aging.
-
-This paper is organized in the following manner. Section 2 presents the modeling framework used in this study, WRF-PartMC-MOSAIC-LES, alongside a description of numerous emissions scenarios ranging in spatial heterogeneity. Section 3 discusses results of simulation runs, and a description of changes to the aerosol size distribution, composition, hygroscopicity, and CCN activity across emissions scenarios are discussed. We conclude with remarks on the implications of this study, limitations stemming from its idealized nature, and future work. 
-
-
+This paper is organized in the following manner. Section 2 presents
+the modeling framework, WRF-PartMC-MOSAIC-LES, along with a
+description of emissions scenarios with varying spatial
+heterogeneity. Section 3 discusses the results of simulation runs,
+including changes in aerosol size distribution, composition,
+hygroscopicity, and CCN activity. We conclude with remarks on the
+implications of this study, limitations stemming from its idealized
+nature, and potential directions for future work.
 
 \section{Methods}
 
@@ -709,3 +798,41 @@ TEXT
 
 
 \end{document}
+
+% Old Intro
+
+Aerosols are known to impose a net negative radiative forcing, however considerable uncertainty persists in the representation of radiative forcing due to aerosol-cloud interactions (ACI) \citep{ipcc_report_2021}. Advancements in computing power have allowed modelers to investigate key contributing factors which alter the intensity of radiative forcing due to ACI such as spatial resolution \citep{ma_how_2015}. Simultaneously, improvements in computational power have advanced the representation of aerosols in climate models through inclusion of more complex chemical mechanisms \citep{zaveri_development_2021} and detailed aerosol treatments such as the Community Aerosol and Radiation Model for Atmospheres (CARMA) , which is a 40 bin sectional model used by the Community Earth System Model 2 (CESM2) \citep{tilmes_description_2023} and has shown improvements in representing aerosol properties when compared to the 4 bin Modal Aerosol Model (MAM4). While these two key structural components to models---the treatment of aerosols and the effect of spatial resolution---have improved representation of aerosols and their radiative forcing, these aspects have yet to be explored in tandem to investigate the role of spatial heterogeneities typically below the grid scale of current climate models alongside detailed aerosol treatments in modifying the depiction of climate-relevant aerosol properties key to ACI such as cloud condensation nuclei (CCN) activity.
+
+%Aerosol concentrations and properties vary at scales ranging from global and regional variability down to local and hyper-local spatial heterogeneity near emissions sources. Numerous lines of evidence point to the multi-scale spatial variability of aerosols. At the global-scale, satellite remote sensing with platforms such as MODIS have shown large-scale variability in bulk quantities including aerosol optical depth (\hl{cite}). At the regional scale, field campaigns have shown considerable variability in aerosol properties such as concentration, size distributions, CCN concentrations, and composition \citep{fast_using_2022}. Local in-situ measurements of aerosol properties are highly dependent on proximity to emission sources such as vehicular combustion, and past studies have shown that aerosol abundance and composition vary on the scale of 10s to 100s of meters downwind of sources due to non-linear processes such as coagulation \citep{zhu_study_2002}. Indeed, hyper-local heterogeneity in aerosol properties frustrates traditional comparison between point-source measurements and grid-cell averaged model quantities, and distributed measurement networks such as the Portable Optical Particle Spectrometer network in the Southern Great Plains (POPSnet-SGP) campaign aim to elucidate climate model uncertainty associated with sub-grid scale aerosol spatial heterogeneity \citep{asher_novel_2022}. 
+
+%\hl{Could also note that aerosol heterogeneities are coupled to other sources of heterogeneity by inducing feedbacks on, for instance, heterogeneous surface properties such as radiative heating and soil moisture, which have been shown to induce secondary circulations (Lee et al. 2019, Tian et al. 2022)}
+
+Aerosol-aware climate models typically contain a sub-model which governs the aerosol representation and associated processes. Given computational constraints, the aerosol treatment is often highly simplified with regard to aerosol compositional diversity. For instance, E3SM uses the modal aerosol model MAM4 which contains four lognormally distributed modes \citep{golaz_doe_2022}. Such a treatment constrains the diversity of the aerosol population to four internally-mixed modes (i.e., all particles within a mode are compositionally identical). As a result, modal and sectional aerosol treatments underrepresent the true compositional complexity of an aerosol population in which each particle ages independently. Particle-resolved aerosol models allow representation of the full compositional diversity of an aerosol population via a set of computational particles which are allowed to compositionally vary and age independently. Particle resolved models such as the Particle Monte Carlo model (PartMC) have been used extensively to investigate the sensitivity of CCN activity to the composition of emitted aerosol particles \citep{fierce_when_2013}, aging timescales due to condensation and coagulation for carbonaceous CCN \citep{fierce_explaining_2015}, and the sensitivity of CCN estimates to mixing state (i.e., the compositional diversity within and across aerosols) \citep{ching_metrics_2017}. Furthermore, given that a particle-resolved model can fully represent aerosol composition space, PartMC has been used to estimate error in CCN activity for coarser aerosol treatments by comparing depicted CCN concentrations against compositionally-averaged output reminiscent of a sectional or modal model \citep{zaveri_particle-resolved_2010, ching_metrics_2017}. Furthermore, direct comparison of CCN activity depicted by PartMC and MAM4 has shown considerable divergence, especially in polluted regions where high rates of coagulation and gas-particle partitioning amplify model disagreement \citep{fierce_quantifying_2024}. 
+
+In addition to the treatment of aerosols, the depiction of spatial heterogeneity---including that of surface properties, emissions of gas phase species and primary aerosol, and heterogeneous distributions of their resulting plumes---influences particle aging and associated properties including CCN activity. Present aerosol-aware models at regional and global scales possess insufficient resolution to capture the full spatial heterogeneity of aerosols and the emissions of primary aerosols and gas phase precursors. In turn, these models depict artificially dilute and uniform concentrations within grid cells. This alters the representation of concentration-dependent, non-linear aerosol processes such as coagulation and gas particle partitioning. Past studies have shown that climate-relevant aerosol properties such as aerosol optical properties \citep{gustafson_jr_downscaling_2011} and CCN activity \citep{weigum_effect_2016} are highly sensitive to the model’s grid resolution with a large contribution of sub-grid scale variability resulting from the spatially varying pattern of emissions \citep{qian_investigation_2010}. 
+
+%Given large uncertainties in the effective radiative forcing resulting from aerosol-cloud interactions \citep{ipcc_report_2021}, constraining model estimates of CCN activity remains an important focus. 
+
+Past studies evaluating the sub-grid variability of aerosol properties often compare outputs from models with coarse resolution typical of global climate models ($\sim 50$--$100$ km) against higher resolution model outputs with resolution on the order of $\sim 1$--$10$ km 
+\citep{qian_investigation_2010, gustafson_jr_downscaling_2011, weigum_effect_2016, crippa_impact_2017, lin_quantification_2017}. While such improvements in resolution better resolve heterogeneities in emissions, there still exists considerable unresolved spatial heterogeneity in the sub-kilometer scale. In addition, such modeling studies do not explicitly resolve the scales of turbulent transport in the boundary layer, instead fully parameterizing turbulence via Reynolds-averaged Navier Stokes. 
+
+%Furthermore, these models use simplified representations of aerosols such as modal or sectional treatments. Comparing these aerosol treatments against particle-resolved models which represent the broad compositional complexity of aerosols, past studies have shown that simplified aerosol representations impact modeled aerosol properties including CCN activity \citep{zaveri_particle-resolved_2010, ching_metrics_2017, fierce_quantifying_2024}.
+
+The evolution of emission plumes containing gas phase compounds and aerosols is highly dependent on turbulent mixing at fine spatial scales and the proximity of reactive species. A considerable body of literature has investigated the role of turbulence-chemistry interactions and chemical segregation on gas phase reactions in the planetary boundary layer via the use of large-eddy simulations (LES). \citet{brasseur_segregation_2023} review recent applications of LES to investigate chemical segregation and turbulence chemistry interactions in a variety of spatially heterogeneous geographic regions. Past studies tend to focus on the oxidation of highly reactive volatile organic compounds (VOCs) such as isoprene and have shown that spatially heterogeneous emissions contribute to the chemical segregation between reactive gas phase species in the boundary layer \citep{ouwersloot_segregation_2011, kaser_chemistry-turbulence_2015}. Note, however, that these studies do not model aerosols, although the coupling between the gas phase and aerosols through gas-particle partitioning suggests chemical segregation due to the spatial heterogeneity of emissions likely influences the aerosol state. 
+%\hl{Also note Jeff Pierce's work}
+
+
+Recently, numerous turbulence-resolving frameworks have been coupled to aerosol models including the use of the Sectional Aerosol model for Large Scale Applications (SALSA) \citep{kokkola_salsa_2008} alongside UCLALES \citep{tonttila_uclalessalsa_2017} and the Parallelized Large-Eddy Simulation Model (PALM) \citep{kurppa_implementation_2019} as well as the coupling between the modal model M7 \citep{vignati_m7_2004} and the Dutch Atmospheric Large-Eddy Simulation model (DALES) \citep{de_bruine_explicit_2019}.
+%Both models have been used to investigate aerosol-cloud interactions and compare model outputs against field campaign measurements. 
+Although these models have high-resolution transport schemes, they each possess relatively coarse-resolution aerosol treatments. For instance, UCLALES-SALSA uses a 10-bin sectional treatment while DALES implements a modified version of the seven-mode M7 model to allow two additional hydrometeor modes. To our knowledge, no aerosol-aware transport model has yet to leverage a high-resolution particle resolved aerosol treatment alongside turbulence resolving transport frameworks such as LES. 
+
+%\hl{I don't really consider LES models that couple microphysics schemes (such as the microphysics scheme of Feingold 1996) since they simply parameterize the aerosols and number of CCN but there are more of such models in existence than purely aerosol-aware LES.}
+
+%\begin{itemize}
+%\item SAM + modal Aitken mode aerosol microphysics scheme (Wyant et al. 2022)
+%\item PNNL-LES + 2D binned microphysics (Ovchinnikov and Easter 2010)
+%\end{itemize}
+
+The aim of this work is to conduct a process-level analysis of the the complex coupling between the spatial heterogeneity of surface emissions (including both gas compounds and primary aerosol), aerosol aging processes, and the resulting impact on aerosol properties including CCN activity via a set of first-of-a-kind particle-resolved LES. This establishes a high resolution aerosol-transport model framework in both explicit representation of turbulent transport as well as aerosol composition, properties, and aging.
+
+This paper is organized in the following manner. Section 2 presents the modeling framework used in this study, WRF-PartMC-MOSAIC-LES, alongside a description of numerous emissions scenarios ranging in spatial heterogeneity. Section 3 discusses results of simulation runs, and a description of changes to the aerosol size distribution, composition, hygroscopicity, and CCN activity across emissions scenarios are discussed. We conclude with remarks on the implications of this study, limitations stemming from its idealized nature, and future work. 
