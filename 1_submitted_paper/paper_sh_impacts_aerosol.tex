@@ -129,9 +129,9 @@ Aerosols exert a net negative radiative forcing, but significant
 uncertainty remains in how aerosol-cloud interactions are represented
 in climate models \citep{ipcc_report_2021}. Two major factors
 contribute to this uncertainty: (1) the spatial resolution of models
-and (2) the treatment of aerosol representation, \textcolor{red}{which
-  refers to how aerosol properties such as size distribution, chemical
-  composition, and mixing state are modeled.}
+and (2) the treatment of aerosol representation, which refers to how 
+aerosol properties such as size distribution, chemical composition, 
+and mixing state are modeled.
 
 Advances in computational power have allowed modelers to investigate
 how spatial resolution affects radiative forcing due to aerosol-cloud
@@ -143,9 +143,9 @@ representation have advanced, they have largely been studied in
 isolation. The combined effect of sub-grid scale spatial heterogeneity
 and detailed aerosol representation on relevant properties, such as
 cloud condensation nuclei (CCN) activity, remains largely unexplored.
-\textcolor{red}{The goal of this paper is to investigate their
-  combined impact on key microphysical properties, with a focus on
-  cloud condensation nuclei (CCN) activity.}
+The goal of this paper is to investigate their combined impact on key 
+microphysical properties, with a focus on cloud condensation nuclei 
+(CCN) activity.
 
 Aerosol-aware climate models typically include a sub-model that
 governs aerosol representation and associated processes. Due to
@@ -159,8 +159,8 @@ share identical composition. In reality, however, aerosols age
 independently, leading to complex, highly heterogeneous
 mixtures. Particle-resolved aerosol models address this limitation by
 explicitly tracking the composition and evolution of individual
-particles. The Particle Monte Carlo model (PartMC) \textcolor{red}{add
-  citation here} has been extensively used to study the sensitivity of
+particles. The Particle Monte Carlo model (PartMC) \citep{riemer_simulating_2009} 
+has been extensively used to study the sensitivity of
 CCN activity to aerosol composition \citep{fierce_when_2013}, aging
 timescales due to condensation and coagulation for carbonaceous CCN
 \citep{fierce_explaining_2015}, and the impact of mixing state on CCN
@@ -247,17 +247,16 @@ LES simulations, establishing a high-resolution aerosol-transport
 modeling framework that explicitly represents both turbulent transport
 and aerosol composition.
 
-This paper is organized in the following manner. \textcolor{red}{add
-  refs to sections, don't hardcode section numbers.} Section 2
+This paper is organized in the following manner. Section \ref{methods}
 presents the modeling framework, WRF-PartMC-MOSAIC-LES, along with a
 description of emissions scenarios with varying spatial
-heterogeneity. Section 3 discusses the results of simulation runs,
+heterogeneity. Section \ref{results} discusses the results of simulation runs,
 including changes in aerosol size distribution, composition,
 hygroscopicity, and CCN activity. We conclude with remarks on the
 implications of this study, limitations stemming from its idealized
 nature, and potential directions for future work.
 
-\section{Methods}
+\section{Methods}\label{methods}
 
 \subsection{WRF-PartMC-MOSAIC-LES}
 
@@ -294,10 +293,8 @@ schemes. In WRF-PartMC-MOSAIC-LES, turbulent mixing is parameterized
 using Deardorff's TKE scheme for eddy diffusivity and eddy viscosity
 \citep{deardorff_stratocumulus-capped_1980}.
 
-Gas-phase and aerosol chemistry \textcolor{red}{some reviewer at some
-  point flagged our use of ``aerosol chemistry''-- since this can mean
-  many things, including heterogeneous processes. Better to say
-  gas-aerosol partitioning and aerosol thermodynamics} are represented
+Gas-phase \textcolor{blue}{chemistry, gas-aerosol partitioning, and aerosol thermodynamics} 
+are represented
 using the Model for Simulating Aerosol Interactions and Chemistry
 (MOSAIC) \citep{zaveri_model_2008}. MOSAIC is comprised of multiple
 sub-models, including the Carbon Bond Mechanism version Z (CBM-Z)
@@ -333,9 +330,8 @@ computational particles within each grid cell is dynamically
 adjusted---doubling when it falls to half the initial value and
 halving when it reaches twice the initial value---to maintain
 computational efficiency and adequate representation of the aerosol
-state. \textcolor{red}{Maybe we should say something about the
-  particle number per grid cell---it's low compared to what we are
-  using otherwise.}
+state. 
+\textcolor{blue}{Customarily, the number of computational particles $N_{\mathrm{p}}$ per grid cell is set around $N_{\mathrm{p}} = 10,000$ as stochastic error in processes such as advection decreases according to $1/\sqrt{N_{\mathrm{p}}}$ \citep{gmd-17-8399-2024}. However, computational demand grows with $N_{\mathrm{p}}$, placing constraints on our ability to increase the number of particles. Simulations in this paper were conducted on a high-performance computing cluster with 384 CPU cores executing in parallel.}
 
 The domain is initialized over a flat, uniform land surface absent of
 topographic features or land-use variations. WRF-PartMC-MOSAIC-LES is
@@ -343,8 +339,9 @@ not coupled to one of WRF's radiation sub-models. Instead, MOSAIC
 employs idealized parameterizations to determine photolysis rates
 based on the solar zenith angle. Due to the lack of a radiation
 sub-model, surface heating is imposed uniformly across the domain
-using a constant rate of 0.24~$\rm K \, m^{-1} \,
-s^{-1}$. \textcolor{red}{... representative of ...?}
+using a constant rate of 0.24~$\rm K \, m \,
+s^{-1}$, \textcolor{blue}{which is representative of typical kinematic heat fluxes
+observed during mid-day in clear sky conditions over land \citep{stull_introduction_1988}.} %Ch. 7 S 7.1, pg. 252
 
 Initial conditions and emissions for both aerosols and the gas phase
 represent an urban environment and are based on
@@ -356,16 +353,12 @@ Los Angeles basin \citep{zaveri_model_2008}. Table
 \ref{table:gas_emiss_ics} provides initial concentrations and emission
 rates for gas phase species, while Table \ref{table:aero_emiss_ics}
 details aerosol initial conditions and emission rates categorized by
-aerosol modes. Initially, the aerosol consists of an equal mixture of
-ammonium sulfate and primary organic aerosol (POA)
-\textcolor{red}{suggest: .. of an internal mixture composed of 50\%
-  ammonium sulfate and 50\% primary organic aerosol (POA) by mass.}
+aerosol modes. Initially, the aerosol consists \textcolor{blue}{of an internal mixture composed of 50\% ammonium sulfate and 50\% primary organic aerosol (POA) by mass.}
 The three emission modes representing cooking and vehicular combustion
-comprise varying mixtures of POA and BC. \textcolor{red}{Suggest: The
+comprise varying mixtures of POA and BC. \textcolor{blue}{The
   three emission modes, representing cooking and vehicular combustion
   sources, each consist of distinct fixed mixtures of primary organic
-  aerosol (POA) and black carbon (BC). --- otherwise one might think
-  it varies by time or so.} To allow for simulation spin-up and the
+  aerosol (POA) and black carbon (BC).} To allow for simulation spin-up and the
 full development of the convective boundary layer, emissions remain at
 zero during the first hour of simulation. Subsequently, surface
 emissions are released at constant rates as specified by Tables
@@ -492,7 +485,7 @@ represents an idealized urban-rural interface, where emissions are
 released in half the domain with no emissions occurring in the other
 half. Scenario~2 contains a narrow strip of emissions running through
 the center of the domain, corresponding to an emission pattern typical
-of a major roadway. Lastly, scenario~3 places all emissions in a
+of a major roadway. Lastly, Scenario~3 places all emissions in a
 single grid cell in the domain center representing a point source such
 as an industrial plume.
 
@@ -522,16 +515,16 @@ scalar field is zero everywhere except at a single point
 where it takes the value $MN\times\overline{f}(S)$.
 
 Thus, the uniform base case corresponds to the homogeneous condition
-($\eta = 0$) while scenario~3---the point-source
+($\eta = 0$) while Scenario~3---the point-source
 emission---represents the maximally heterogeneous case ($\eta =
 1$). To ensure consistent mass emissions across scenarios, emission
 rates are scaled by the fraction of area covered by emissions. For
-instance, in scenario~3, this results in a scaling of $10,000$
+instance, in Scenario~3, this results in a scaling of $10,000$
 ($M=N=100$) for the point-source emission. The fraction of area
 covered by emissions is displayed for each scenario alongside the
 spatial heterogeneity values in Figure \ref{fig:sh-scenarios}.
 
-\section{Results}
+\section{Results}\label{results}
 
 Key findings of this paper are structured as follows. Section
 \ref{sec:gas-impacts} investigates the relationship between emissions
@@ -574,10 +567,8 @@ $\eta$ values 3--4 times higher than those of nitric acid and OH. This
 is primarily because ammonia is emitted while nitric acid and OH are
 formed due to chemical reactions. This leads to a marked concentration
 gradient for ammonia between regions near the emissions plume (in
-excess of 10~ppbv directly over the emissions plume in scenario~3) and
-farther toward the perimeter of the domain (as low as
-$1\cdot10^{-4}$~ppbv \textcolor{red}{or should we say 0.1
-  pptv?}\textcolor{blue}{yes.}).
+excess of 10~ppbv directly over the emissions plume in Scenario~3) and
+farther toward the perimeter of the domain (as low as \textcolor{blue}{0.1~pptv}).
 
 The similar structure between ammonia and nitric acid
 indicates that nitric acid formation is most effective over the
@@ -648,7 +639,7 @@ better capture localized depletion near the emissions plume. Scenarios
 with high emissions spatial heterogeneity result a pronounced
 reduction in OH near the emissions plume. Whereas in the uniform base
 case, the level-mean concentration of OH is 0.61~pptv at $z=1$~km,
-whereas in scenario~3 they drop by 54\%
+whereas in Scenario~3 they drop by 54\%
 to 0.28~pptv.
 
 \subsection{Aerosol size distributions}\label{sec:size-dist}
@@ -670,9 +661,9 @@ to the selected number of computational particles per grid cell ($N =
 WRF-PartMC. To reduce stochastic noise, number and mass distributions
 represent the average distribution in a 1~km$^2$ region centered over
 the emissions plume (i.e., size distributions are averaged over a
-$10\times10$ grid cell region). For the uniform base case, scenario~2
-and scenario~3, this region is directly over the center of the
-domain. For scenario~1, emissions are released in one half of the
+$10\times10$ grid cell region). For the uniform base case, Scenario~2
+and Scenario~3, this region is directly over the center of the
+domain. For Scenario~1, emissions are released in one half of the
 domain that is offset from the center, and thus the averaging region
 is located in the center of the emissions patch. For each size
 distribution, data have been binned into 100 logarithmically spaced
@@ -729,7 +720,7 @@ plume, ammonium and nitrate concentrations quickly fall off as the
 equilibrium condition shifts to the gas phase.
 
 In contrast, sulfate is more uniformly distributed across all
-scenarios, resulting in lower spatial heterogeneity for scenario~3
+scenarios, resulting in lower spatial heterogeneity for Scenario~3
 ($\eta=0.021$) compared to ammonium ($\eta = 0.142$) and nitrate
 ($\eta=0.739$).  This is due to the extremely low volatility of
 sulfuric acid which remains almost entirely in the aerosol phase as
@@ -740,9 +731,7 @@ the spatial distribution of aerosol species is determined by their
 volatility, with less volatile species exhibiting more uniform
 distributions, while higher volatility species remain clustered near
 plumes with high concentrations of corresponding gas phase precursors.
-
-\textcolor{red}{SF: \emph{I think it might be worth acknowledging the
-  relatively high SH of nitrate in the uniform base case -} Given the
+\textcolor{blue}{Given the
   sensitivity of nitrate formation to the spatial heterogeneity of
   emissions, nitrate levels are extremely low in the uniform base
   case, with most grid cells containing no nitrate. Occasionally, some
@@ -752,14 +741,6 @@ plumes with high concentrations of corresponding gas phase precursors.
   uniform base case appears higher ($\eta=0.513$) than the value of
   $\eta$ for ammonium and sulfate ($\eta=0.010$ and $\eta=0.011$,
   respectively).}
-
-\textcolor{blue}{Yes, this is an excellent point, and somewhat an
-  artifact... Figure 5 is a snapshot at 6~h, right? I wonder if one
-  should average for some time .... that should get rid of the NO3
-  noise in the base case. But probably also smooths the other cases,
-  so not sure if this is such a great idea. Given that it can be
-  explained, probably best to explain it just like you suggest.}
-
 
 \begin{figure}[!h]
 	\centering
@@ -821,11 +802,11 @@ heterogeneity.
 	\includegraphics[]{figures/speciated-mass-frac-three-panel-z40.pdf}
 	\caption{Speciated mass fraction as a function of particle
           diameter for emissions scenario extremes (uniform base case
-          and scenario~3). The initial condition is shown on the left,
+          and Scenario~3). The initial condition is shown on the left,
           indicating that aerosol begin as an equal mixture of POA and
           ammonium sulfate. On the right, emissions scenarios with
           minimum spatial heterogeneity (top, uniform base case) and
-          maximum spatial heterogeneity (bottom, scenario~3) are shown
+          maximum spatial heterogeneity (bottom, Scenario~3) are shown
           after 6 hours.}
 	\label{fig:speciated-mass-frac}
 \end{figure} 
@@ -833,10 +814,10 @@ heterogeneity.
 Figure \ref{fig:speciated-mass-frac} shows the size-resolved mass
 fraction of aerosols in the upper boundary layer ($z\approx 800$ m)
 for the initial condition and at the end of simulations ($t=6$ h) for
-both the uniform base case and scenario~3. After 6 hours, significant
+both the uniform base case and Scenario~3. After 6 hours, significant
 differences in composition emerge. Under uniform emissions, particles
 mainly consist of BC and primary organic aerosol (POA) along with some
-sulfate. By contrast, particles in scenario 3 are dominated by
+sulfate. By contrast, particles in Scenario~3 are dominated by
 nitrate, ammonium, and sulfate, which together comprise 50--80\% of
 aerosol mass.
 
@@ -844,29 +825,32 @@ The CCN activity of particles in the size range of 50--100 nm is
 largely governed by their composition. Figure
 \ref{fig:speciated-mass-frac} indicates that, for the uniform base
 case, particles in this size range are primarily composed of low
-hygroscopicity compounds, including BC and POA. In scenario~3, the
+hygroscopicity compounds, including BC and POA. In Scenario~3, the
 dominant presence of sulfate, nitrate, and ammonium increases particle
 hygroscopicity.  This suggests that particles in the size range of
 50--100 nm, whose CCN activity depends on aerosol composition, exhibit
 greater hygroscopicity under high emissions spatial heterogeneity,
 allowing them to activate at lower
-supersaturations. \textcolor{red}{maybe add that this will be shown in
-  a little bit.}
+supersaturations. \textcolor{blue}{We show this is indeed the case
+by evaluating changes in the 2-dimensional number distribution 
+$n(D_p, \kappa)$ as a function of particle diameter $D_p$ and particle
+hygroscopicity parameter $\kappa$.}
+
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[]{figures/2d-kappa-dist-three-panel-z40.pdf}
-	\caption{2-dimensional number distributions $n(D_p, \kappa)$ for emissions scenario extremes. The initial condition is shown on the left, indicating that all aerosol begin as internally mixed particles with uniform $\kappa$. On the right, emissions scenarios with minimum spatial heterogeneity (top, uniform base case) and maximum spatial heterogeneity (bottom, scenario~3) are shown after 6 hours. Cell coloring indicates particle number concentration. Black solid contours indicate supersaturation in $\%$. Particles to the right of a contour line activate at the indicated supersaturation.}
+	\caption{2-dimensional number distributions $n(D_p, \kappa)$ for emissions scenario extremes. The initial condition is shown on the left, indicating that all aerosol begin as internally mixed particles with uniform $\kappa$. On the right, emissions scenarios with minimum spatial heterogeneity (top, uniform base case) and maximum spatial heterogeneity (bottom, Scenario~3) are shown after 6 hours. Cell coloring indicates particle number concentration. Black solid contours indicate supersaturation in $\%$. Particles to the right of a contour line activate at the indicated supersaturation.}
 	\label{fig:kappa-dist}
 \end{figure} 
 
 Figure \ref{fig:kappa-dist} shows 2-dimensional number distributions
-$n(D_p, \kappa)$ as a function of particle diameter $D_p$ and particle
-hygroscopicity parameter $\kappa$ in the upper boundary layer
-($z\approx 800$~m). For the initial condition all particles possess
+$n(D_p, \kappa)$ \textcolor{blue}{for emissions scenario extremes. Each distribution
+was sampled in the upper boundary layer ($z\approx 800$~m) at the beginning 
+and end of simulations. Initially,} all particles possess
 the same composition and thus the same hygroscopicity.  The right
 panel compares distributions at $t=6$~h for the uniform base case and
-scenario~3.
+Scenario~3.
 
 In the uniform base case, two distinct particle groups emerge: one
 with low $\kappa$ values (0--0.3), corresponding to primary
@@ -876,7 +860,7 @@ have undergone coagulation and gas-particle partitioning. The latter
 group is enriched in sulfate as seen in Figure
 \ref{fig:speciated-mass-frac}.
 
-Under scenario~3, particles exhibit significantly higher
+Under Scenario~3, particles exhibit significantly higher
 hygroscopicities. For instance, the hygroscopicity of particles with
 diameter of 100 nm exceeds $\kappa>0.6$ (indicating highly hygroscopic
 particles), whereas $\kappa$ only reaches up to 0.4 in the uniform
@@ -887,11 +871,11 @@ emissions indeed lower the critical supersaturation of such particles,
 enhancing their CCN activity.
 
 Differences in the $\kappa$ distributions between the uniform base
-case and scenario~3 stem from the interaction between emissions
+case and Scenario~3 stem from the interaction between emissions
 spatial heterogeneity and sub-grid scale aerosol processes. Enhanced
 coagulation in emissions plumes reduces Aitken mode particle
 concentrations, explaining the absence of a low-$\kappa$ carbonaceous
-aerosol group in scenario~3. Furthermore, spatially heterogeneous
+aerosol group in Scenario~3. Furthermore, spatially heterogeneous
 emissions promote gas-particle partitioning, increasing particle
 hygroscopicity. In particular, higher concentrations of nitric acid
 and ammonia near spatially heterogeneous emissions plumes drive the
@@ -937,7 +921,7 @@ due to the high hygroscopicity of ammonium nitrate.
 
 At higher supersaturations ($S=0.6\text{--}1.0\%$), CCN concentrations
 still increase in the upper boundary layer for scenarios with lower
-spatial heterogeneity, however, in scenario~3, CCN concentrations
+spatial heterogeneity, however, in Scenario~3, CCN concentrations
 decrease, particularly at $S=1.0\%$, where CCN concentrations drop
 below all other scenarios including the uniform base case. This is due to 
 enhanced coagulation in highly heterogeneous
@@ -975,7 +959,7 @@ concentration of CCN at time $t$ and vertical level $z$ that activate
 at supersaturation $S$.
 
 The greatest increase in CCN concentration relative to the uniform
-base case occurs for scenario~3 at $S=0.3\%$, where CCN concentrations
+base case occurs for Scenario~3 at $S=0.3\%$, where CCN concentrations
 increase by more than 25\% through $t=6$~h. At both high
 supersaturations and high emissions spatial heterogeneity, the
 reduction in CCN activity due to enhanced coagulation becomes evident
@@ -998,7 +982,7 @@ albedo through the first indirect effect.
 
 To further explore the role of ammonia in CCN activity under spatially
 heterogeneous emissions, we conducted additional simulations for the
-uniform base case and scenario~3, setting total ammonium
+uniform base case and Scenario~3, setting total ammonium
 (NH$_{3\text{, gas}} + $NH$_{4\text{, aerosol}}$) to zero. Correspondingly, 
 emissions of NH$_3$ were set to zero to ensure that total ammonium remains
 zero throughout each simulation.
@@ -1013,21 +997,18 @@ zero throughout each simulation.
           scaled by a factor of $1\cdot10^{-9}$. Profiles for
           scenarios with ammonia are shown as solid lines while
           scenarios without ammonia are displayed as dashed lines for
-          the uniform base case (black) and scenario~3
+          the uniform base case (black) and Scenario~3
           (chartreuse). \textcolor{red}{love it! chartreuse!}}
 	\label{fig:ccn-vertical-profile-no-ammonia}
 \end{figure}
-
-\textcolor{red}{General comment: If we refer to a specific scenario, I
-  think cenario should be written with capital ``S''.}
 
 Figure \ref{fig:ccn-vertical-profile-no-ammonia} shows vertical
 profiles of CCN mixing ratios at $t=6$ h for supersaturations ranging
 from $S=0.1\%$ to $S=1.0\%$. Without ammonia, CCN concentrations at
 each supersaturation level agree much more closely between the uniform
-base case and scenario~3. The peak of CCN concentrations in the upper
+base case and Scenario~3. The peak of CCN concentrations in the upper
 boundary layer and at lower supersaturations, previously observed in
-scenario~3, disappears entirely. This underscores the crucial role of
+Scenario~3, disappears entirely. This underscores the crucial role of
 ammonium nitrate formation in modulating CCN concentrations under
 spatially heterogeneous emissions, especially at lower
 supersaturations.
@@ -1038,8 +1019,8 @@ counterpart. This further confirms that, in the absence of
 ammonia-driven gas-particle partitioning, coagulation-induced particle
 loss dominates, leading to an overall reduction in the concentration of 
 CCN. The similarity in CCN profiles between the ammonia-free
-cases of scenario~3 and the uniform base case, apart from a slight
-(~5\%) downward shift in scenario~3 due to enhanced coagulation,
+cases of Scenario~3 and the uniform base case, apart from a slight
+(~5\%) downward shift in Scenario~3 due to enhanced coagulation,
 underscores the competing influences of emissions spatial
 heterogeneity on aerosol-cloud interactions.
 
@@ -1066,13 +1047,14 @@ formation increases substantially in regions of high emissions
 heterogeneity due to localized enhancements in nitric acid and ammonia
 concentrations near the emissions plume core. This shifts the
 equilibrium favoring ammonium nitrate formation in the aerosol
-phase. Additionally, higher emissions heterogeneity intensifies
+phase. \textcolor{blue}{In turn, the volatility of aerosol species is coupled with the 
+spatial heterogeneity of emissions and precursor species. 
+Low-volatility compounds such as sulfate are more spatially homogeneous
+due to their tendency to remain in the aerosol phase even as particles 
+are transported away from the emissions plume.}
+Additionally, higher emissions heterogeneity intensifies
 coagulation, accelerating particle growth and modifying the size
 distribution of aerosols.
-
-\textcolor{red}{I think we could also mention that sulfate does not
-  come out particularly heterogeneous, no matter which scenario. I
-  would not have predicted this, given that it is coupled to OH...}
 
 These aerosol process changes have downstream effects on CCN
 activity. Notably, the influence of emissions spatial heterogeneity on
@@ -1096,20 +1078,24 @@ under highly spatially heterogeneous scenarios, removing ammonia
 weakens---or in some cases reverses---the trend between emissions
 spatial heterogeneity and CCN concentrations.
 
-This has important implcations for global climate models (GCMs)
-\textcolor{red}{I'd remove the abbreviation (GCMs) here... the fewer
-  abbreviations the better, so limit ourselves to the ones that we use
-  multiple times is best}, where nitrate formation is often simplified
-by assuming equilibrium partitioning or omitted altogether. Our
-findings highlight the necessity of accurately representing nitrate in
-GCMs due to the strong coupling between emissions spatial
-heterogeneity, aerosol composition, and CCN activity. As model
-resolution continues to improve, advancing the representation of
-aerosol chemistry will be critical to capturing the full impact of
+This has important implcations for global climate models, where 
+nitrate formation is often simplified by assuming equilibrium partitioning 
+or omitted altogether. Our findings highlight the necessity of accurately 
+representing nitrate in global climate models due to the strong coupling 
+between emissions spatial heterogeneity, aerosol composition, and 
+CCN activity. As model resolution continues to improve, advancing the 
+representation of aerosol chemistry will be critical to capturing the full impact of
 emissions spatial heterogeneity on cloud microphysics and climate.
 
 \textcolor{red}{We should add some limitations---carefully, so that it
   doesn't sound we question all our results in the last minute.}
+ \textcolor{blue}{This study models highly idealized emission patterns and indicates that 
+aerosol composition mediates the impact of emissions spatial heterogeneity 
+on aerosol properties such as CCN activity. Future studies should broaden 
+the scope of these findings to non-idealized settings, including quantifying 
+the impact of emissions spatial heterogeneity on aerosol properties over
+various geographic regions (e.g, urban, agricultural, and remote settings) 
+with differing rates and composition of gas and primary aerosol emissions.}
 
 %\begin{itemize}
 %\item Limitations and future work
