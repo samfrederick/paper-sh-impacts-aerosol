@@ -330,15 +330,11 @@ adjusted---doubling when it falls to half the initial value and
 halving when it reaches twice the initial value---to maintain
 computational efficiency and adequate representation of the aerosol
 state. 
-\textcolor{blue}{Customarily, the number of computational particles $N_{\mathrm{p}}$ per grid cell is set around $N_{\mathrm{p}} = 10,000$ as stochastic error in processes such as advection decreases according to $1/\sqrt{N_{\mathrm{p}}}$ \citep{gmd-17-8399-2024}. However, computational demand grows with $N_{\mathrm{p}}$, placing constraints on our ability to increase the number of particles. Simulations in this paper were conducted on a high-performance computing cluster with 384 CPU cores executing in parallel.}
 
-\textcolor{red}{We want to have something that conveys that we still
-  can trust the results (I hope??). I suggest this, what do you think?
-  We In particle-resolved box model studies, a typical choice is
+In particle-resolved box model studies, a typical choice is
   $N_{\mathrm{p}} \sim 10{,}000$ computational particles to minimize
   stochastic variability in aerosol processes
-  \citep{gmd-17-8399-2024}[maybe better would be to cite actual box
-    model studies, for example Yicen's paper].  However, for
+  \citep{gmd-17-8399-2024, Liu_2025}.  However, for
   three-dimensional large-eddy simulations (LES) coupled with PartMC,
   the computational burden scales with the number of grid cells,
   making such high particle counts per cell impractical. In this
@@ -350,7 +346,7 @@ state.
   were conducted on a high-performance computing cluster using 384 CPU
   cores in parallel. Future studies may explore sensitivity to
   $N_{\mathrm{p}}$, but we expect the main conclusions presented here
-  to remain valid.}
+  to remain valid.
 
 The domain is initialized over a flat, uniform land surface absent of
 topographic features or land-use variations. WRF-PartMC-MOSAIC-LES is
@@ -361,9 +357,7 @@ sub-model, surface heating is imposed uniformly across the domain
 using a constant rate of 0.24~$\rm K \, m \, s^{-1}$, which is
 representative of typical kinematic heat fluxes observed during
 mid-day in clear sky conditions over land
-\citep{stull_introduction_1988}. %Ch. 7 S 7.1, pg. 252
-\textcolor{red}{When citing a book, it's great to include the
-  chapter/section.}
+\citep{stull_introduction_1988}.
 
 Initial conditions and emissions for both aerosols and the gas phase
 represent an urban environment and are based on
@@ -456,26 +450,6 @@ Meteorological initial conditions define an idealized
 convective boundary layer structure, where the surface is 5~K warmer
 than the mixing layer, and an inversion of 8~K caps the layer at 1
 km. The wind profile is set to zero throughout the domain.
-%\hl{Maybe include a figure here?}  
-
-%\hl{putting some namelist parameters here for time being for convenience}
-%\begin{lstlisting}
-% &physics
-% mp_physics                          = 0,     0,     0, ! microphysics scheme
-% ra_lw_physics                       = 0,     0,     0, ! long wave radiation scheme
-% ra_sw_physics                       = 0,     0,     0, ! short wave radiation scheme
-% radt                                = 0,     0,     0, ! radiation time step
-% sf_sfclay_physics                   = 0,     1,     1, ! surface layer parameterization
-% sf_surface_physics                  = 0,     0,     0, ! surface sub model
-% bl_pbl_physics                      = 0,     0,     0, ! boundary layer parameterizations
-% bldt                                = 0,     0,     0, !  boundary layer scheme time delta
-% cu_physics                          = 0,     0,     0, ! cumulus physics model
-% cudt                                = 0,     0,     0, ! cumulus physics scheme time delta
-% isfflx                              = 2, ! surface heat and moisture flux
-% num_land_cat = 24,
-% num_soil_layers                     = 5, ! does this matter since I don't use a surface model?
-%\end{lstlisting}
-
 
 \subsection{Emissions Scenarios}
 
@@ -593,45 +567,53 @@ gradient for ammonia between regions near the emissions plume (in
 excess of 10~ppbv directly over the emissions plume in Scenario~3) and
 farther toward the perimeter of the domain (as low as 0.1~pptv).
 
-\textcolor{red}{This still needs to be revised. HNO3 and OH actually
-  behave very similarly in terms of SH, NH3 has a larger SH, we think
-  this is because NH3 is directly emitted...}  The similar structure
-between ammonia and nitric acid indicates that nitric acid formation
-is most effective over the emissions plume due to the emission of NO
-and NO$_2$. The spatial pattern of OH follows that of ammonia and
-nitric acid but with an inverse relationship: OH concentrations are
-lower near the center of the emissions plume and higher concentrations
-farther away. This indicates rapid oxidation of many reactive
-compounds occurring in the emissions plume. Consequently, OH becomes
-spatially segregated from its reactants in the emissions plume as OH
-in the immediate vicinity of the plume is consumed.
 
-The spatial heterogeneity of these compounds is further controlled by
-the relative importance of turbulence in mixing reactive compounds and
-their chemical reactivity. This relationship is characterized via the
-Damköhler number, which is the ratio of the turbulent and chemical
-reaction timescales,
-
-\begin{equation}
-D_a = \frac{\tau_{\mathrm{turb}}}{\tau_{\mathrm{chem}}}.
-\end{equation}
-
-When the chemical reaction timescale is shorter than the turbulent
-timescale, such as in fast reactions including the production of OH
-and its oxidation of other compounds, $D_a > 1$ such that the
-concentration of OH is controlled by the turbulent timescale. As a
-result, local concentrations of OH are in near chemical-equilibrium as
+\textcolor{blue}{Both OH and nitric acid exhibit much lower spatial heterogeneity due to a 
+coupling between chemistry and the heterogeneity of each compound; 
+however, the chemical mechanism underlying this coupling differs significantly 
+between OH and nitric acid. OH facilities rapid oxidation of numerous compounds
+in the core of the emissions plume. While the concentration of OH is momentarily 
+lowered due to oxidation reactions, it is quickly replenished via photolysis. 
+As a result, local concentrations of OH are in near chemical-equilibrium as
 it is produced and consumed over very short timescales, preventing
 large scale spatial heterogeneity in the domain-wide concentration of
-OH. Conversely, compounds such as ammonia and nitric acid undergo
-comparatively slower chemical reactions, whereby $D_a < 1$, indicating
-that the rate of chemical reaction determines the abundance of
-reactants and products. This allows for the build-up of stronger
-concentration gradients between the emissions plume and the
-surrounding region. The absence of vertical wind shear within
-simulations limits the strength of shear-induced turbulence and
-horizontal mixing, resulting in substantial concentration gradients
-away from the emissions plume for ammonia and nitric acid.
+OH. Whereas the concentration of OH is rapidly modified by oxidation and 
+photolysis reactions in the gas phase, nitric acid is governed by equilibrium 
+partitioning between the gas and aerosol phase. For instance, a nitrate rich 
+particle which enters a parcel of air containing low levels of nitric acid will partition 
+most of the nitrate into the gas phase to re-establish thermodynamic equilibrium.
+Conversely, when the gas phase concentration nitric acid is high such as near an 
+emissions plume, nitrate formation is favored. As a result, the reversible nature of 
+ammonium nitrate formation acts as a buffer, regulating the concentration of nitric acid 
+in the gas phase which lowers the degree of spatial heterogeneity.}
+
+
+%The spatial heterogeneity of these compounds is further controlled by
+% the relative importance of turbulence in mixing reactive compounds and
+% their chemical reactivity. This relationship is characterized via the
+% Damköhler number, which is the ratio of the turbulent and chemical
+% reaction timescales,
+
+%\begin{equation}
+%D_a = \frac{\tau_{\mathrm{turb}}}{\tau_{\mathrm{chem}}}.
+%\end{equation}
+
+%When the chemical reaction timescale is shorter than the turbulent
+%timescale, such as in fast reactions including the production of OH
+%and its oxidation of other compounds, $D_a > 1$ such that the
+%concentration of OH is controlled by the turbulent timescale. As a
+%result, local concentrations of OH are in near chemical-equilibrium as
+%it is produced and consumed over very short timescales, preventing
+%large scale spatial heterogeneity in the domain-wide concentration of
+%OH. Conversely, compounds such as ammonia and nitric acid undergo
+%comparatively slower chemical reactions, whereby $D_a < 1$, indicating
+%that the rate of chemical reaction determines the abundance of
+%reactants and products. This allows for the build-up of stronger
+%concentration gradients between the emissions plume and the
+%surrounding region. The absence of vertical wind shear within
+%simulations limits the strength of shear-induced turbulence and
+%horizontal mixing, resulting in substantial concentration gradients
+%away from the emissions plume for ammonia and nitric acid.
 
 
 \begin{figure}[!h]
@@ -989,7 +971,7 @@ after $t\approx5$~h.  Across all scenarios, CCN concentrations
 increase most near the top of the boundary layer. This region grows
 with time due to boundary layer development. Notably, shallow cumuli
 and stratiform clouds tend to form in the upper boundary layer. This
-suggests that emissions spatial heterogeneity could enhance clould
+suggests that emissions spatial heterogeneity could enhance cloud
 albedo through the first indirect effect.
 
 %\begin{figure}[!t]
@@ -1035,7 +1017,7 @@ ammonium nitrate formation in modulating CCN concentrations under
 spatially heterogeneous emissions, especially at lower
 supersaturations.
 
-At higher supersaturations ($S=1.0\%$), scenarion 3 exhibits lower CCN
+At higher supersaturations ($S=1.0\%$), scenario 3 exhibits lower CCN
 concentrations than its ammonia-free uniform base case
 counterpart. This further confirms that, in the absence of
 ammonia-driven gas-particle partitioning, coagulation-induced particle
@@ -1047,9 +1029,6 @@ underscores the competing influences of emissions spatial
 heterogeneity on aerosol-cloud interactions.
 
 \conclusions  %% \conclusions[modified heading if necessary]
-
-% work this text in somewhere in the conclusion
-%Past research has established a clear link between the spatial heterogeneity of both gas phase and aerosol emissions, the processes by which the aerosol age, and their resulting climate-relevant properties including CCN activity which contribute to indirect radiative forcing. Simultaneously, there exists large uncertainty in the radiative forcing due to aerosols which results in part from the coarse representation of both aerosols and their transport in global scale models and their coupling with non-linear processes that occur at the sub-grid scale such as coagulation and turbulence-chemistry interactions. Past research has led to the development of detailed aerosol model treatments and transport representations, however there has yet to be a direct coupling between particle-resolved aerosol models and turbulence-resolving transport models for use in quantifying the effects of emissions spatial heterogeneity on the aerosol state and CCN activity.
 
 This study investigates the impact of spatially heterogeneous
 emissions on aerosol properties, including CCN activity, in a
@@ -1080,7 +1059,7 @@ aerosols.
 
 These aerosol process changes have downstream effects on CCN
 activity. Notably, the influence of emissions spatial heterogeneity on
-CCN concentrations is goverend by competing effects of coagulation and
+CCN concentrations is governed by competing effects of coagulation and
 gas-particle partitioning. Coagulation removes smaller particles that
 would otherwise activate at high supersaturations, resulting in a
 decrease in CCN activity at high supersaturations for scenarios with
@@ -1100,7 +1079,7 @@ under highly spatially heterogeneous scenarios, removing ammonia
 weakens---or in some cases reverses---the trend between emissions
 spatial heterogeneity and CCN concentrations.
 
-This has important implcations for global climate models, where 
+This has important implications for global climate models, where 
 nitrate formation is often simplified by assuming equilibrium partitioning 
 or omitted altogether. Our findings highlight the necessity of accurately 
 representing nitrate in global climate models due to the strong coupling 
@@ -1109,8 +1088,7 @@ CCN activity. As model resolution continues to improve, advancing the
 representation of aerosol chemistry will be critical to capturing the full impact of
 emissions spatial heterogeneity on cloud microphysics and climate.
 
-\textcolor{red}{I rephrased the next paragraph a bit according to our
-  discussion.}  This study uses highly idealized emission patterns, in
+This study uses highly idealized emission patterns, in
 which all sources are spatially collocated, and a limited set of
 aerosol types under fixed meteorological conditions. While our results
 show that aerosol composition mediates the impact of spatial
