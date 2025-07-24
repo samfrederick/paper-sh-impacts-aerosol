@@ -496,15 +496,13 @@ homogeneous) to 1 (maximally heterogeneous). For a discrete
 dimensions $N$ by $M$, $\eta$ is defined as
 
 \begin{equation}
-\eta(f, S) = \frac{2\sum_{\tilde{S}\in \mathbf{R}}|\overline{f}(S) - \overline{f}(\tilde{S})|}{MN\overline{f}(S)\left[3MN-M-N-1\right]}, 
+\eta(f, S) = \frac{2\sum_{\tilde{S}\in \mathbf{D}}|\overline{f}(S) - \overline{f}(\tilde{S})|}{MN\overline{f}(S)\left[3MN-M-N-1\right]}, 
 \end{equation}
-where $\overline{f}(S)$ is the domain mean and
-$\overline{f}(\tilde{S})$ is the mean over a subset of the domain
-$\tilde{S}$. Thus, the metric is computed by summing the absolute
+where $\overline{f}(S)$ is the domain mean, $\overline{f}(\tilde{S})$ is the mean over a subset of the domain
+$\tilde{S}$, and $\mathbf{D}$ is the set of all possible subdomains. Thus, the metric is computed by averaging the absolute
 value of the difference between the domain mean $\overline{f}(S)$ and
 all domain subset means $\overline{f}(\tilde{S})$, normalized by the
-product of the domain mean and the number of possible
-subsets. \citet{mohebalhojeh_2024} show that the metric is
+maximum possible value of this average difference given a fixed domain mean. \citet{mohebalhojeh_2024} show that the metric is
 translationally invariant when the scalar field $f$ is shifted within
 $S$. Furthermore, they prove that the
 maximum spatial heterogeneity occurs when the
