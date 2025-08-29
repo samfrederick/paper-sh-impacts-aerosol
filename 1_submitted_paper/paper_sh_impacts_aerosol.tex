@@ -1145,7 +1145,12 @@ agricultural, and remote regions.
 %% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 %% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
 
-\codedataavailability{TEXT} %% use this section when having data sets and software code available
+\codedataavailability{WRF-PartMC is open source and maintained on GitHub: https://github.com/open-atmos/wrf-partmc.git. The version of
+WRF-PartMC used in this paper was coupled with the multiphase chemistry model MOSAIC and custom initialization code was written for 
+specifying the emissions initial conditions unique to each emissions scenario alongside specific namelist configurations for particle-resolved 
+LES. The model code (including the WRF base model v3.9.1, PartMC aerosol model v2.6.1, and MOSAIC chemistry model) 
+used for this publication has been archived on Zenodo with the following DOI: https://doi.org/10.5281/zenodo.16850289.
+All simulation outputs and scripts used to generate figures in this paper are available via the Illinois Data Bank: https://doi.org/10.13012/B2IDB-9622921\_V1.} %% use this section when having data sets and software code available
 
 
 
@@ -1166,9 +1171,14 @@ agricultural, and remote regions.
 %% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
 
 
-\authorcontribution{TEXT} %% this section is mandatory
+\authorcontribution{SGF designed the modeling scenarios, developed code for implementing WRF-PartMC-MOSAIC-LES, performed analysis of 
+model ouputs and produced manuscript figures, and led the drafting of the manuscript.   
+JHC provided consultation and guidance for the development of initialization code in extending WRF-PartMC to LES scenarios. 
+MM led the conceptualization and implementation of the spatial heterogeneity metric. MW provided overall guidance and project conceptualization. 
+NR provided guidance, contributed to conceptualization, and collaborated with SF in the drafting of the introduction (Section 1), limitations (Section 4),
+and conclusions (Section 5). All authors contributed to editing.} %% this section is mandatory
 
-\competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
+\competinginterests{The authors declare that they have no conflict of interest.} %% this section is mandatory even if you declare that no competing interests are present
 
 
 \begin{acknowledgements}
