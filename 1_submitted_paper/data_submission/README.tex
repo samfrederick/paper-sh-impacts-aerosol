@@ -1,0 +1,144 @@
+\documentclass[gmd,manuscript]{copernicus}
+\usepackage{forest}
+\usepackage{pdflscape}
+
+\begin{document}
+
+\title{Data for Idealized Particle-Resolved Large-Eddy Simulations to Evaluate the Impact of Emissions Spatial Heterogeneity on CCN Activity}
+
+\Author[1]{Samuel}{Frederick}
+\Author[2]{Matin}{Mohebalhojeh}
+\Author[1,2]{Jeffrey}{Curtis}
+\Author[2]{Matthew}{West}
+\Author[1][nriemer@illinois.edu]{Nicole}{Riemer} %% correspondence author
+
+\affil[1]{Department of Climate, Meteorology, and Atmospheric Sciences, University of Illinois Urbana--Champaign, 1301 W. Green St., Urbana, IL 61801, USA}
+\affil[2]{Department of Mechanical Science and Engineering, University of Illinois Urbana--Champaign, 1206 W. Green St., Urbana, IL, 61801,USA}
+
+\correspondence{Nicole Riemer (nriemer@illinois.edu)}
+
+\runningtitle{Data for \textcolor{red}{Copy final name from paper}}
+
+\runningauthor{Frederick et al.}
+
+%% These dates will be inserted by Copernicus Publications during the typesetting process.
+
+
+\firstpage{1}
+
+\maketitle
+
+This dataset contains all material required to produce the figures found within the manuscript submitted to Aerosol Chemistry and Physics entitled ``Idealized Particle-Resolved Large-Eddy Simulations to Evaluate the Impact of Emissions Spatial Heterogeneity on CCN Activity''. 
+The archived dataset consists of:
+
+\begin{itemize}
+\item \texttt{data.zip}: WRF-PartMC-MOSIAC-LES simulation data in Section~3
+\item \texttt{scripts.zip}: Python notebooks for generating figures in Section~2 and 3, and scripts used to compile the normalized spatial heterogeneity metric as described by Mohebalhojeh et al. 2025.
+\end{itemize}
+
+\section*{Software requirements/recommendations}
+
+All figures in the paper were run with Python 3.9.23. This older version is required due to a dependency of \texttt{f2py} (used to compile Fortran code for the spatial heterogeneity metric calculation into an object which can be imported as a Python module) which has since been deprecated.  Users should run the \texttt{create\_env.sh} script in \texttt{scripts.zip} to create a conda environment which contains all the necessary packages.
+
+Required packages are as follows with the version used for this manuscript:
+\begin{itemize}
+\item numpy (2.0.2)
+\item scipy (1.13.1)
+\item matplotlib (3.9.2)
+\item netCDF4 (1.7.2) - available at \url{https://unidata.github.io/netcdf4-python/}
+\item pandas (2.3.1)
+\item ipykernel (6.30.1)
+\item setuptools (59.8.0)
+\item gfortran (15.1.0)
+\end{itemize}
+
+
+\section*{Directory structure of archived simulation data for Section~3.1}
+
+Upon downloading and untarring \texttt{partmc\_simulations.tar.gz},  it may be explored as follows:
+
+\begin{itemize}
+    \item Input data files for conducting the set of three simulations:
+    \begin{itemize}
+      \item \texttt{camp.spec} and relevant input files
+      \item \texttt{tchem.spec} and relevant input files
+      \item \texttt{tchem\_gpu.spec} and relevant input files
+    \end{itemize}
+    \item Output data in the \texttt{out/} directory consists of netCDF files per output time:
+	\begin{itemize}
+	  \item CAMP output: \texttt{camp\_0001\_*}
+	  \item PartMC-TChem CPU output: \texttt{tchem\_cb05cl\_ae5\_*}
+	  \item PartMC-TChem GPU output: \texttt{tchem\_gpu\_cb05cl\_ae5\_*}
+	\end{itemize}
+	\item \texttt{simulation\_notebook.ipynb}: Python Jupyter notebook for producing Fig.~5 and analysis of error.
+\end{itemize}
+
+\section*{Directory structure of archived numerical experiment data  for Section~3.2}
+
+Upon downloading and untarring \texttt{timings.tar.gz}, it may be explored as follows:
+
+\begin{itemize}
+   \item \texttt{data/}: directory containing all the timing results. The descriptions of the individual directories are described in Table~\ref{tab:experiment_configs}.
+\item \texttt{scripts/}: directory containing the following scripts:
+\begin{itemize}
+   \item \texttt{solver\_plots.ipynb}: Python Jupyter notebook for producing Fig.~6, 7.
+   \item \texttt{rhs\_plots.ipynb}: Python Jupyter notebook for producing Fig.~8.
+\end{itemize}
+\end{itemize}
+
+%\begin{landscape}
+\begin{table}[ht]
+\centering
+\footnotesize
+\begin{tabular}{|l|l|l|p{9.5cm}|}
+\hline
+\textbf{Cluster} & \textbf{Experiment} & \textbf{Platform} & \textbf{Path relative to data directory} \\
+\hline
+DeltaAI & RHS & NVIDIA H100 GPU & deltaAI/CB05CL\_AE5\_w\_simpolSOA/CUDA/rhs-no\_sacado \\
+DeltaAI & Jacobian & NVIDIA H100 GPU & deltaAI/CB05CL\_AE5\_w\_simpolSOA/CUDA/rhss-no\_sacado \\
+DeltaAI & TrBDF2 & NVIDIA H100 GPU & deltaAI/CB05CL\_AE5\_w\_simpolSOA/CUDA/trbdf-no\_sacado \\
+DeltaAI & Sundials CVODE & NVIDIA H100 GPU & deltaAI/CB05CL\_AE5\_w\_simpolSOA/CUDA/sundials\_dense-no\_sacado \\
+DeltaAI & Sundials CVODE-GMRES & NVIDIA H100 GPU & deltaAI/CB05CL\_AE5\_w\_simpolSOA/CUDA/sundials\_gmres-no\_sacado \\
+Frontier & RHS & AMD MI250X GPU & frontier/CB05CL\_AE5\_w\_simpolSOA/HIP/rhs-no\_sacado \\
+Frontier & Jacobian & AMD MI250X GPU & frontier/CB05CL\_AE5\_w\_simpolSOA/HIP/jac-no\_sacado \\
+Frontier & TrBDF2 & AMD MI250X GPU & frontier/CB05CL\_AE5\_w\_simpolSOA/HIP/trbdf-no\_sacado \\
+Frontier & Sundials CVODE & AMD MI250X GPU & frontier/CB05CL\_AE5\_w\_simpolSOA/HIP/sundials\_dense-no\_sacado \\
+Frontier & Sundials CVODE-GMRES & AMD MI250X GPU & frontier/CB05CL\_AE5\_w\_simpolSOA/HIP/sundials\_gmres-no\_sacado \\
+Perlmutter & RHS & AMD 7763 CPU & perlmutter/CB05CL\_AE5\_w\_simpolSOA/HOST/rhs-no\_sacado \\
+Perlmutter & Jacobian & AMD 7763 CPU & perlmutter/CB05CL\_AE5\_w\_simpolSOA/HOST/jac-no\_sacado \\
+Perlmutter & TrBDF2 & AMD 7763 CPU & perlmutter/CB05CL\_AE5\_w\_simpolSOA/HOST/trbdf-no\_sacado \\
+Perlmutter & Sundials CVODE & AMD 7763 CPU & perlmutter/CB05CL\_AE5\_w\_simpolSOA/HOST/sundials\_dense-no\_sacado \\
+Perlmutter & Sundials CVODE-GMRES & AMD 7763 CPU & perlmutter/CB05CL\_AE5\_w\_simpolSOA/HOST/sundials\_gmres-no\_sacado \\
+\hline
+\end{tabular}
+\caption{Experiment configurations across different clusters and platforms}
+\label{tab:experiment_configs}
+\end{table}
+%\end{landscape}
+
+
+\end{document}
+
+\begin{forest}
+  for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+      \noexpand\path [draw, \forestoption{edge}]
+      (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+      if n=1
+        {insert before={[,phantom]}}
+                {}
+    },
+    fit=band,
+    before computing xy={l=15pt},
+  }
+[
+]
+\end{forest}
