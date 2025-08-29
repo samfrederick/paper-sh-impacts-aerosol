@@ -115,8 +115,24 @@
 \maketitle
 
 \begin{abstract}
-Aerosol-cloud interactions remain a large source of uncertainty in global climate models (GCMs) due to complex, nonlinear processes that alter aerosol properties and the inability to represent the full compositional complexity of aerosol populations within large-scale modeling frameworks. The spatial resolution of GCMs is often coarser than the scale of the spatially varying emissions in the modeled geographic region. This results in diffuse, uniform concentration fields of primary aerosol and gas-phase species instead of spatially heterogeneous concentrations. Aerosol processes such as gas-particle partitioning and coagulation are concentration-dependent in a non-linear manner, and thus the representation of spatially heterogeneous emissions impacts aerosol aging and properties. This includes climate-relevant quantities key to aerosol-cloud interactions including particle hygroscopicity and cloud condensation nuclei (CCN) activity. We investigate the impact of emissions spatial heterogeneity on aerosol properties including CCN activity via a series of first-of-a-kind particle-resolved large-eddy simulations with the modeling framework WRF-PartMC-MOSAIC-LES. CCN concentrations within the planetary boundary layer (PBL) are compared across numerous scenarios ranging in emissions spatial heterogeneity. CCN concentrations at low supersaturations ($S=0.1\mbox{--}0.3\%$) increase in the upper PBL by up to 25\%
-for emissions scenarios with high spatial heterogeneity when compared to a uniform emissions base case. Process level analysis indicates that this increase is due to enhanced nitrate formation among scenarios with high emissions spatial heterogeneity. 
+Aerosol-cloud interactions remain a large source of uncertainty in global climate models (GCMs) 
+due to complex, nonlinear processes that alter aerosol properties and the inability to represent 
+the full compositional complexity of aerosol populations within large-scale modeling frameworks. 
+The spatial resolution of GCMs is often coarser than the scale of the spatially varying emissions 
+in the modeled geographic region. This results in diffuse, uniform concentration fields of primary 
+aerosol and gas-phase species instead of spatially heterogeneous concentrations. Aerosol processes 
+such as gas-particle partitioning and coagulation are concentration-dependent in a non-linear 
+manner, and thus the representation of spatially heterogeneous emissions impacts aerosol aging and 
+properties. This includes climate-relevant quantities key to aerosol-cloud interactions including 
+particle hygroscopicity and cloud condensation nuclei (CCN) activity. We investigate the impact of 
+emissions spatial heterogeneity on aerosol properties including CCN activity via a series of 
+first-of-a-kind particle-resolved large-eddy simulations with the modeling framework 
+WRF-PartMC-MOSAIC-LES. CCN concentrations within the planetary boundary layer (PBL) are compared across 
+numerous scenarios ranging in emissions spatial heterogeneity. CCN concentrations at low 
+supersaturations ($S_{\rm env}=0.1\mbox{--}0.3\%$) increase in the upper PBL by up to 25\%
+for emissions scenarios with high spatial heterogeneity when compared to a uniform emissions base case. 
+Process level analysis indicates that this increase is due to enhanced nitrate formation among 
+scenarios with high emissions spatial heterogeneity. 
 \end{abstract}
 
 
@@ -470,26 +486,24 @@ km. The wind profile is set to zero throughout the domain.
 
 To assess the impact of emissions spatial heterogeneity on aerosol
 properties, we examine multiple emissions scenarios, shown in Figure
-\ref{fig:sh-scenarios}. The first scenario, referred to as the uniform
-base case, distributes emissions evenly across the entire domain. This
+\ref{fig:sh-scenarios}. The first scenario distributes emissions evenly 
+across the entire domain and thus has no spatial heterogeneity. This
 serves as a proxy for coarser-resolution models that do not resolve
 spatial heterogeneity of emissions and instead assume uniform
 emissions of gases and primary aerosols across grid cells. The
 remaining scenarios introduce increasing levels of spatial
-heterogeneity, enabling direct comparison against the uniform base
-case to evaluate a scenario's influence on aerosol properties. Scenario~1
-represents an idealized urban-rural interface, where emissions are
+heterogeneity, enabling direct comparison against the no heterogeneity scenario to evaluate 
+an emission pattern's influence on aerosol properties. The low
+heterogeneity scenario represents an idealized urban-rural interface, where emissions are
 released in half the domain with no emissions occurring in the other
-half. Scenario~2 contains a narrow strip of emissions running through
+half. The medium heterogeneity scenario contains a narrow strip of emissions running through
 the center of the domain, corresponding to an emission pattern typical
-of a major roadway. Lastly, Scenario~3 places all emissions in a
-single grid cell in the domain center representing a point source such
+of a major roadway. Lastly, in the high heterogeneity scenario, all emissions 
+are placed in a single grid cell in the domain center representing a point source such
 as an industrial plume.
 
-These scenarios span a range of spatial heterogeneity, which is
-quantified using the metric $\eta$ developed by
-\citep{mohebalhojeh_2024} \hl{make sure to update this citation when
-  Matin's paper is published}. The metric $\eta$ is a normalized
+Spatial heterogeneity is quantified using the metric $\eta$ developed by
+\citep{mohebalhojeh_2024}. The metric $\eta$ is a normalized
 measure of spatial heterogeneity, ranging from 0 (completely
 homogeneous) to 1 (maximally heterogeneous). For a discrete
 2-dimensional scalar field $f$ over a domain $S$ with lateral
@@ -509,12 +523,12 @@ maximum spatial heterogeneity occurs when the
 scalar field is zero everywhere except at a single point
 where it takes the value $MN\times\overline{f}(S)$.
 
-Thus, the uniform base case corresponds to the homogeneous condition
-($\eta = 0$) while Scenario~3---the point-source
+The no heterogeneity scenario corresponds to the homogeneous condition
+($\eta = 0$) while the high heterogeneity scenario---the point-source
 emission---represents the maximally heterogeneous case ($\eta =
 1$). To ensure consistent mass emissions across scenarios, emission
 rates are scaled by the fraction of area covered by emissions. For
-instance, in Scenario~3, this results in a scaling of $10,000$
+instance, in the high heterogeneity scenario, this results in a scaling of $10,000$
 ($M=N=100$) for the point-source emission. The fraction of area
 covered by emissions is displayed for each scenario alongside the
 spatial heterogeneity values in Figure \ref{fig:sh-scenarios}.
@@ -547,7 +561,7 @@ heterogeneity on CCN activity.
           species NH$_3$ (left column), HNO$_3$ (center column), and
           OH (right column). Cross sections are shown at a height of
           approximately $z\approx900$ m and at $t=6$~h. Coloring
-          indicates the concentration of gas species in parts per
+          indicates the mixing ratio of gas species in parts per
           billion by volume. The value of the spatial heterogeneity
           metric $\eta$ is displayed alongside each cross section
           plot.}
@@ -562,7 +576,7 @@ $\eta$ values 3--4 times higher than those of nitric acid and OH. This
 is primarily because ammonia is emitted while nitric acid and OH are
 formed due to chemical reactions. This leads to a marked concentration
 gradient for ammonia between regions near the emissions plume (in
-excess of 10~ppbv directly over the emissions plume in Scenario~3) and
+excess of 10~ppbv directly over the emissions plume in the high heterogeneity scenario) and
 farther toward the perimeter of the domain (as low as 0.1~pptv).
 
 Both OH and nitric acid exhibit much lower spatial heterogeneity due to a 
@@ -621,8 +635,8 @@ in the gas phase which lowers the degree of spatial heterogeneity.
           (left) and HNO$_3$, the mean value is displayed at each
           vertical level. For OH, the 5th percentile at each vertical
           level is shown to indicate the local changes to the OH
-          concentration near the emissions plume. Values for the
-          uniform base case are shown as a solid black line while
+          mixing ratio near the emissions plume. Values for the
+          no heterogeneity scenario are shown as a solid black line while
           emissions scenarios 1--3 are shown as colored solid lines.}
 	\label{fig:gas-profiles}
 \end{figure} 
@@ -631,17 +645,17 @@ Figure \ref{fig:gas-profiles} presents vertical profiles of ammonia,
 nitric acid, and OH. For ammonia and nitric acid, the profiles show
 horizontal averages at each vertical level across the entire domain.
 As emissions spatial heterogeneity increases, both ammonia and nitric
-acid concentrations decrease on average. As will demonstrated in
+acid mixing ratios decrease on average. As will demonstrated in
 Section \ref{sec:aero-comp}, this is due to increased partitioning of
 these species into the aerosol phase to form ammonium nitrate.
 
 For OH, the vertical profiles show the 5th percentile of
-concentrations within each level, rather than the domain-wise mean, to
+mixing ratio within each level, rather than the domain-wise mean, to
 better capture localized depletion near the emissions plume. Scenarios
 with high emissions spatial heterogeneity result a pronounced
-reduction in OH near the emissions plume. Whereas in the uniform base
-case, the level-mean concentration of OH is 0.61~pptv at $z=1$~km,
-whereas in Scenario~3 they drop by 54\%
+reduction in OH near the emissions plume. Whereas in the no heterogeneity scenario,
+the level-mean mixing ratio of OH is 0.61~pptv at $z=1$~km,
+whereas in the high heterogeneity scenario they drop by 54\%
 to 0.28~pptv.
 
 \subsection{Aerosol size distributions}\label{sec:size-dist}
@@ -649,7 +663,7 @@ to 0.28~pptv.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[]{figures/combined_num_mass_conc_i50_j50_k60.pdf}
-	\caption{Number (left) and mass (right) distributions for each emissions scenario in the upper boundary layer ($z=800$)~m and $t=6$~h. The initial condition is shown as the dashed black line. Values for the uniform base case are shown as a solid black line while emissions scenarios 1--3 are shown as colored solid lines.}
+	\caption{Number (left) and mass (right) distributions for each emissions scenario in the upper boundary layer ($z=800$)~m and $t=6$~h. The initial condition is shown as the dashed black line. Values for the no heterogeneity scenario are shown as a solid black line while emissions scenarios 1--3 are shown as colored solid lines.}
 	\label{fig:size-dists}
 \end{figure} 
 
@@ -663,9 +677,9 @@ to the selected number of computational particles per grid cell ($N =
 WRF-PartMC. To reduce stochastic noise, number and mass distributions
 represent the average distribution in a 1~km$^2$ region centered over
 the emissions plume (i.e., size distributions are averaged over a
-$10\times10$ grid cell region). For the uniform base case, Scenario~2
-and Scenario~3, this region is directly over the center of the
-domain. For Scenario~1, emissions are released in one half of the
+$10\times10$ grid cell region). For the no heterogeneity scenario, the medium heterogeneity scenario,
+and the high heterogeneity scenario, this region is directly over the center of the
+domain. For the low heterogeneity scenario, emissions are released in one half of the
 domain that is offset from the center, and thus the averaging region
 is located in the center of the emissions patch. For each size
 distribution, data have been binned into 100 logarithmically spaced
@@ -704,8 +718,8 @@ to gas-particle partitioning.
           NH$_4^+$ (left column), NO$_3^-$ (center column), and
           SO$_4^{2-}$ (right column). Cross sections are shown at a
           height of approximately $z\approx900$~m and at
-          $t=6$~h. Coloring indicates the concentration of aerosol
-          species in parts per billion by volume. Regions below a trace concentration of $10$~pptv are filled in white. The value of the
+          $t=6$~h. Coloring indicates the mixing ratio of aerosol
+          species in parts per billion by volume. Regions below a trace mixing ratio of $10$~pptv are filled in white. The value of the
           spatial heterogeneity metric $\eta$ is displayed alongside
           each cross section plot.}
 	\label{fig:aero-cross-sec}
@@ -722,7 +736,7 @@ plume, ammonium and nitrate concentrations quickly fall off as the
 equilibrium condition shifts to the gas phase.
 
 In contrast, sulfate is more uniformly distributed across all
-scenarios, resulting in lower spatial heterogeneity for Scenario~3
+scenarios, resulting in lower spatial heterogeneity for the high heterogeneity scenario
 ($\eta=0.021$) compared to ammonium ($\eta = 0.142$) and nitrate
 ($\eta=0.739$).  This is due to the extremely low volatility of
 sulfuric acid which remains almost entirely in the aerosol phase as
@@ -735,11 +749,11 @@ distributions, while higher volatility species remain clustered near
 plumes with high concentrations of corresponding gas phase precursors.
 Given the sensitivity of nitrate formation to the spatial
 heterogeneity of emissions, nitrate levels are extremely low in the
-uniform base case, with most grid cells containing no
+no heterogeneity scenario, with most grid cells containing no
 nitrate. Occasionally, some grid cells may briefly contain particles
 with nitrate. For the spatial heterogeneity metric, this is akin to
 the point source scenario. As a result, the spatial heterogeneity of
-nitrate for the uniform base case appears higher ($\eta=0.513$) than
+nitrate for the no heterogeneity scenario appears higher ($\eta=0.513$) than
 the value of $\eta$ for ammonium and sulfate ($\eta=0.010$ and
 $\eta=0.011$, respectively).
 
@@ -750,7 +764,7 @@ $\eta=0.011$, respectively).
           NO$_3^-$ (center), and SO$_4^{2-}$ (right) at $t=6$ h and in
           parts per billion by volume (ppbv). For each compound, the
           mean value is displayed at each vertical level. Values for
-          the uniform base case are shown as a solid black line while
+          the no heterogeneity scenario are shown as a solid black line while
           emissions scenarios 1--3 are shown as colored solid lines.}
 	\label{fig:vertical-profile-SNA}
 \end{figure} 
@@ -790,7 +804,7 @@ At higher altitudes ($z\sim1.2$~km), ammonium nitrate formation is
 enhanced for scenarios with high emissions spatial
 heterogeneity. Under these conditions, the concentration of free
 ammonia increases due to lower sulfate levels, allowing neutralization
-of more nitric acid.  In the uniform base case, little nitrate is
+of more nitric acid.  In the no heterogeneity scenario, little nitrate is
 formed due to the overall lower concentrations of nitric acid and
 ammonia, pushing their equilibrium partitioning to the gas phase. This
 indicates the strong dependence of nitrate concentrations on the
@@ -802,12 +816,12 @@ heterogeneity.
 	\centering
 	\includegraphics[]{figures/speciated-mass-frac-three-panel-z40.pdf}
 	\caption{Speciated mass fraction as a function of particle
-          diameter for emissions scenario extremes (uniform base case
-          and Scenario~3). The initial condition is shown on the left,
+          diameter for emissions scenario extremes (no heterogeneity scenario
+          and high heterogeneity scenario). The initial condition is shown on the left,
           indicating that aerosol begin as an equal mixture of POA and
           ammonium sulfate. On the right, emissions scenarios with
-          minimum spatial heterogeneity (top, uniform base case) and
-          maximum spatial heterogeneity (bottom, Scenario~3) are shown
+          minimum spatial heterogeneity (top, no heterogeneity scenario) and
+          maximum spatial heterogeneity (bottom, high heterogeneity scenario) are shown
           after 6 hours.}
 	\label{fig:speciated-mass-frac}
 \end{figure} 
@@ -815,18 +829,18 @@ heterogeneity.
 Figure \ref{fig:speciated-mass-frac} shows the size-resolved mass
 fraction of aerosols in the upper boundary layer ($z\approx 800$ m)
 for the initial condition and at the end of simulations ($t=6$ h) for
-both the uniform base case and Scenario~3. After 6 hours, significant
+both the no heterogeneity scenario and the high heterogeneity scenario. After 6 hours, significant
 differences in composition emerge. Under uniform emissions, particles
 mainly consist of BC and primary organic aerosol (POA) along with some
-sulfate. By contrast, particles in Scenario~3 are dominated by
+sulfate. By contrast, particles in the high heterogeneity scenario are dominated by
 nitrate, ammonium, and sulfate, which together comprise 50--80\% of
 aerosol mass.
 
 The CCN activity of particles in the size range of 50--100 nm is
 largely governed by their composition. Figure
-\ref{fig:speciated-mass-frac} indicates that, for the uniform base
-case, particles in this size range are primarily composed of low
-hygroscopicity compounds, including BC and POA. In Scenario~3, the
+\ref{fig:speciated-mass-frac} indicates that, for the no heterogeneity scenario, 
+particles in this size range are primarily composed of low
+hygroscopicity compounds, including BC and POA. In the high heterogeneity scenario, the
 dominant presence of sulfate, nitrate, and ammonium increases particle
 hygroscopicity.  This suggests that particles in the size range of
 50--100 nm, whose CCN activity depends on aerosol composition, exhibit
@@ -841,7 +855,7 @@ hygroscopicity parameter $\kappa$.
 \begin{figure}[!t]
 	\centering
 	\includegraphics[]{figures/2d-kappa-dist-three-panel-z40.pdf}
-	\caption{2-dimensional number distributions $n(D_p, \kappa)$ for emissions scenario extremes. The initial condition is shown on the left, indicating that all aerosol begin as internally mixed particles with uniform $\kappa$. On the right, emissions scenarios with minimum spatial heterogeneity (top, uniform base case) and maximum spatial heterogeneity (bottom, Scenario~3) are shown after 6 hours. Cell coloring indicates particle number concentration. Black solid contours indicate supersaturation in $\%$. Particles to the right of a contour line activate at the indicated supersaturation.}
+	\caption{2-dimensional number distributions $n(D_p, \kappa)$ for emissions scenario extremes. The initial condition is shown on the left, indicating that all aerosol begin as internally mixed particles with uniform $\kappa$. On the right, emissions scenarios with minimum spatial heterogeneity (top, no heterogeneity scenario) and maximum spatial heterogeneity (bottom, the high heterogeneity scenario) are shown after 6 hours. Cell coloring indicates particle number concentration. Black solid contours indicate supersaturation in $\%$. Particles to the right of a contour line activate at the indicated supersaturation.}
 	\label{fig:kappa-dist}
 \end{figure} 
 
@@ -850,10 +864,10 @@ $n(D_p, \kappa)$ for emissions scenario extremes. Each distribution
 was sampled in the upper boundary layer ($z\approx 800$~m) at the
 beginning and end of simulations. Initially, all particles possess the
 same composition and thus the same hygroscopicity.  The right panel
-compares distributions at $t=6$~h for the uniform base case and
-Scenario~3.
+compares distributions at $t=6$~h for the no heterogeneity scenario and
+the high heterogeneity scenario.
 
-In the uniform base case, two distinct particle groups emerge: one
+In the no heterogeneity scenario, two distinct particle groups emerge: one
 with low $\kappa$ values (0--0.3), corresponding to primary
 carbonaceous aerosols that have not undergone significant aging, and
 another with higher $\kappa$ (0.3--0.6), representing particles that
@@ -861,22 +875,22 @@ have undergone coagulation and gas-particle partitioning. The latter
 group is enriched in sulfate as seen in Figure
 \ref{fig:speciated-mass-frac}.
 
-Under Scenario~3, particles exhibit significantly higher
+In the high heterogeneity scenario, particles exhibit significantly higher
 hygroscopicities. For instance, the hygroscopicity of particles with
 diameter of 100 nm exceeds $\kappa>0.6$ (indicating highly hygroscopic
-particles), whereas $\kappa$ only reaches up to 0.4 in the uniform
-base case. As suggested in discussing the link between aerosol 
+particles), whereas $\kappa$ only reaches up to 0.4 in the no heterogeneity scenario. 
+As suggested in discussing the link between aerosol 
 composition and CCN activity for particles in the size range of 
 $D_p\sim50\text{--}100$~nm, this indicates that spatially heterogeneous 
 emissions indeed lower the critical supersaturation of such particles, 
 enhancing their CCN activity.
 
-Differences in the $\kappa$ distributions between the uniform base
-case and Scenario~3 stem from the interaction between emissions
+Differences in the $\kappa$ distributions between the no heterogeneity scenario 
+and the high heterogeneity scenario stem from the interaction between emissions
 spatial heterogeneity and sub-grid scale aerosol processes. Enhanced
 coagulation in emissions plumes reduces Aitken mode particle
 concentrations, explaining the absence of a low-$\kappa$ carbonaceous
-aerosol group in Scenario~3. Furthermore, spatially heterogeneous
+aerosol group in the high heterogeneity scenario. Furthermore, spatially heterogeneous
 emissions promote gas-particle partitioning, increasing particle
 hygroscopicity. In particular, higher concentrations of nitric acid
 and ammonia near spatially heterogeneous emissions plumes drive the
@@ -890,18 +904,18 @@ concentration of ammonium nitrate alongside particle hygroscopicity.
 	\centering
 	\includegraphics[]{figures/aerosol-ccn-vertical-profiles-time36.pdf}
 	\caption{Vertical profiles for CCN concentrations activating
-          at supersaturations $S=0.1, 0.3, 0.6, 1.0\%$ and at $t=6$
+          at supersaturations $S_{\mathrm{env}}=0.1, 0.3, 0.6, 1.0\%$ and at $t=6$
           h. Concentrations are displayed in number of CCN per
           kilogram of dry air and are scaled by a factor of
-          $1\cdot10^{-9}$. Values for the uniform base case are shown
+          $1\cdot10^{-9}$. Values for the no heterogeneity scenario are shown
           as a solid black line while emissions scenarios 1--3 are
           shown as colored solid lines.}
 	\label{fig:ccn-vertical-prof}
 \end{figure} 
 
 Figure \ref{fig:ccn-vertical-prof} shows vertical profiles of the CCN 
-number per kilogram of dry air for 
-supersaturations $S$ ranging from $S=0.1\%$ to $S=1.0\%$ across
+number per kilogram of dry air for environmental
+supersaturations $S_{\mathrm{env}}$ ranging from $S_{\mathrm{env}}=0.1\%$ to $S_{\mathrm{env}}=1.0\%$ across
 different emissions scenario. Since the ambient relative humidity (RH)
 never exceeds 100\% in these simulations, the reported CCN
 concentrations represent the number of particles that would activate
@@ -913,18 +927,18 @@ the particle number, size, composition, and hygroscopicity. In turn, these
 modifications impact CCN activity, though the dominant
 processes and their effects vary with supersaturation.
 
-At lower supersaturations ($S=0.1\text{--}0.3\%$), CCN concentrations 
+At lower supersaturations ($S_{\mathrm{env}}=0.1\text{--}0.3\%$), CCN concentrations 
 increases with emissions spatial heterogeneity
 in the upper boundary layer. This is due to enhanced formation of
 ammonium nitrate in the cooler, sulfate-poor environment, which
 increases activation of ultrafine particles in the range of 50--100 nm
 due to the high hygroscopicity of ammonium nitrate.
 
-At higher supersaturations ($S=0.6\text{--}1.0\%$), CCN concentrations
+At higher supersaturations ($S_{\mathrm{env}}=0.6\text{--}1.0\%$), CCN concentrations
 still increase in the upper boundary layer for scenarios with lower
-spatial heterogeneity, however, in Scenario~3, CCN concentrations
-decrease, particularly at $S=1.0\%$, where CCN concentrations drop
-below all other scenarios including the uniform base case. This is due to 
+spatial heterogeneity, however, in the high heterogeneity scenario, CCN concentrations
+decrease, particularly at $S_{\mathrm{env}}=1.0\%$, where CCN concentrations drop
+below all other scenarios including the no heterogeneity scenario. This is due to 
 enhanced coagulation in highly heterogeneous
 emissions scenarios which reduces the number of smaller particles that would
 otherwise activate at high supersaturations.  Therefore, at
@@ -937,7 +951,7 @@ material.
 	\centering
 	\includegraphics[]{figures/height-time-ccn-pdiff-multi-scenario.pdf}
 	\caption{Time-height plots for the percent difference between
-          CCN concentrations in the uniform base case and each
+          CCN concentrations in the no heterogeneity scenario and each
           emissions scenario and supersaturation level. Scenarios are
           organized by column. The supersaturation of CCN activation
           is organized by row. Red indicates an increase in CCN
@@ -950,17 +964,17 @@ material.
 
 Figure \ref{fig:time-height-ccn-pdiff} illustrates the temporal and
 vertical evolution of the percent difference between the CCN
-concentrations relative to the uniform base case for each scenario and
+concentrations relative to the no heterogeneity scenario for each scenario and
 supersaturation level. The percent difference is calculated as
 \begin{equation}
-    \% \text{ difference} = 100\times\left(\frac{\overline{[\text{CCN}]}(t, z, S)_{\text{Scenario}} - \overline{[\text{CCN}]}(t, z, S)_{\text{Base case}}}{\overline{[\text{CCN}]}(t, z, S)_{\text{Base case}}}\right),
+    \% \text{ difference}\left(\overline{[\text{CCN}]}_{\text{Scenario}},\text{ }\overline{[\text{CCN}]}_{\text{No heterogeneity}}\right) = 100\times\left(\frac{\overline{[\text{CCN}]}(t, z, S_{\rm env})_{\text{Scenario}} - \overline{[\text{CCN}]}(t, z, S_{\rm env})_{\text{No heterogeneity}}}{\overline{[\text{CCN}]}(t, z, S_{\rm env})_{\text{No heterogeneity}}}\right),
 \end{equation}
-where $\overline{[\text{CCN}]}(t, z,S)$ is the horizontally averaged
+where $\overline{[\text{CCN}]}(t, z,S_{\rm env})$ is the horizontally averaged
 concentration of CCN at time $t$ and vertical level $z$ that activate
-at supersaturation $S$.
+at supersaturation $S_{\mathrm{env}}$.
 
-The greatest increase in CCN concentration relative to the uniform
-base case occurs for Scenario~3 at $S=0.3\%$, where CCN concentrations
+The greatest increase in CCN concentration relative to the no heterogeneity scenario 
+occurs in the high heterogeneity scenario at $S_{\mathrm{env}}=0.3\%$, where CCN concentrations
 increase by more than 25\% through $t=6$~h. At both high
 supersaturations and high emissions spatial heterogeneity, the
 reduction in CCN activity due to enhanced coagulation becomes evident
@@ -983,7 +997,7 @@ albedo through the first indirect effect.
 
 To further explore the role of ammonia in CCN activity under spatially
 heterogeneous emissions, we conducted additional simulations for the
-uniform base case and Scenario~3, setting total ammonium
+no heterogeneity scenario and the high heterogeneity scenario, setting total ammonium
 (NH$_{3\text{, gas}} + $NH$_{4\text{, aerosol}}$) to zero. Correspondingly, 
 emissions of NH$_3$ were set to zero to ensure that total ammonium remains
 zero throughout each simulation.
@@ -993,63 +1007,62 @@ zero throughout each simulation.
 	\includegraphics[]{figures/aerosol-ccn-vertical-profiles-no-nh4-cases-time36.pdf}
 	\caption{Vertical profiles for CCN concentrations in
           ammonia-free simulations that activate at supersaturations
-          $S=0.1, 0.3, 0.6, 1.0\%$ and at $t=6$ h. Concentrations are
+          $S_{\mathrm{env}}=0.1, 0.3, 0.6, 1.0\%$ and at $t=6$~h. Concentrations are
           displayed in number of CCN per kilogram of dry air and are
           scaled by a factor of $1\cdot10^{-9}$. Profiles for
           scenarios with ammonia are shown as solid lines while
           scenarios without ammonia are displayed as dashed lines for
-          the uniform base case (black) and Scenario~3
+          the no heterogeneity scenario (black) and the high heterogeneity scenario
           (chartreuse).}
 	\label{fig:ccn-vertical-profile-no-ammonia}
 \end{figure}
 
 Figure \ref{fig:ccn-vertical-profile-no-ammonia} shows vertical
 profiles of CCN mixing ratios at $t=6$ h for supersaturations ranging
-from $S=0.1\%$ to $S=1.0\%$. Without ammonia, CCN concentrations at
-each supersaturation level agree much more closely between the uniform
-base case and Scenario~3. The peak of CCN concentrations in the upper
+from $S_{\mathrm{env}}=0.1\%$ to $S_{\mathrm{env}}=1.0\%$. Without ammonia, CCN concentrations at
+each supersaturation level agree much more closely between the no heterogeneity scenario and the high heterogeneity scenario. The peak of CCN concentrations in the upper
 boundary layer and at lower supersaturations, previously observed in
-Scenario~3, disappears entirely. This underscores the crucial role of
+the high heterogeneity scenario, disappears entirely. This underscores the crucial role of
 ammonium nitrate formation in modulating CCN concentrations under
 spatially heterogeneous emissions, especially at lower
 supersaturations.
 
-At higher supersaturations ($S=1.0\%$), scenario 3 exhibits lower CCN
-concentrations than its ammonia-free uniform base case
-counterpart. This further confirms that, in the absence of
+At higher supersaturations ($S_{\mathrm{env}}=1.0\%$), the high heterogeneity scenario exhibits lower CCN
+concentrations than the ammonia-free no heterogeneity scenario. This further confirms that, 
+in the absence of
 ammonia-driven gas-particle partitioning, coagulation-induced particle
 loss dominates, leading to an overall reduction in the concentration of 
 CCN. The similarity in CCN profiles between the ammonia-free
-cases of Scenario~3 and the uniform base case, apart from a slight
-(~5\%) downward shift in Scenario~3 due to enhanced coagulation,
+cases of the high heterogeneity scenario and the no heterogeneity scenario, apart from a slight
+(~5\%) downward shift in the high heterogeneity scenario due to enhanced coagulation,
 underscores the competing influences of emissions spatial
 heterogeneity on aerosol-cloud interactions.
 
 \section{Limitations}
-\textcolor{red}{ This study is based on highly idealized simulations,
-  which were designed to isolate the role of emissions spatial
-  heterogeneity under controlled meteorological conditions. While this
-  allows for a clear attribution of observed effects to aerosol
-  processes such as coagulation and gas-particle partitioning, it also
-  introduces limitations. First, the simulations assume a horizontally
-  homogeneous land surface, no synoptic-scale forcing, and a fixed
-  solar heating profile, which neglects the potential influence of
-  surface heterogeneity, wind shear, and diurnal variability. Second,
-  all emissions—both gas-phase and particulate—are temporally constant
-  after spin-up and spatially collocated, which may not reflect the
-  complexity of real urban emission patterns where different sources
-  (e.g., traffic, industry, biomass burning) are spatially and
-  temporally decoupled. Third, while the chosen aerosol composition is
-  grounded in past urban measurements (SCAQS), the limited diversity
-  in primary aerosol types and the exclusion of additional chemical
-  pathways (e.g., aqueous-phase oxidation) constrain the
-  generalizability of the results. Finally, the computational particle
-  count per grid cell ($N_{\rm p} = 100$) and the fixed domain size
-  may underrepresent stochastic variability in some fine-scale
-  processes, particularly at early times or near the plume edge. These
-  limitations motivate future work incorporating more realistic
-  emissions, meteorological variability, and extended simulation times
-  to evaluate the robustness of the conclusions presented here.}
+This study is based on highly idealized simulations,
+which were designed to isolate the role of emissions spatial
+heterogeneity under controlled meteorological conditions. While this
+allows for a clear attribution of observed effects to aerosol
+processes such as coagulation and gas-particle partitioning, it also
+introduces limitations. First, the simulations assume a horizontally
+homogeneous land surface, no synoptic-scale forcing, and a fixed
+solar heating profile, which neglects the potential influence of
+surface heterogeneity, wind shear, and diurnal variability. Second,
+all emissions—both gas-phase and particulate—are temporally constant
+after spin-up and spatially collocated, which may not reflect the
+complexity of real urban emission patterns where different sources
+(e.g., traffic, industry, biomass burning) are spatially and
+temporally decoupled. Third, while the chosen aerosol composition is
+grounded in past urban measurements (SCAQS), the limited diversity
+in primary aerosol types and the exclusion of additional chemical
+pathways (e.g., aqueous-phase oxidation) constrain the
+generalizability of the results. Finally, the computational particle
+count per grid cell ($N_{\rm p} = 100$) and the fixed domain size
+may underrepresent stochastic variability in some fine-scale
+processes, particularly at early times or near the plume edge. These
+limitations motivate future work incorporating more realistic
+emissions, meteorological variability, and extended simulation times
+to evaluate the robustness of the conclusions presented here.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
@@ -1092,7 +1105,7 @@ as efficient at removing larger particles that activate at lower
 supersaturations. In contrast, gas-particle partitioning results in an
 increase of highly hygroscopic compounds such as ammonium nitrate
 under high emissions spatial heterogeneity. As a result, CCN activity
-at lower supersaturations ($S = 0.3\mbox{–-}0.6\%$) increases by up to
+at lower supersaturations ($S_{\mathrm{env}} = 0.3\mbox{–-}0.6\%$) increases by up to
 25\% in the upper boundary layer for emissions scenarios with high
 spatial heterogeneity.
 
@@ -1132,25 +1145,8 @@ agricultural, and remote regions.
 %% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 %% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
 
-\codeavailability{TEXT} %% use this section when having only software code available
-
-
-\dataavailability{TEXT} %% use this section when having only data sets available
-
-
 \codedataavailability{TEXT} %% use this section when having data sets and software code available
 
-
-\sampleavailability{TEXT} %% use this section when having geoscientific samples available
-
-
-\videosupplement{TEXT} %% use this section when having video supplements available
-
-
-\appendix
-\section{}    %% Appendix A
-
-\subsection{}     %% Appendix A1, A2, etc.
 
 
 \noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
@@ -1170,12 +1166,10 @@ agricultural, and remote regions.
 %% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
 
 
-
 \authorcontribution{TEXT} %% this section is mandatory
 
 \competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
 
-\disclaimer{TEXT} %% optional section
 
 \begin{acknowledgements}
 TEXT
