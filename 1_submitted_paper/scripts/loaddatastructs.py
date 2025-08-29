@@ -252,11 +252,11 @@ class DataStruct:
                 var_temp = var.upper().split('_')
                 if len(var_temp) == 2:
                     supersat = int(var_temp[-1]) / 10
-                    var_fmt = f'{var_temp[0]} ($S={supersat}\%$)'
+                    var_fmt = rf'{var_temp[0]} ($S_{{\mathrm{{env}}}}={supersat}\%$)'
                     self.aerosol_fmt_map[var] = var_fmt
                 elif len(var_temp) == 3:
                     supersat = int(var_temp[-1]) / 10
-                    var_fmt = f'{var_temp[0]} {var_temp[1].title()} ($S={supersat}\%$)'
+                    var_fmt = rf'{var_temp[0]} {var_temp[1].title()} ($S_{{\mathrm{{env}}}}={supersat}\%$)'
                     self.aerosol_fmt_map[var] = var_fmt
                 else:
                    self.aerosol_fmt_map[var] = var
@@ -353,7 +353,6 @@ class GriddedOutputDataStruct(DataStruct):
     n_bins = None
     bin_min = None
     bin_max = None
-    gridded_data = {}
 
     #sim_dict = None  # replace with wrf_data?
     
@@ -369,6 +368,32 @@ class GriddedOutputDataStruct(DataStruct):
 
     def __init__(self, **kwargs):
         # Assume default WRF-PartMC binning scheme (100 bins ranging from 1e-9 to 1e-3 m)
+
+        self.archive_path = None
+        self.aero_data = {}
+        self.aerodist_data = {}
+        self.wrf_data = {}
+        self.gridded_data = {}
+        self.scenario_colors = {}
+        self.scenario_slurm_map = {}
+        self.nsh_dict = {}
+        self.boxplot_data = {}
+        self.gas_fmt_map = {}
+        self.aerosol_fmt_map = {}
+        self.n_times = None
+        self.n_levels = None 
+        self.domain_x_cells = None
+        self.domain_y_cells = None
+        self.historydelta_m = None
+        #gridsize = None
+        self._getFormatGasSpecies()
+        self._getFormatAerosolSpecies()
+        self.sim_attrib = False
+
+        self.load_aero_data = True
+        self.load_aerodist_data = True
+        self.load_wrf_data = True
+
         self.bin_min= -9
         self.bin_max = -3
         self.n_bins = 101
@@ -482,14 +507,14 @@ class GriddedOutputDataStruct(DataStruct):
                 species_kappa, species_molec_weight, species_num_ions)
     
     def loadData(self, scenario, xstart, xend, ystart, yend, z_idx, t_idx, verbose=True):
-        slurmid = self.scenario_slurm_map[scenario]
+        #slurmid = self.scenario_slurm_map[scenario]
         output_path = self.archive_path
-        output_subdir = os.path.join(output_path, f'slurm-{slurmid}')
+        #output_subdir = os.path.join(output_path, f'slurm-{slurmid}')
 
-        if os.path.isfile(f'./crosssec_data/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc'):
+        if os.path.isfile(f'{output_path}/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc'):
             if verbose:
                 print('Loading file')
-            crosssec_data = nc.Dataset(f'./crosssec_data/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc', 'r', format='NETCDF4')
+            crosssec_data = nc.Dataset(f'{output_path}/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc', 'r', format='NETCDF4')
             # load the environmental variables
             crosssec_aero_diams = crosssec_data['aero_diams'][:]
             crosssec_aero_numconc = crosssec_data['aero_numconc'][:]
@@ -504,13 +529,13 @@ class GriddedOutputDataStruct(DataStruct):
         else:
             if verbose:
                 print('File does not exist, processing data')
-            data_tuple = self.processCrossSection(output_subdir, xstart, xend, ystart, yend, z_idx, t_idx)
+            data_tuple = self.processCrossSection(output_path, xstart, xend, ystart, yend, z_idx, t_idx)
             (crosssec_aero_diams, crosssec_aero_numconc, crosssec_aero_masses, crosssec_aero_kappa, crosssec_species_density,
             crosssec_species_kappa, crosssec_species_molec_weight, crosssec_species_num_ions) = data_tuple
 
             history_dt = self.historydelta_m/60 # hours
             time =  (t_idx-1)*history_dt
-            processed_data = nc.Dataset(f'./crosssec_data/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc', 'w', format='NETCDF4')
+            processed_data = nc.Dataset(f'{output_path}/crosssec_{scenario}_t{t_idx}_z{z_idx}.nc', 'w', format='NETCDF4')
             processed_data.description = f'Processed cross-section simulation data at time = {time} hr, zlevel = {z_idx}'
             # dimensions
             #time_dim_size = 7
