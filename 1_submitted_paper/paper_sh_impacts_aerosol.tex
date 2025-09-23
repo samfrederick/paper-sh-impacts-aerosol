@@ -86,9 +86,9 @@
 
 \title{Idealized Particle-Resolved Large-Eddy Simulations to Evaluate the Impact of Emissions Spatial Heterogeneity on CCN Activity}
 
-\Author[1]{Samuel}{Frederick}
+\Author[1][sf20@illinois.edu]{Samuel G.}{Frederick}
 \Author[2]{Matin}{Mohebalhojeh}
-\Author[1,2]{Jeffrey}{Curtis}
+\Author[1,2]{Jeffrey H.}{Curtis}
 \Author[2]{Matthew}{West}
 \Author[1][nriemer@illinois.edu]{Nicole}{Riemer} %% correspondence author
 
@@ -462,10 +462,23 @@ Gasoline vehicles & $5 \cdot 10^7$ & 0.05 & 1.7 & 80\% POA, 20\% BC \\
 \label{table:aero_emiss_ics}
 \end{table}
 
-Meteorological initial conditions define an idealized
+\begin{figure}[!t]
+     \centering
+	\includegraphics[]{figures/sounding.pdf}
+	\caption{Vertical profiles for the initial condition of potential temperature ($\theta$) and water vapor mixing ratio ($w$).}
+	\label{fig:sounding}
+\end{figure}
+
+Meteorological initial conditions are adapted from the base sounding profile 
+provided with WRF's LES test case; the profile describes an idealized
 convective boundary layer structure, where the surface is 5~K warmer
 than the mixing layer, and an inversion of 8~K caps the layer at 1
-km. The wind profile is set to zero throughout the domain.
+km. The wind profile is set to zero throughout the domain. Vertical profiles
+for the initial condition of potential temperature and the water vapor 
+mixing ratio are shown in Figure \ref{fig:sounding}.
+
+
+
 
 \subsection{Emissions Scenarios}
 
@@ -1175,14 +1188,16 @@ All simulation outputs and scripts used to generate figures in this paper are av
 model ouputs and produced manuscript figures, and led the drafting of the manuscript.   
 JHC provided consultation and guidance for the development of initialization code in extending WRF-PartMC to LES scenarios. 
 MM led the conceptualization and implementation of the spatial heterogeneity metric. MW provided overall guidance and project conceptualization. 
-NR provided guidance, contributed to conceptualization, and collaborated with SF in the drafting of the introduction (Section 1), limitations (Section 4),
-and conclusions (Section 5). All authors contributed to editing.} %% this section is mandatory
+NR provided guidance, contributed to conceptualization, and collaborated with SF in the drafting of the introduction (Section~1), limitations (Section~4),
+and conclusions (Section~5). All authors contributed to editing.} %% this section is mandatory
 
 \competinginterests{The authors declare that they have no conflict of interest.} %% this section is mandatory even if you declare that no competing interests are present
 
 
 \begin{acknowledgements}
-TEXT
+This material is based upon work supported by the U.S. Department of Energy, Office of Science, Office of 
+Biological and Environmental Research under Award Number DE-SC0022130, and by the
+National Science Foundation Grant Number AGS 19-41110.
 \end{acknowledgements}
 
 
