@@ -102,7 +102,8 @@ class DataStruct:
             filename = kwargs.get('aero_dist_filename', f'aerosol_dist_d01_{start}')
             self.aerodist_data[scenario_name] =  nc.Dataset(f'{data_path}/{filename}')
         if self.load_wrf_data:
-            self.wrf_data[scenario_name] = nc.Dataset(f'{data_path}/wrfout_d01_{start}')
+            filename = kwargs.get('wrf_data_filename', f'wrfout_d01_{start}')
+            self.wrf_data[scenario_name] = nc.Dataset(f'{data_path}/{filename}')
 
         self.scenario_slurm_map[scenario_name] = slurm_id
         self.nsh_dict[scenario_name] = {}
@@ -153,11 +154,13 @@ class DataStruct:
         if delta_m:
             self.historydelta_m = delta_m
 
+        """
         if self.wrf_data != {}:
             times = self.wrf_data[basecase_scenario]['Times'][:].data
             timestamps = [''.join(times[i].astype(str)) for i in range(times.shape[0])]
             timestamps_dt = pd.to_datetime(timestamps, format='%Y-%m-%d_%H:%M:%S')
             self.historydelta_m = (timestamps_dt[1] - timestamps_dt[0]).total_seconds()/60.0
+        """
 
         print(f"....historydelta_m: {self.historydelta_m}")
 
