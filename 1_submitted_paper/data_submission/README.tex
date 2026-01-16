@@ -59,13 +59,14 @@ Upon downloading and untarring \texttt{data.zip}, it may be explored as follows:
 
 \begin{itemize}
     \item Data files containing a subset of variables, spatial dimensions, and time slices used in generating Section 3 figures. Slices 
-    of the domain indicate the index along a given dimension (e.g., time ranges from 0 to 36, vertical height ranges from 0 to 199). Datasets 
+    of the domain indicate the index along a given dimension (e.g., time ranges from 0 to 36, vertical height ranges from 0 to 99). Datasets 
     are organized by each emissions scenario (\texttt{no-heterogeneity}, \texttt{low-heterogeneity}, \texttt{medium-heterogeneity}, \texttt{high-heterogeneity}). 
     Rather than listing each file here, we replace the scenario title in filenames by \texttt{*}:
     \begin{itemize}
+      \item Vertical-level averaged environmental conditions (temperature, RH): \newline \texttt{no-heterogeneity\_met-vars\_subset.nc}
       \item Per-grid cell gas mixing ratios, particle species mass fractions: \texttt{*\_subset\_t36.nc}
       \item Binned number and mass distributions: \texttt{*\_size-dist\_subset\_t0\_t36\_z60.nc}
-      \item Detailed per-particle output (e.g., per-particle mass fractions, kappa): \texttt{crosssec\_*\_t36\_z40.nc}
+      \item Detailed per-particle output (e.g., per-particle mass fractions, kappa): \newline \texttt{crosssec\_no-heterogeneity\_t0\_z40.nc},  \texttt{crosssec\_*\_t36\_z40.nc}
       \item CCN concentration variables, averaged across each vertical level: \texttt{*\_ccn-vars\_subset.nc}
       \item Output for ammonia-free scenarios: \texttt{*-no-nh4\_subset\_t36.nc}
     \end{itemize}
