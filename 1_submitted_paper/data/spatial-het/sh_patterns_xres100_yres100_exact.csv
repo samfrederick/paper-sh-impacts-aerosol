@@ -1,0 +1,5 @@
+scenario,NSH,scaling-factor
+no-heterogeneity,0.0,1.0
+low-heterogeneity,0.3335,2.0
+medium-heterogeneity,0.6011,10.0
+high-heterogeneity,1.0,10000.0
