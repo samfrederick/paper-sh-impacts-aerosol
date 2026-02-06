@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\externaldocument{../4_revised_paper/paper_sh_impacts_aerosol}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Responses to Reviewer \#1}
+We thank the reviewer for taking the time to review our paper and for
+the constructive comments. The page and line numbers that we quote for
+indicating where we changed the manuscript refer to the revised
+marked-up version.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{(1.1)} One issue in the presented analysis is its connection to aerosol-cloud interactions.
+Deﬁning CCN properties at low relative humidity (RH) does not account for the
+continued condensation of semivolatile compounds at higher RH. A portion of these
+compounds would condense below $100\%$ RH, thereby altering the CCN distribution.
+Furthermore, most nitric acid would condense onto particles prior to activation into
+cloud droplets, enhancing droplet formation. Including this eﬀect could signiﬁcantly
+change the number of cloud droplets formed. This could potentially even reverse the
+observation presented in this study. Therefore, using CCN as a proxy for cloud droplet
+concentration in scenarios with a strong contribution form semivolatile aerosol
+compounds may be somewhat misleading.
+
+\begin{quote}
+  We thank the reviewer for identifying this limitation with our analysis. In order to address the effects of co-condensation, we have conducted an additional set of simulations in which the relative humidity was raised to near saturation in the upper boundary layer. Our analysis is included in Section \ref{sec:co-condensation}, indicating that higher RH meaningfully impacts aerosol composition and computed CCN activity by enhancing the condensation of semi-volatile species such as ammonium and nitrate. We conclude that co-condensation lowers the sensitivity of CCN activity to emissions heterogeneity, however, meaningful impacts are still found at intermediate supersaturation. We have included an additional statement in  Section \ref{sec:limitations} (Limitations and future work), which acknowledges the limited applicability of WRF-PartMC's approach to computing CCN activity and calls for future work to further explore the quantitative contribution of co-condensation and emissions heterogeneity to aerosol aging and CCN activity. 
+\end{quote}
+
+\textbf{(1.2)} What would happen if a Lagrangian perspective were adopted, assuming air masses
+advect over the emission source? With the modeling framework used here, this could
+have been explored by halting emissions from the point source partway through the
+simulation and allowing the emitted compounds to disperse within the domain. Would
+the eﬀects observed in Figure 6 and beyond be averaged out due to the reversible
+nature of nitrate partitioning? Such a setup would more closely reﬂect the assumptions
+made in low-resolution, large-scale models.
+
+\begin{quote}
+  We thank the reviewer for this recommendation. We have conducted an additional simulation in which emissions are cut off at $t=4$ h to investigate the reversible partitioning of nitrate. Discussion of this scenario is included in Section \ref{sec:reversible-aging}. As expected, the most significant impact to aerosol composition is due to reversible partitioning of nitrate. The timescale at which the aerosol state relaxes back to the aerosol composition in the no heterogeneity scenario is therefore determined by the timescale of reversible partitioning for nitrate.
+\end{quote}
+
+\textbf{(1.3)} Line 50: The statement “yet many climate models fail to resolve this variability
+adequately” could be clariﬁed. Are there actually any climate models that attempt to
+account for subgrid-scale heterogeneity in a proper manner for the emissions?
+
+\begin{quote}
+  We have included the following statement on \textcolor{red}{line X} to clarify the status of sub-grid scale parameterizations in global scale models:
+
+  ``Much of the sub-grid scale variability arises from
+spatially heterogeneous emissions \citep{qian_investigation_2010}, yet many climate models fail to resolve this variability adequately; existing parameterizations in GCMs for sub-grid scale emissions and associated processes are limited to specific phenomena such as ship tracks \citep{huszar_modeling_2010} and contrails \citep{burkhardt_processbased_2009}.''
+
+
+  
+\end{quote}
+
+\textbf{(1.4)} Line 70: For precision, note that SALSA by default uses a 17-bin scheme (10 + 7), similar
+to how M7 employs 7 modes (4 + 3) to represent externally mixed aerosol populations
+with high and low hygroscopicities. 
+
+\begin{quote}
+  Thank you for this point of clarification. We have revised discussion of SALSA on \textcolor{red}{lines X to X} to the following: ``...UCLALES-SALSA employs a
+17-bin sectional scheme to represent both internally and externally mixed particles...'' 
+\end{quote}
+
+\textbf{(1.5)} Line 85: Typo: “It is extends”
+
+\begin{quote}
+  We have fixed this typo. 
+\end{quote}
+
+\textbf{(1.6)} Line 94: Typo: “by by”
+
+\begin{quote}
+  We have fixed this typo. 
+\end{quote}
+
+\textbf{(1.7)} Line 130: In large-eddy simulation (LES) studies, heat ﬂux is more commonly expressed
+in W/m² rather than Km/s.
+
+\begin{quote}
+  Thank you for noting this convention. We have converted the surface heat flux to non-kinetmatic form and note its relevance to mid-latitude settings on \textcolor{red}{lines X to X} :
+  ``...295.5~$\rm W \, m^2$, which is
+representative of surface heat fluxes resulting from annually-averaged mid-latitude solar insolation.''
+
+\end{quote}
+
+\textbf{(1.8)} Lines 137–140: The same sentence appears to be repeated. Please remove the
+duplicate.
+
+\begin{quote}
+  We have removed the duplicate sentence. 
+\end{quote}
+
+\textbf{(1.9)} Figure 4: The concentrations of nitric acid and ammonia seem quite high. Are these
+values realistic, or do they represent an extreme scenario? A brief discussion on this
+would be needed.
+
+\begin{quote}
+  We have added the following statement to clarify that the concentrations modeled in this study correspond to the upper end of observed concentrations in highly-polluted conditions:
+
+``Comparing modeled ammonium and nitric acid levels with past studies, concentrations of each are consistent with brief, extremely polluted conditions found in regions with a large volume of vehicular emissions, such as Southern California \citep{salmon_nitric_1990, toro_sensitivity_2024}." 
+
+
+\end{quote}
+
+\textbf{(1.10)} Figure 5: If new particle formation via nucleation is not included in the study, could this
+omission inﬂuence the results?
+
+\begin{quote}
+  We have included the following statement on \textcolor{red}{lines X to X} to clarify the omission of nucleation in WRF-PartMC-LES:
+  
+  ``...in WRF-PartMC-LES, nucleation is not modeled due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. This may lead to an artificial underestimation of ultrafine concentrations. However, in highly heterogeneous scenarios, it is likely that increases in the number of ultrafine particles due to nucleation of low-volatility vapors would be opposed by enhancements in the rate of coagulation with larger particles. Depending on the relative rates of nucleation and coagulation, the resulting size distribution may not differ dramatically from high-heterogeneity runs conducted in this study. These conclusions may differ for lower-heterogeneity cases in which the rate of coagulation is lower, leading to a larger ultrafine mode. This may in fact widen the disparity in CCN activity between the low and high heterogeneity cases, as a larger fraction of the size distribution would require higher supersaturations to activate.''
+
+\end{quote}
+
+
+%\bibliographystyle{copernicus}
+%\bibliography{../4_revised_paper/refs_tchem_paper.bib}
+
+\end{document}
