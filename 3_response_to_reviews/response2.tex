@@ -35,10 +35,10 @@ idealized, simulations and analysis of such a situation is not needed. However, 
 could be useful to comment on this in the manuscript.
 
 \begin{quote}
-  We have included the following statement in Section \ref{sec:limitations} (Limitations and future work) acknowledging our limited treatment of CCN activity and anticipated outcomes if explicit modeling of CCN activation at subsaturated conditions were incorporated:
+  We have included the following statement in Section 4, lines 424--430 acknowledging our limited treatment of CCN activity and anticipated outcomes if explicit modeling of CCN activation at subsaturated conditions were incorporated:
 
 
-  ``...Furthermore, we wish to emphasize that we do not model explicitly model CCN activation and droplet growth. Although previous particle-resolved studies have included this effect \citep{ching_impacts_2012}, cloud droplet growth is excluded from the current study due to computational cost. We expect that inclusion of CCN which activate at subsaturated conditions would meaningfully alter the aqueous phase chemistry within cloudy cells. Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics \citep{li_impact_2017}. We therefore hypothesize that cloud droplet aging is further coupled to emissions heterogeneity through aqueous-phase chemistry, and this coupling should be investigated in future work."
+  ``...Furthermore, we wish to emphasize that we do not model explicitly model CCN activation and droplet growth. Although previous particle-resolved studies have included this effect (Ching et al., 2012), cloud droplet growth is excluded from the current study due to computational cost. We expect that inclusion of CCN which activate at subsaturated conditions would meaningfully alter the aqueous phase chemistry within cloudy cells. Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics (Li et al., 2017). We therefore hypothesize that cloud droplet aging is further coupled to emissions heterogeneity through aqueous-phase chemistry, and this coupling should be investigated in future work."
 \end{quote}
 
 \textbf{(1.2)} Could you use a proﬁle where there’s a more humid boundary layer? I think a
@@ -49,7 +49,9 @@ supersaturation conditions being realized in your environment, which don’t
 actually happen based on the boundary layer proﬁle used in the experiment.
 
 \begin{quote}
-  We thank the reviewer for this recommendation. Although our model is not able to explicitly represent CCN activation and cloud microphysics, we have conducted an additional set of simulations in which the relative humidity was raised to near saturation in the upper boundary layer. Our analysis is included in Section \ref{sec:co-condensation}, indicating that higher RH meaningfully impacts aerosol composition and computed CCN activity by enhancing the condensation of semi-volatile species such as ammonium and nitrate. We conclude that co-condensation lowers the sensitivity of CCN activity to emissions heterogeneity, however, meaningful impacts are still found at intermediate supersaturation. We have included an additional statement in  Section \ref{sec:limitations} (Limitations and future work), which acknowledges the limited applicability of WRF-PartMC's approach to computing CCN activity and calls for future work to further explore the quantitative contribution of co-condensation and emissions heterogeneity to aerosol aging and CCN activity. 
+  We thank the reviewer for this recommendation. Although our model is not able to explicitly represent CCN activation and cloud microphysics, we have conducted an additional set of simulations in which the relative humidity was raised to near saturation in the upper boundary layer. Our analysis is included in Section 3.8, indicating that higher RH meaningfully impacts aerosol composition and computed CCN activity by enhancing the condensation of semi-volatile species such as ammonium and nitrate. We conclude that co-condensation lowers the sensitivity of CCN activity to emissions heterogeneity, however, meaningful impacts are still found at intermediate supersaturation. We have included an additional statement in  Section 4, lines 421--424, which acknowledges the limited applicability of WRF-PartMC's approach to computing CCN activity and calls for future work to further explore the quantitative contribution of co-condensation and emissions heterogeneity to aerosol aging and CCN activity:
+
+  ``Our study of co-condensation and its effects reveals meaningful limitations in how WRF-PartMC-LES estimates CCN activity for sub-saturated particles. While our study reveals that emissions heterogeneity may alter aerosol composition and CCN activity even when co-condensation is considered, further work is required to place quantitative bounds on the contribution of each process and the modulating role of gas and aerosol composition.''
 \end{quote}
 
 \textbf{(1.3)} For the high heterogeneity emission scenario, is there any value in having
@@ -59,7 +61,7 @@ one smoke stack or concentrated emission point. Maybe this is better suited for
 future work, but worth considering.
 
 \begin{quote}
-  We agree that more realistic emission patterns should be explored, and have included the following statement in Section \ref{sec:limitations} (Limitations and future work):
+  We agree that more realistic emission patterns should be explored, and have included the following statement in Section 4, lines 408--413:
 
   ``Additionally,
 all emissions—both gas-phase and particulate—are temporally constant
@@ -79,7 +81,7 @@ This is not clearly articulated in the explanation of the model setup or in the
 results.
 
 \begin{quote}
-We have included the following statement in Section \ref{sec:limitations} (Limitations and future work) to clarify that the motivation for the use of LES is primarily due to the length scale of emissions heterogeneity we wish to model. We acknowledge that future studies should extend upon this work to investigate the role of turbulence in modulating the impact of emissions heterogeneity in more realistic domains:
+We have included the following statement in Section 4, lines 431--438 to clarify that the motivation for the use of LES is primarily due to the length scale of emissions heterogeneity we wish to model. We acknowledge that future studies should extend upon this work to investigate the role of turbulence in modulating the impact of emissions heterogeneity in more realistic domains:
 
 ``In this study, use of LES is primarily motivated by the length scale of heterogeneous emission patterns. The current work resolves emissions heterogeneity down to 100 m, significantly below regional and global-scale model resolutions. 
 The idealized nature of the current work means there is limited benefit of grid-resolved turbulence as the structure of turbulence the boundary layer is mostly laterally isotropic. However, greater consideration should be given to resolved turbulence in future applications of WRF-PartMC-LES, especially when modeling realistic domains with topography, varied land use,  heterogeneous surface heat fluxes, and spatially segregated emissions. Past studies have shown that turbulence facilitates the mixing of spatially segregated reactive gas species. Given the coupling between the gas and aerosol phase, future work should investigate the role of turbulence in modifying the rate of aerosol aging."  
@@ -91,8 +93,9 @@ m resolution, correct? If so, how feasible is this framework for testing against
 observations for future implementation?
 
 \begin{quote}
-  We have added the following discussion on \textcolor{red}{lines X to X}:
-  ``...gridded inventories commonly used for regional and global-scale modeling are too coarse for use with LES. Future extensions of WRF-PartMC-LES to realistic emission patterns will require use of data fusion techniques to estimate source apportionment at sub-kilometer resolution.''
+  We have added the following discussion on lines 413--415:
+
+  ``Gridded inventories commonly used for regional and global-scale modeling are too coarse for use with LES. Future extensions of WRF-PartMC-LES to realistic emission patterns will require use of data fusion techniques to estimate source apportionment at sub-kilometer resolution.''
 \end{quote}
 
  
@@ -103,8 +106,15 @@ instead of just at t=6 h. I wouldn’t say this is a must, but it would be helpf
 see.
 
 \begin{quote}
-  We thank the reviewer for this recommendation. In response to this suggestion and another reviewer's recommendation to include simulations where emissions are turned off after a certain period of time, we have included Figure \ref{fig:nh4-no3-relaxation}. This figure compares the evolution of aerosol composition for both the high heterogeneity scenario in which emissions continue unabated and a similar scenario but with emissions turned off at $t=4$ h. Vertical profiles are plotted in hourly increments to illustrate the temporal evolution of the aerosol state.
+  We thank the reviewer for this recommendation. In response to this suggestion and another reviewer's recommendation to include simulations where emissions are turned off after a certain period of time, we have included Figure 13 (included here for convenience). This figure compares the evolution of aerosol composition for both the high heterogeneity scenario in which emissions continue unabated and a similar scenario but with emissions turned off at $t=4$ h. Vertical profiles are plotted in hourly increments to illustrate the temporal evolution of the aerosol state.
 \end{quote}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[]{../4_revised_paper/figures/high-het-relaxation.pdf}
+	\caption{Figure 13 in Frederick et al., 2026: ``Vertical profiles of ammonium (top row) and nitrate (bottom row) for two versions of the high heterogeneity scenario in which emissions are turned off at $t=4$~h (left column) and emissions continue through the remainder of the simulation (right column)."}
+	\label{fig:nh4-no3-relaxation}
+\end{figure}
 
 \textbf{(1.7)} Typo line 85: “it is extends"
 
