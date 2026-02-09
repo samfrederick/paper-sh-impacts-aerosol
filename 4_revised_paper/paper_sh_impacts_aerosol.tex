@@ -1129,8 +1129,29 @@ Our study of co-condensation and its effects reveals meaningful limitations in h
 In this study, use of LES is primarily motivated by the length scale of heterogeneous emission patterns. The current work resolves emissions heterogeneity down to 100 m, significantly below regional and global-scale model resolutions. 
 The idealized nature of the current work means there is limited benefit of grid-resolved turbulence as the structure of turbulence the boundary layer is mostly laterally isotropic. However, greater consideration should be given to resolved turbulence in future applications of WRF-PartMC-LES, especially when modeling realistic domains with topography, varied land use,  heterogeneous surface heat fluxes, and spatially segregated emissions. Past studies have shown that turbulence facilitates the mixing of spatially segregated reactive gas species. Given the coupling between the gas and aerosol phase, future work should investigate the role of turbulence in modifying the rate of aerosol aging.
 
-Lastly, nucleation is not modeled in WRF-PartMC-LES due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. This may lead to an artificial underestimation of ultrafine concentrations. However, in highly heterogeneous scenarios, it is likely that increases in the number of ultrafine particles due to nucleation of low-volatility vapors would be opposed by enhancements in the rate of coagulation with larger particles. Depending on the relative rates of nucleation and coagulation, the resulting size distribution may not differ dramatically from high-heterogeneity runs conducted in this study. These conclusions may differ for lower-heterogeneity cases in which the rate of coagulation is lower, leading to a larger ultrafine mode. This may in fact widen the disparity in CCN activity between the low and high heterogeneity cases, as a larger fraction of the size distribution would require higher supersaturations to activate.
-
+Lastly, nucleation is not modeled in WRF-PartMC-LES due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. As a result, ultrafine particle concentrations may be
+  underestimated in the present simulations. Importantly, nucleation
+  itself is highly sensitive to spatial heterogeneity, as nucleation
+  rates depend nonlinearly on precursor concentrations and local
+  thermodynamic conditions. Spatial averaging over coarse grid cells
+  can therefore suppress the peak conditions required for nucleation,
+  leading to an underprediction of nucleation events even in models
+  that nominally include this process. The inclusion of nucleation
+  could influence the results shown here, particularly through its
+  interaction with spatially heterogeneous emissions and gas-phase
+  precursor fields. In highly heterogeneous scenarios, enhanced
+  nucleation rates in localized regions may be partially offset by
+  increased coagulation with larger particles, whereas in
+  lower-heterogeneity environments reduced coagulation could allow a
+  more pronounced ultrafine mode to persist. The net impact of
+  nucleation on the size distribution and CCN activity therefore
+  depends on the relative rates of nucleation, coagulation, and
+  mixing, as well as on the degree of emissions heterogeneity. As a
+  result, inclusion of nucleation could either dampen or amplify
+  differences in CCN activity between low- and high-heterogeneity
+  cases, and explicitly resolving these interactions remains an
+  important topic for future work.
+  
 These limitations motivate future work incorporating more realistic
 emissions, meteorological variability, extended simulation times, and improved representation of physical processes to evaluate the robustness of the conclusions presented here.
 
