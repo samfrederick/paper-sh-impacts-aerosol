@@ -116,9 +116,25 @@ m resolution, correct? If so, how feasible is this framework for testing against
 observations for future implementation?
 
 \begin{quote}
-  We have added the following discussion on lines 413--415:
+  We have added the following discussion on lines 413--415 to clarify
+  that although gridded emission inventories are often too coarse for
+  LES, key source types such as point and line sources can already be
+  represented accurately at sub-kilometer scales, while diffuse area
+  sources require additional preprocessing and downscaling.
 
-  ``Gridded inventories commonly used for regional and global-scale modeling are too coarse for use with LES. Future extensions of WRF-PartMC-LES to realistic emission patterns will require use of data fusion techniques to estimate source apportionment at sub-kilometer resolution.''
+  ``gEmission flux observations and inventories are not uniformly
+  available at 100 m resolution. While many gridded inventories used
+  in regional and global-scale modeling are too coarse for direct use
+  in LES, several important source types can be represented accurately
+  at sub-kilometer scales. Point sources (e.g., power plants,
+  industrial stacks) and line sources (e.g., road networks) are often
+  well constrained spatially and can be implemented directly in
+  high-resolution simulations. In contrast, diffuse area sources that
+  are typically reported at county or regional scales require
+  additional emission preprocessing, downscaling, or data-fusion
+  approaches to distribute fluxes at finer resolution. Developing such
+  preprocessing workflows represents an important step toward applying
+  WRF-PartMC-LES in observationally constrained, realistic settings.''
 \end{quote}
 
  
