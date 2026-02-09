@@ -225,8 +225,8 @@ parameterizations to represent boundary-layer turbulence, which fail
 to capture the full complexity of turbulent transport and its
 influence on aerosol processes.
 
-Another approach to investigating sub-grid heterogeneity has been to use
-LES, which explicitly captures fine-scale turbulent mixing and
+Another approach to investigating sub-grid heterogeneity has been to
+use LES, which explicitly captures fine-scale turbulent mixing and
 chemical segregation.  \citet{brasseur_segregation_2023} review LES
 applications investigating turbulence-chemistry interactions in
 spatially heterogeneous environments.  Many LES studies have focused
@@ -243,17 +243,21 @@ on simplified treatments. Recent efforts have coupled
 turbulence-resolving frameworks with aerosol models, such as the
 Sectional Aerosol Model for Large Scale Applications (SALSA)
 \citep{kokkola_salsa_2008} with UCLALES
-\citep{tonttila_uclalessalsa_2017} as well as the Parallelized Large-Eddy
-Simulation Model (PALM) \citep{kurppa_implementation_2019}. Additional efforts coupling LES with prognostic aerosol treatments include the modal aerosol model M7 \citep{vignati_m7_2004} with the Dutch Atmospheric Large-Eddy Simulation model (DALES)
-\citep{de_bruine_explicit_2019}. However, despite their
-high-resolution transport schemes, these models rely on relatively
-coarse aerosol representations. For example, UCLALES-SALSA employs a
-17-bin sectional scheme to represent both internally and externally mixed particles, while DALES modifies the seven-mode M7 model
-to incorporate additional hydrometeor modes. To our knowledge, no
-turbulence-resolving model has yet incorporated a particle-resolved
-aerosol treatment, which would enable a fully detailed representation
-of aerosol composition, properties, and aging alongside LES-resolved
-turbulent transport.
+\citep{tonttila_uclalessalsa_2017} as well as the Parallelized
+Large-Eddy Simulation Model (PALM)
+\citep{kurppa_implementation_2019}. Additional efforts coupling LES
+with prognostic aerosol treatments include the modal aerosol model M7
+\citep{vignati_m7_2004} with the Dutch Atmospheric Large-Eddy
+Simulation model (DALES) \citep{de_bruine_explicit_2019}. However,
+despite their high-resolution transport schemes, these models rely on
+relatively coarse aerosol representations. For example, UCLALES-SALSA
+employs a 17-bin sectional scheme to represent externally mixed
+aerosol populations with differing hygroscopicities, while DALES
+modifies the seven-mode M7 model to incorporate additional hydrometeor
+modes. To our knowledge, no turbulence-resolving model has yet
+incorporated a particle-resolved aerosol treatment, which would enable
+a fully detailed representation of aerosol composition, properties,
+and aging alongside LES-resolved turbulent transport.
 
 This study aims to analyze the coupled effects of spatial
 heterogeneity in surface emissions (including both gas-phase species
