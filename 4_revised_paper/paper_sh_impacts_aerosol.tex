@@ -1135,8 +1135,24 @@ processes, particularly at early times or near the plume edge.
 
 Our study of co-condensation and its effects reveals meaningful limitations in how WRF-PartMC-LES estimates CCN activity for particles under water-subsaturated conditions. Accordingly, CCN concentrations diagnosed under subsaturated conditions should be interpreted as an indicator of activation potential rather than a direct proxy for cloud droplet number, particularly in environments with substantial semivolatile mass. While our study reveals that emissions heterogeneity may alter aerosol composition and CCN activity even when co-condensation is considered, further work is required to place quantitative bounds on the contribution of each process and the modulating role of gas and aerosol composition. Furthermore, we wish to emphasize that we do not model explicitly CCN activation and droplet growth. Although previous particle-resolved studies have included this effect \citep{ching_impacts_2012}, cloud droplet growth is excluded from the current study due to computational cost. We expect that explicitly modeling CCN activation and subsequent droplet growth would meaningfully alter aqueous-phase chemistry within cloudy cells. Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics \citep{li_impact_2017}. We therefore hypothesize that cloud droplet aging is further coupled to emissions heterogeneity through aqueous-phase chemistry, and this coupling should be investigated in future work.
 
-In this study, use of LES is primarily motivated by the length scale of heterogeneous emission patterns. The current work resolves emissions heterogeneity down to 100 m, significantly below regional and global-scale model resolutions. 
-The idealized nature of the current work means there is limited benefit of grid-resolved turbulence as the structure of turbulence the boundary layer is mostly laterally isotropic. However, greater consideration should be given to resolved turbulence in future applications of WRF-PartMC-LES, especially when modeling realistic domains with topography, varied land use,  heterogeneous surface heat fluxes, and spatially segregated emissions. Past studies have shown that turbulence facilitates the mixing of spatially segregated reactive gas species. Given the coupling between the gas and aerosol phase, future work should investigate the role of turbulence in modifying the rate of aerosol aging.
+In this study, use of LES is primarily motivated by the length scale
+of heterogeneous emission patterns. The current work resolves
+emissions heterogeneity down to 100 m, which is well below the grid
+spacing of typical meso-scale and global models and allows explicit
+representation of sharp spatial gradients in gas and aerosol
+concentrations that would otherwise be averaged out. Given the
+idealized configuration employed here, the resolved turbulence
+primarily serves to provide realistic boundary-layer mixing under
+laterally homogeneous conditions, and its detailed structure is not a
+central focus of the present analysis. Nevertheless, turbulence is
+expected to play an important role in modulating the interaction
+between spatially segregated emissions, gas-phase chemistry, and
+aerosol aging in more realistic settings. Past studies have shown that
+turbulence facilitates the mixing of spatially segregated reactive gas
+species, and future applications of WRF-PartMC-LES should therefore
+investigate how turbulence modifies the rate and spatial structure of
+aerosol aging in domains with topography, heterogeneous surface
+forcing, and complex emission patterns.
 
 Lastly, nucleation is not modeled in WRF-PartMC-LES due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. As a result, ultrafine particle concentrations may be
   underestimated in the present simulations. Importantly, nucleation

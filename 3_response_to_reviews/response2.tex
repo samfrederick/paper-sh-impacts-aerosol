@@ -86,10 +86,28 @@ This is not clearly articulated in the explanation of the model setup or in the
 results.
 
 \begin{quote}
-We have included the following statement in Section 4, lines 431--438 to clarify that the motivation for the use of LES is primarily due to the length scale of emissions heterogeneity we wish to model. We acknowledge that future studies should extend upon this work to investigate the role of turbulence in modulating the impact of emissions heterogeneity in more realistic domains:
+We have included the following statement in Section 4, lines 431--438
+to clarify that LES is required here to resolve emission heterogeneity
+at sub-kilometer scales, rather than to study turbulence itself.
 
-``In this study, use of LES is primarily motivated by the length scale of heterogeneous emission patterns. The current work resolves emissions heterogeneity down to 100 m, significantly below regional and global-scale model resolutions. 
-The idealized nature of the current work means there is limited benefit of grid-resolved turbulence as the structure of turbulence the boundary layer is mostly laterally isotropic. However, greater consideration should be given to resolved turbulence in future applications of WRF-PartMC-LES, especially when modeling realistic domains with topography, varied land use,  heterogeneous surface heat fluxes, and spatially segregated emissions. Past studies have shown that turbulence facilitates the mixing of spatially segregated reactive gas species. Given the coupling between the gas and aerosol phase, future work should investigate the role of turbulence in modifying the rate of aerosol aging."  
+``In this study, use of LES is primarily motivated by the length scale
+of heterogeneous emission patterns. The current work resolves
+emissions heterogeneity down to 100 m, which is well below the grid
+spacing of typical meso-scale and global models and allows explicit
+representation of sharp spatial gradients in gas and aerosol
+concentrations that would otherwise be averaged out. Given the
+idealized configuration employed here, the resolved turbulence
+primarily serves to provide realistic boundary-layer mixing under
+laterally homogeneous conditions, and its detailed structure is not a
+central focus of the present analysis. Nevertheless, turbulence is
+expected to play an important role in modulating the interaction
+between spatially segregated emissions, gas-phase chemistry, and
+aerosol aging in more realistic settings. Past studies have shown that
+turbulence facilitates the mixing of spatially segregated reactive gas
+species, and future applications of WRF-PartMC-LES should therefore
+investigate how turbulence modifies the rate and spatial structure of
+aerosol aging in domains with topography, heterogeneous surface
+forcing, and complex emission patterns."
 \end{quote}
 
  
