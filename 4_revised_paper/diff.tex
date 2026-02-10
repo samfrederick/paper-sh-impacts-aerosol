@@ -1,7 +1,7 @@
 %% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL 1_submitted_paper/paper_sh_impacts_aerosol.tex   Fri Sep 26 10:11:21 2025
-%DIF ADD 4_revised_paper/paper_sh_impacts_aerosol.tex     Mon Feb  9 19:11:32 2026
+%DIF ADD 4_revised_paper/paper_sh_impacts_aerosol.tex     Tue Feb 10 10:33:13 2026
 %% ---------------------------------
 %% This template should be used for copernicus.cls
 %% The class file and some style files are bundled in the Copernicus Latex Package, which can be downloaded from the different journal webpages.
@@ -555,7 +555,11 @@ are placed in a single grid cell in the domain center representing a point sourc
 as an industrial plume.
 
 Spatial heterogeneity is quantified using the metric $\eta$ developed by
-\citep{mohebalhojeh_2024}. The metric $\eta$ is a normalized
+\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep{mohebalhojeh_2024}}\hskip0pt%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{mohebalhojeh_metric_2026}}\hskip0pt%DIFAUXCMD
+}\DIFaddend . The metric $\eta$ is a normalized
 measure of spatial heterogeneity, ranging from 0 (completely
 homogeneous) to 1 (maximally heterogeneous). For a discrete
 2-dimensional scalar field $f$ over a domain $S$ with lateral
@@ -568,7 +572,11 @@ where $\overline{f}(S)$ is the domain mean, $\overline{f}(\tilde{S})$ is the mea
 $\tilde{S}$, and $\mathbf{D}$ is the set of all possible subdomains. Thus, the metric is computed by averaging the absolute
 value of the difference between the domain mean $\overline{f}(S)$ and
 all domain subset means $\overline{f}(\tilde{S})$, normalized by the
-maximum possible value of this average difference given a fixed domain mean. \citet{mohebalhojeh_2024} show that the metric is
+maximum possible value of this average difference given a fixed domain mean. \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citet{mohebalhojeh_2024} }\hskip0pt%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citet{mohebalhojeh_metric_2026} }\hskip0pt%DIFAUXCMD
+}\DIFaddend show that the metric is
 translationally invariant when the scalar field $f$ is shifted within
 $S$. Furthermore, they prove that the
 maximum spatial heterogeneity occurs when the
