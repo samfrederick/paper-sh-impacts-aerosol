@@ -24,6 +24,8 @@ We thank the reviewer for taking the time to review our paper and for
 the constructive comments. The page and line numbers that we quote for
 indicating where we changed the manuscript refer to the revised
 marked-up version.
+
+\textbf{General note:} During preparation of the revised manuscript, we identified a technical issue that required re-running all simulations. Specifically, vertical diffusion of computational particles was not correctly accounted for in the original simulations. All simulations have been rerun with this issue corrected. The revised results remain qualitatively consistent with those originally reported, and the main conclusions of the study are unchanged, although some quantitative differences appear in detailed vertical profiles.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,6 +38,8 @@ simulations and analysis of such a situation is not needed. However,
 it could be useful to comment on this in the manuscript.
 
 \begin{quote}
+  We thank the reviewer for this question. In classical Köhler theory, CCN activation requires supersaturation with respect to water ($\mathrm{RH}>100\%$) and therefore does not occur below saturation. However, growth of particles under subsaturated conditions through hygroscopic water uptake and co-condensation of semi-volatile species can substantially modify particle size and composition prior to activation. This effect is explicitly examined in the additional high-RH simulations introduced in Section 3.8, which were added in response to Reviewer 1. We find that such pre-activation growth shifts CCN activity toward lower supersaturations and moderates, but does not eliminate, the influence of emissions spatial heterogeneity.
+
   We have included the following statement in Section 4, lines 424--430 acknowledging our limited treatment of CCN activity and anticipated outcomes if explicit modeling of CCN activation at subsaturated conditions were incorporated:
 
 
@@ -122,7 +126,7 @@ observations for future implementation?
   represented accurately at sub-kilometer scales, while diffuse area
   sources require additional preprocessing and downscaling.
 
-  ``gEmission flux observations and inventories are not uniformly
+  ``Emission flux observations and inventories are not uniformly
   available at 100 m resolution. While many gridded inventories used
   in regional and global-scale modeling are too coarse for direct use
   in LES, several important source types can be represented accurately
