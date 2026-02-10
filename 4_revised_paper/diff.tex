@@ -1,7 +1,7 @@
 %% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL ../1_submitted_paper/paper_sh_impacts_aerosol.tex   Fri Sep 26 10:11:21 2025
-%DIF ADD ./paper_sh_impacts_aerosol.tex                      Fri Feb  6 17:03:41 2026
+%DIF DEL 1_submitted_paper/paper_sh_impacts_aerosol.tex   Fri Sep 26 10:11:21 2025
+%DIF ADD 4_revised_paper/paper_sh_impacts_aerosol.tex     Mon Feb  9 15:38:31 2026
 %% ---------------------------------
 %% This template should be used for copernicus.cls
 %% The class file and some style files are bundled in the Copernicus Latex Package, which can be downloaded from the different journal webpages.
@@ -248,11 +248,11 @@ have demonstrated that climate-relevant aerosol properties, including
 aerosol optical properties \citep{gustafson_jr_downscaling_2011} and
 CCN activity \citep{weigum_effect_2016}, are highly sensitive to model
 resolution. Much of the sub-grid scale variability arises from
-spatially heterogeneous emissions \citep{qian_investigation_2010}, yet many climate models fail to resolve this variability adequately\DIFaddbegin \DIFadd{; existing parameterizations in GCMs for sub-grid scale emissions and associated processes are limited to specific phenomena such as ship tracks \mbox{%DIFAUXCMD
+spatially heterogeneous emissions \citep{qian_investigation_2010}, yet \DIFdelbegin \DIFdel{many climate models fail to resolve this variability adequately}\DIFdelend \DIFaddbegin \DIFadd{most climate modelsdo not represent this variabilkity explicitly in a general sense. Existing parameterizations in global climate models for sub-grid scale emissions and associated processes are typically limited to specific phenomena such as ship tracks \mbox{%DIFAUXCMD
 \citep{huszar_modeling_2010} }\hskip0pt%DIFAUXCMD
 and contrails \mbox{%DIFAUXCMD
 \citep{burkhardt_processbased_2009}}\hskip0pt%DIFAUXCMD
-}\DIFaddend .
+, rather than providing a general treatment of emissions-driven aerosol heterogeneity}\DIFaddend .
 
 
 Prior research on sub-grid variability of aerosol properties has
@@ -268,8 +268,8 @@ parameterizations to represent boundary-layer turbulence, which fail
 to capture the full complexity of turbulent transport and its
 influence on aerosol processes.
 
-Another approach to investigating sub-grid heterogeneity has been to use
-LES, which explicitly captures fine-scale turbulent mixing and
+Another approach to investigating sub-grid heterogeneity has been to
+use LES, which explicitly captures fine-scale turbulent mixing and
 chemical segregation.  \citet{brasseur_segregation_2023} review LES
 applications investigating turbulence-chemistry interactions in
 spatially heterogeneous environments.  Many LES studies have focused
@@ -286,17 +286,21 @@ on simplified treatments. Recent efforts have coupled
 turbulence-resolving frameworks with aerosol models, such as the
 Sectional Aerosol Model for Large Scale Applications (SALSA)
 \citep{kokkola_salsa_2008} with UCLALES
-\citep{tonttila_uclalessalsa_2017} as well as the Parallelized Large-Eddy
-Simulation Model (PALM) \citep{kurppa_implementation_2019}. Additional efforts coupling LES with prognostic aerosol treatments include the modal aerosol model M7 \citep{vignati_m7_2004} with the Dutch Atmospheric Large-Eddy Simulation model (DALES)
-\citep{de_bruine_explicit_2019}. However, despite their
-high-resolution transport schemes, these models rely on relatively
-coarse aerosol representations. For example, UCLALES-SALSA employs a
-\DIFdelbegin \DIFdel{10-bin sectional scheme }\DIFdelend \DIFaddbegin \DIFadd{17-bin sectional scheme to represent both internally and externally mixed particles}\DIFaddend , while DALES modifies the seven-mode M7 model
-to incorporate additional hydrometeor modes. To our knowledge, no
-turbulence-resolving model has yet incorporated a particle-resolved
-aerosol treatment, which would enable a fully detailed representation
-of aerosol composition, properties, and aging alongside LES-resolved
-turbulent transport.
+\citep{tonttila_uclalessalsa_2017} as well as the Parallelized
+Large-Eddy Simulation Model (PALM)
+\citep{kurppa_implementation_2019}. Additional efforts coupling LES
+with prognostic aerosol treatments include the modal aerosol model M7
+\citep{vignati_m7_2004} with the Dutch Atmospheric Large-Eddy
+Simulation model (DALES) \citep{de_bruine_explicit_2019}. However,
+despite their high-resolution transport schemes, these models rely on
+relatively coarse aerosol representations. For example, UCLALES-SALSA
+employs a \DIFdelbegin \DIFdel{10-bin sectional scheme }\DIFdelend \DIFaddbegin \DIFadd{17-bin sectional scheme to represent externally mixed
+aerosol populations with differing hygroscopicities}\DIFaddend , while DALES
+modifies the seven-mode M7 model to incorporate additional hydrometeor
+modes. To our knowledge, no turbulence-resolving model has yet
+incorporated a particle-resolved aerosol treatment, which would enable
+a fully detailed representation of aerosol composition, properties,
+and aging alongside LES-resolved turbulent transport.
 
 This study aims to analyze the coupled effects of spatial
 heterogeneity in surface emissions (including both gas-phase species
@@ -721,9 +725,14 @@ horizontal averages at each vertical level across the entire domain.
 As emissions spatial heterogeneity increases, both ammonia and nitric
 acid mixing ratios decrease on average. As will demonstrated in
 Section \ref{sec:aero-comp}, this is due to increased partitioning of
-these species into the aerosol phase to form ammonium nitrate. \DIFaddbegin \DIFadd{Comparing modeled ammonium and nitric acid levels with past studies, concentrations of each are consistent with brief, extremely polluted conditions found in regions with a large volume of vehicular emissions, such as Southern California \mbox{%DIFAUXCMD
+these species into the aerosol phase to form ammonium
+nitrate. \DIFaddbegin \DIFadd{Comparing modeled ammonium and nitric acid levels with past
+studies, the concentrations used here correspond to the upper end of
+observed values reported during brief, extremely polluted episodes in
+regions with substantial vehicular emissions, such as Southern
+California \mbox{%DIFAUXCMD
 \citep{salmon_nitric_1990, toro_sensitivity_2024}}\hskip0pt%DIFAUXCMD
-.   
+.
 }\DIFaddend 
 
 For OH, the vertical profiles show the 5th percentile of
@@ -1124,10 +1133,11 @@ cases of the }\DIFdelend \DIFaddbegin \DIFadd{These findings underscore that the
 \DIFadd{Up to this point, simulations discussed in this paper all follow a similar timeline for emissions, with gases and primary aerosol emitted starting at $t=1$~h and continuing through the remainder of each simulation at a constant rate. Here, we explore how aerosol composition changes if emissions are turned off part way through the simulation. Such a setup is akin to a Lagrangian framework of advecting a column over an emissions source and away from the source after a period of time. This allows investigating the timescale of reversible partitioning for semivolatile compounds such as nitrate and the ``memory'' of the aerosol state to emissions heterogeneity. 
 }
 
-\DIFadd{We ran an additional simulation for the }\DIFaddend high heterogeneity scenario \DIFaddbegin \DIFadd{in which emissions were turned off at $t=4$~h. Figure \ref{fig:nh4-no3-relaxation} profiles of ammonium and nitrate at regular 1-hour intervals for the high heterogeneity scenario in which emissions are turned off at $t=4$~h (left column) and the same scenario but with emissions continued throughout the end of the simulation at $t=6$~h. Once emissions are turned off, meaningful differences emerge between the aerosol composition in each scenario. The impact of turning off emissions is most apparent for nitrate, which decreases from a peak concentration of $0.9$~ppbv to $0.27$~ppbv between $t=4$~h and $t=6$~h. Ammonium levels also decrease through $t=6$~h, however most remains in the condensed phase. This indicates that as nitrate levels decrease, some free ammonia re-enters the gas phase, however most remains in the aerosol as ammonium sulfate. These findings indicate that the timescale for complete reversal of the impact of emissions heterogeneity on the aerosol state depends on the reversible partitioning of nitrate. This in turn depends on the strength of mixing and dilution within the boundary layer.
+\DIFadd{We ran an additional simulation for the }\DIFaddend high heterogeneity scenario \DIFaddbegin \DIFadd{in which emissions were turned off at $t=4$~h. Figure \ref{fig:nh4-no3-relaxation} shows vertical profiles of ammonium and nitrate at 1-hour intervals for the high heterogeneity scenario in which emissions are turned off at $t=4$~h (left column), alongside the corresponding scenario in which  emissions continued through the end of the simulation at $t=6$~h (right column).
 }
 
-\begin{figure}[!h]
+\DIFadd{Once emissions are turned off, meaningful differences emerge between the aerosol composition in each scenario. The impact of turning off emissions is most apparent for nitrate, which decreases from a peak concentration of $0.9$~ppbv to $0.27$~ppbv between $t=4$~h and $t=6$~h. Ammonium levels also decrease through $t=6$~h, however most remains in the condensed phase. This indicates that as nitrate levels decrease, some free ammonia re-enters the gas phase, however most remains in the aerosol as ammonium sulfate. These findings indicate that the timescale for complete reversal of the impact of emissions heterogeneity on the aerosol state depends on the reversible partitioning of nitrate. The rate of this repartitioning, in turn, depends on the strength of mixing and dilution within the boundary layer. As a result, aerosol populations retain a finite “memory” of prior exposure to heterogeneous emissions, even after the source influence has ceased, an effect that is largely lost in coarse-resolution models that rely on grid-mean aerosol properties.
+}\begin{figure}[!h]
 	\centering
 	\includegraphics[]{figures/high-het-relaxation.pdf}
 	\caption{\DIFaddFL{Vertical profiles of ammonium (top row) and nitrate (bottom row) for two versions of the high heterogeneity scenario in which emissions are turned off at $t=4$~h (left column) and emissions continue through the remainder of the simulation (right column).}}
@@ -1135,7 +1145,10 @@ cases of the }\DIFdelend \DIFaddbegin \DIFadd{These findings underscore that the
 \end{figure}
 
 \subsection{\DIFadd{Modulation of aerosol composition and CCN activity by co-condensation}}\label{sec:co-condensation}
-\DIFadd{CCN concentrations in WRF-PartMC are determined by calculating the critical supersaturation required to activate each (subsaturated) particle. While this provides an estimate of CCN activity, this approach does not account for the co-condensation of semivolatile compounds and water vapor at higher RH. To address these limitations, we conducted two additional simulations for the no heterogeneity and high heterogeneity scenarios in which the domain was initialized with a moist boundary layer. The vapor mixing ratio was set such that relative humidity remained $90\%$ throughout the entire sounding profile. Through $t=6$~h, the upper boundary layer remained near saturation, at RH$\sim90$--$95\%$. In subsequent discussion, we refer to these additional scenarios as high-RH scenarios. Since Section \ref{sec:environment} indicates that, by $t=6$~h, the upper boundary layer RH in previous scenarios peaked at 48\%, we refer to these scenarios here as low-RH scenarios. 
+\DIFadd{Gas–particle partitioning of semivolatile species is strongly modulated by ambient relative humidity, as water uptake can promote co-condensation well below water saturation, altering particle size and composition prior to activation \mbox{%DIFAUXCMD
+\citep{XXX}}\hskip0pt%DIFAUXCMD
+. 
+In WRF-PartMC, CCN concentrations are determined by calculating the critical supersaturation required to activate each particle using its size and composition at the prevailing ambient relative humidity, which may be well below water saturation. While this provides an estimate of CCN activity, this approach does not account for the co-condensation of semivolatile compounds and water vapor at higher RH. To address these limitations, we conducted two additional simulations for the no heterogeneity and high heterogeneity scenarios in which the domain was initialized with a moist boundary layer. The vapor mixing ratio was set such that relative humidity remained $90\%$ throughout the entire sounding profile. Through $t=6$~h, the upper boundary layer remained near saturation, at RH$\sim90$--$95\%$. In subsequent discussion, we refer to these additional scenarios as high-RH scenarios. Since Section \ref{sec:environment} indicates that, by $t=6$~h, the upper boundary layer RH in previous scenarios peaked at 48\%, we refer to these scenarios here as low-RH scenarios. 
 }
 
 \begin{figure}[!h]
@@ -1170,18 +1183,25 @@ processes such as coagulation and gas-particle partitioning, it also
 introduces limitations \DIFdelbegin \DIFdel{. First, the simulations }\DIFdelend \DIFaddbegin \DIFadd{and opportunities for future investigation.
 }
 
-\DIFadd{Simulations in this study }\DIFaddend assume a horizontally
-homogeneous land surface, no synoptic-scale forcing, and a fixed
-solar heating profile, which neglects the potential influence of
-surface heterogeneity, wind shear, and diurnal variability. \DIFdelbegin \DIFdel{Second}\DIFdelend \DIFaddbegin \DIFadd{Additionally}\DIFaddend ,
-all emissions—both gas-phase and particulate—are temporally constant
-after spin-up and spatially collocated, which may not reflect the
-complexity of real urban emission patterns where different sources
-(e.g., traffic, industry, biomass burning) are spatially and
-temporally decoupled. \DIFdelbegin \DIFdel{Third}\DIFdelend \DIFaddbegin \DIFadd{Future studies should investigate the impact of emissions heterogeneity on the aerosol state in response to realistic emission patterns such as numerous point sources with spatially segregated reactive species. Gridded inventories commonly used for regional and global-scale modeling are too coarse for use with LES. Future extensions of WRF-PartMC-LES to realistic emission patterns will require use of data fusion techniques to estimate source apportionment at sub-kilometer resolution.
+\DIFadd{Simulations in this study }\DIFaddend assume a horizontally homogeneous land
+surface, no synoptic-scale forcing, and a fixed solar heating profile,
+which neglects the potential influence of surface heterogeneity, wind
+shear, and diurnal variability. \DIFdelbegin \DIFdel{Second}\DIFdelend \DIFaddbegin \DIFadd{Additionally}\DIFaddend , all emissions—both
+gas-phase and particulate—are temporally constant after spin-up and
+spatially collocated, \DIFdelbegin \DIFdel{which may not reflect }\DIFdelend \DIFaddbegin \DIFadd{reflecting a deliberate idealization used here
+to isolate the effects of emissions spatial heterogeneity.  This
+configuration may not fully capture }\DIFaddend the complexity of real urban
+emission patterns where different sources (e.g., traffic, industry,
+biomass burning) are spatially and temporally decoupled. \DIFdelbegin \DIFdel{Third, }\DIFdelend \DIFaddbegin \DIFadd{Future
+studies should investigate the impact of emissions heterogeneity on
+the aerosol state in response to realistic emission patterns such as
+numerous point sources with spatially segregated reactive
+species. Emission flux observations and inventories are not uniformly available at 100 m resolution. While many gridded inventories used in regional and global-scale modeling are too coarse for direct use in LES, several important source types can be represented accurately at sub-kilometer scales. Point sources (e.g., power plants, industrial stacks) and line sources (e.g., road networks) are often well constrained spatially and can be implemented directly in high-resolution simulations. In contrast, diffuse area sources that are typically reported at county or regional scales require additional emission preprocessing, downscaling, or data-fusion approaches to distribute fluxes at finer resolution. Developing such preprocessing workflows represents an important step toward applying WRF-PartMC-LES in observationally constrained, realistic settings.
 }
 
-\DIFadd{Furthermore}\DIFaddend , while the chosen aerosol composition is
+
+
+\DIFadd{Furthermore, }\DIFaddend while the chosen aerosol composition is
 grounded in past urban measurements (SCAQS), the limited diversity
 in primary aerosol types and the exclusion of additional chemical
 pathways (e.g., aqueous-phase oxidation) constrain the
@@ -1191,19 +1211,56 @@ may underrepresent stochastic variability in some fine-scale
 processes, particularly at early times or near the plume edge. 
 \DIFaddbegin 
 
-\DIFadd{Our study of the effects of co-condensation reveals meaningful limitations in the manner by which WRF-PartMC-LES estimates CCN activity for sub-saturated particles. While our study reveals that emissions heterogeneity may alter aerosol composition and CCN activity even when co-condensation is considered, further work is required to place quantitative bounds on the contribution of each process and the modulating role of gas and aerosol composition. Furthermore, we wish to emphasize that we do not model explicitly model CCN activation and droplet growth. Although previous particle-resolved studies have included this effect \mbox{%DIFAUXCMD
+\DIFadd{Our study of co-condensation and its effects reveals meaningful limitations in how WRF-PartMC-LES estimates CCN activity for particles under water-subsaturated conditions. Accordingly, CCN concentrations diagnosed under subsaturated conditions should be interpreted as an indicator of activation potential rather than a direct proxy for cloud droplet number, particularly in environments with substantial semivolatile mass. While our study reveals that emissions heterogeneity may alter aerosol composition and CCN activity even when co-condensation is considered, further work is required to place quantitative bounds on the contribution of each process and the modulating role of gas and aerosol composition. Furthermore, we wish to emphasize that we do not model explicitly CCN activation and droplet growth. Although previous particle-resolved studies have included this effect \mbox{%DIFAUXCMD
 \citep{ching_impacts_2012}}\hskip0pt%DIFAUXCMD
-, cloud droplet growth is excluded from the current study due to computational cost. We expect that inclusion of CCN which activate at subsaturated conditions would meaningfully alter the aqueous phase chemistry within cloudy cells. Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics \mbox{%DIFAUXCMD
+, cloud droplet growth is excluded from the current study due to computational cost. We expect that explicitly modeling CCN activation and subsequent droplet growth would meaningfully alter aqueous-phase chemistry within cloudy cells. Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics \mbox{%DIFAUXCMD
 \citep{li_impact_2017}}\hskip0pt%DIFAUXCMD
 . We therefore hypothesize that cloud droplet aging is further coupled to emissions heterogeneity through aqueous-phase chemistry, and this coupling should be investigated in future work.
 }
 
-\DIFadd{In this study, use of LES is primarily motivated by the length scale of heterogeneous emission patterns. The current work resolves emissions heterogeneity down to 100 m, significantly below regional and global-scale model resolutions. 
-The idealized nature of the current work means there is limited benefit of grid-resolved turbulence as the structure of turbulence the boundary layer is mostly laterally isotropic. However, greater consideration should be given to resolved turbulence in future applications of WRF-PartMC-LES, especially when modeling realistic domains with topography, varied land use,  heterogeneous surface heat fluxes, and spatially segregated emissions. Past studies have shown that turbulence facilitates the mixing of spatially segregated reactive gas species. Given the coupling between the gas and aerosol phase, future work should investigate the role of turbulence in modifying the rate of aerosol aging.
+\DIFadd{In this study, use of LES is primarily motivated by the length scale
+of heterogeneous emission patterns. The current work resolves
+emissions heterogeneity down to 100 m, which is well below the grid
+spacing of typical meso-scale and global models and allows explicit
+representation of sharp spatial gradients in gas and aerosol
+concentrations that would otherwise be averaged out. Given the
+idealized configuration employed here, the resolved turbulence
+primarily serves to provide realistic boundary-layer mixing under
+laterally homogeneous conditions, and its detailed structure is not a
+central focus of the present analysis. Nevertheless, turbulence is
+expected to play an important role in modulating the interaction
+between spatially segregated emissions, gas-phase chemistry, and
+aerosol aging in more realistic settings. Past studies have shown that
+turbulence facilitates the mixing of spatially segregated reactive gas
+species, and future applications of WRF-PartMC-LES should therefore
+investigate how turbulence modifies the rate and spatial structure of
+aerosol aging in domains with topography, heterogeneous surface
+forcing, and complex emission patterns.
 }
 
-\DIFadd{Lastly, nucleation is not modeled in WRF-PartMC-LES due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. This may lead to an artificial underestimation of ultrafine concentrations. However, in highly heterogeneous scenarios, it is likely that increases in the number of ultrafine particles due to nucleation of low-volatility vapors would be opposed by enhancements in the rate of coagulation with larger particles. Depending on the relative rates of nucleation and coagulation, the resulting size distribution may not differ dramatically from high-heterogeneity runs conducted in this study. These conclusions may differ for lower-heterogeneity cases in which the rate of coagulation is lower, leading to a larger ultrafine mode. This may in fact widen the disparity in CCN activity between the low and high heterogeneity cases, as a larger fraction of the size distribution would require higher supersaturations to activate.
-}
+\DIFadd{Lastly, nucleation is not modeled in WRF-PartMC-LES due to the large computational expense associated with explicitly representing the coagulation of many ultrafine computational particles. As a result, ultrafine particle concentrations may be
+  underestimated in the present simulations. Importantly, nucleation
+  itself is highly sensitive to spatial heterogeneity, as nucleation
+  rates depend nonlinearly on precursor concentrations and local
+  thermodynamic conditions. Spatial averaging over coarse grid cells
+  can therefore suppress the peak conditions required for nucleation,
+  leading to an underprediction of nucleation events even in models
+  that nominally include this process. The inclusion of nucleation
+  could influence the results shown here, particularly through its
+  interaction with spatially heterogeneous emissions and gas-phase
+  precursor fields. In highly heterogeneous scenarios, enhanced
+  nucleation rates in localized regions may be partially offset by
+  increased coagulation with larger particles, whereas in
+  lower-heterogeneity environments reduced coagulation could allow a
+  more pronounced ultrafine mode to persist. The net impact of
+  nucleation on the size distribution and CCN activity therefore
+  depends on the relative rates of nucleation, coagulation, and
+  mixing, as well as on the degree of emissions heterogeneity. As a
+  result, inclusion of nucleation could either dampen or amplify
+  differences in CCN activity between low- and high-heterogeneity
+  cases, and explicitly resolving these interactions remains an
+  important topic for future work.
+  }
 
 \DIFaddend These limitations motivate future work incorporating more realistic
 emissions, meteorological variability, \DIFdelbegin \DIFdel{and }\DIFdelend extended simulation times\DIFaddbegin \DIFadd{, and improved representation of physical processes }\DIFaddend to evaluate the robustness of the conclusions presented here.
