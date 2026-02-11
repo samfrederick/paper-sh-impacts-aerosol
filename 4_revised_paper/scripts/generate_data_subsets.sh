@@ -87,7 +87,7 @@ fi
 
 
 #----------------------------------------------------------------------------
-# DATA FOR FIGURE 5
+# Data for Figure 5
 time_idx=36
 z_idx=60
 
@@ -139,7 +139,7 @@ done
 
 #----------------------------------------------------------------------------
 # Cross section averaged quantities (all t, all z)
-# Figure 11, etc?
+# Figure 11,13,14,15
 
 aero_variables="ccn_001,ccn_003,ccn_006,ccn_010,pmc_NH4,pmc_NO3,pmc_SO4,nh3,hno3"
 avg_dimensions="south_north,west_east" # average for each domain horizontal cross section
@@ -244,7 +244,9 @@ if [ ! -f "$output_path" ]; then
     echo -e "File size: ${size}\n" 
 fi 
 
+#----------------------------------------------------------------------------
 # Data for Figure 2 (Temp, RH time height plots)
+
 wrf_variables="QVAPOR,P,PB,T"
 avg_dimensions="south_north,west_east" # average for each domain horizontal cross section
 scenario="no-heterogeneity"
@@ -263,7 +265,7 @@ if [ ! -f "$output_path" ]; then
     echo -e "File size: ${size}\n"
 fi 
 
-
+# met data for low het high rh scenario
 wrf_variables="QVAPOR,P,PB,T"
 avg_dimensions="south_north,west_east" # average for each domain horizontal cross section
 scenario="no-heterogeneity-high-RH"
@@ -280,7 +282,7 @@ if [ ! -f "$output_path" ]; then
     echo -e "File size: ${size}\n"
 fi 
 
-# TODO add met data for high het high rh scenario
+# met data for high het high rh scenario
 wrf_variables="QVAPOR,P,PB,T"
 avg_dimensions="south_north,west_east" # average for each domain horizontal cross section
 scenario="high-heterogeneity-high-RH"
