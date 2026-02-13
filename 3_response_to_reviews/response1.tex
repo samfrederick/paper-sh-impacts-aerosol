@@ -43,7 +43,7 @@ compounds may be somewhat misleading.
 \begin{quote}
   We thank the reviewer for identifying this limitation with our analysis. In order to address the effects of co-condensation, we have conducted an additional set of simulations in which the relative humidity was raised to near saturation in the upper boundary layer. Our analysis is included in Section 3.8, indicating that higher RH meaningfully impacts aerosol composition and diagnosed CCN activity by enhancing the condensation of semi-volatile species such as ammonium and nitrate. We conclude that co-condensation lowers the sensitivity of CCN activity to emissions heterogeneity, however, meaningful impacts persist at intermediate supersaturation. 
   
-  We have included the following statement on lines 421--430, which acknowledges the limited applicability of WRF-PartMC's approach to computing CCN activity and calls for future work to further explore the quantitative contribution of co-condensation and emissions heterogeneity to aerosol aging and CCN activity:
+  We have included the following statement on lines 442--454, which acknowledges the limited applicability of WRF-PartMC's approach to computing CCN activity and calls for future work to further explore the quantitative contribution of co-condensation and emissions heterogeneity to aerosol aging and CCN activity:
 
   ``Our study of co-condensation and its effects reveals meaningful limitations in how WRF-PartMC-LES estimates CCN activity for particles under water-subsaturated conditions. Accordingly, CCN concentrations diagnosed under subsaturated conditions should be interpreted as an indicator of activation potential rather than a direct proxy for cloud droplet number, particularly in environments with substantial semivolatile mass. While our study reveals that emissions heterogeneity may alter aerosol composition and CCN activity even when co-condensation is considered, further work is required to place quantitative bounds on the contribution of each process and the modulating role of gas and aerosol composition. Furthermore, we wish to emphasize that we do not explicitly model CCN activation and droplet growth. Although previous particle-resolved studies have included this effect (Ching et al., 2012), cloud droplet growth is excluded from the current study due to computational cost. We expect that explicitly modeling CCN activation and subsequent droplet growth would meaningfully alter aqueous-phase chemistry within cloudy cells.  Past studies have shown that in-cloud aqueous chemistry can result in the spatial segregation of reactive gas phase species, reducing oxidation of volatile organics (Li et al., 2017). We therefore hypothesize that cloud droplet aging is further coupled to emissions heterogeneity through aqueous-phase chemistry, and this coupling should be investigated in future work.''
 \end{quote}
@@ -67,10 +67,10 @@ adequately” could be clariﬁed. Are there actually any climate models that at
 account for subgrid-scale heterogeneity in a proper manner for the emissions?
 
 \begin{quote}
-  We have included the following statement on lines 49--52 to clarify the status of sub-grid scale parameterizations in global scale models:
+  We have included the following statement on lines 49--53 to clarify the status of sub-grid scale parameterizations in global scale models:
 
   ``Much of the sub-grid scale variability arises from
-  spatially heterogeneous emissions (Qian et al., 2010), yet most climate models do not represent this variability explicitly in a general sense. Existing parameterizations in global climate models that account for sub-grid scale emissions and associated processes are typically limited to specific phenomena, such as ship tracks (Huszar et al., 2010) and contrails (Burkhardt and Kärcher, 2009), rather than providing a general treatment of emissions-driven aerosol heterogeneity.''
+  spatially heterogeneous emissions (Qian et al., 2010), yet most climate models do not explicitly represent this variability in a general sense. Existing parameterizations in global climate models that account for sub-grid scale emissions and associated processes are typically limited to specific phenomena, such as ship tracks (Huszar et al., 2010) and contrails (Burkhardt and Kärcher, 2009), rather than providing a general treatment of emissions-driven aerosol heterogeneity.''
 
 \end{quote}
 
@@ -79,7 +79,7 @@ to how M7 employs 7 modes (4 + 3) to represent externally mixed aerosol populati
 with high and low hygroscopicities. 
 
 \begin{quote}
-  Thank you for this point of clarification. We have revised discussion of SALSA on line 72 to the following: ``\dots UCLALES-SALSA employs a
+  Thank you for this point of clarification. We have revised discussion of SALSA on lines 73--74 to the following: ``\dots UCLALES-SALSA employs a
 17-bin sectional scheme to represent externally mixed
 aerosol populations with differing hygroscopicities, \dots'' 
 \end{quote}
@@ -100,7 +100,7 @@ aerosol populations with differing hygroscopicities, \dots''
 in W/m² rather than Km/s.
 
 \begin{quote}
-  Thank you for noting this convention. We have converted the surface heat flux to non-kinematic form and note its relevance to mid-latitude settings on lines 132--133:
+  Thank you for noting this convention. We have converted the surface heat flux to non-kinematic form and note its relevance to mid-latitude settings on lines 133--135:
   ``...295.5~$\rm W \, m^{-2}$, which is
 representative of surface heat fluxes resulting from annually-averaged mid-latitude solar insolation.''
 
@@ -118,7 +118,7 @@ values realistic, or do they represent an extreme scenario? A brief discussion o
 would be needed.
 
 \begin{quote}
-  We have added the following statement on lines 215--217 to clarify that the concentrations modeled in this study correspond to the upper end of observed concentrations in highly-polluted conditions:
+  We have added the following statement on lines 219--221 to clarify that the concentrations modeled in this study correspond to the upper end of observed concentrations in highly-polluted conditions:
 
 ``Comparing modeled ammonium and nitric acid levels with past studies,
   the concentrations used here correspond to the upper end of observed
@@ -133,7 +133,7 @@ would be needed.
 omission inﬂuence the results?
 
 \begin{quote}
-  We have included the following statement on lines 439--446 to clarify the omission of nucleation in WRF-PartMC-LES:
+  We have included the following statement on lines 465--477 to clarify the omission of nucleation in WRF-PartMC-LES:
   
   ``Lastly, nucleation is not modeled in WRF-PartMC-LES due to the
   large computational expense associated with explicitly representing
