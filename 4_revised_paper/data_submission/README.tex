@@ -67,7 +67,7 @@ Upon downloading and untarring \texttt{data.zip}, it may be explored as follows:
       \item Binned aerosol number and mass distributions: \newline \texttt{*\_size-dist\_subset\_t0\_t36\_z60.nc}
       \item CCN concentration variables, aerosol ammonium, nitrate, and sulfate, and gas phase ammonia and nitric acid, all averaged across each vertical level. The vertical average of each variable is contained at 10-minute increments from $t=0$~h to $t=6$~h. Runs with emissions turned off at $t=4$~h (discussed in Section 3.7) contain the scenario named followed by \texttt{*-emis-off-t4}. Scenarios with high RH (discussed in Section 3.8) contain the scenario named followed by \texttt{*-high-RH}. Datasets end in the following pattern: \newline \texttt{*\_time-height-avg\_subset.nc}
       \item Vertical profiles of environmental conditions (temperature, RH), output at 10-minute increments. At each time, quantities are averaged across each vertical level. This includes ``no heterogeneity'' and ``high heterogeneity'' scenarios at lower RH indicated in manuscript Figure 2 and higher RH scenarios  (labeled by scenario followed by \texttt{*-high-RH-}). Datasets end in the following pattern: \newline \texttt{*\_met-vars\_subset.nc}
-      \item Detailed per-particle output (e.g., per-particle mass fractions, kappa): \newline \texttt{crosssec\_no-heterogeneity\_t0\_z40.nc}, \newline \texttt{crosssec\_*\_t36\_z40.nc}
+      \item Detailed per-particle output (e.g., per-particle mass fractions, kappa); only including ``no heterogeneity'' and ``high heterogeneity'' scenarios: \newline \texttt{crosssec\_*\_t0\_z40.nc}, \newline \texttt{crosssec\_*\_t36\_z40.nc}
     \end{itemize}
     \item Data in the \texttt{spatial-het/} directory consists of lookup tables for spatial heterogeneity values and binary
     arrays indicating the structure of each emissions pattern:
@@ -76,6 +76,7 @@ Upon downloading and untarring \texttt{data.zip}, it may be explored as follows:
     \texttt{sh\_patterns\_xres100\_yres100\_exact.csv}
 	  \item Arrays for each emission scenario: \texttt{/sh-patterns/xres100yres100/[scenario-name].csv}
 	\end{itemize}
+  \item This file was compressed on a computer running macOS. When decompressing this file on other operating systems, users may see an additional folder labeled \texttt{\_\_MACOSX}. This folder does not impact the use of datasets in this directory and can be safely ignored or removed.
 \end{itemize}
 
 \section*{Directory structure of scripts for Section 3}
@@ -91,7 +92,8 @@ Upon downloading and untarring \texttt{scripts.zip}, it may be explored as follo
   \item \texttt{loaddatastructs.py}: Datasets and associated attributes are housed within the objects \texttt{DataStruct} and the inherited class \texttt{GriddedOutput} for per-particle datasets.
   \item \texttt{generate\_data\_subsets.sh}: Shell script for processing WRF-PartMC output files to the data subsets contained in the \texttt{data.zip} directory. 
   \item \texttt{paper-figures-bulk.ipynb}: Python notebook for generating Figures 1--7 and 10--15.  
-  \item \texttt{paper-figures-particle-resolved.ipynb}: Python notebook for generating Figures 8,9 from per-particle datasets. 
+  \item \texttt{paper-figures-particle-resolved.ipynb}: Python notebook for generating Figures 8,9 from per-particle datasets.
+  \item This file was compressed on a computer running macOS. When decompressing this file on other operating systems, users may see an additional folder labeled \texttt{\_\_MACOSX}. This folder does not impact the use of scripts in this directory and can be safely ignored or removed. 
 \end{itemize}
 
 \end{document}
