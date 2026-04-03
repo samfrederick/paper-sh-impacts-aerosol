@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Response to Typesetter \#1}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{(TS1)} Please check updated capitalization in the title/running title.
+
+\begin{quote}
+    The updated capitalization is correct. 
+\end{quote}
+
+\textbf{(TS2)} Please check throughout the text that all vectors are denoted by bold italics and matrices by bold roman.
+
+\begin{quote}
+    The use of bold symbols in Equation 1 is incorrect. Below, we have included a corrected version:
+
+    ``For a discrete 2-dimensional scalar field $f$ over a domain $S$ with lateral
+    dimensions $N$ by $M$, $\eta$ is defined as
+
+    \begin{equation}
+    \eta(f, S) = \frac{2\sum_{\tilde{S}\in D}|\overline{f}(S) - \overline{f}(\tilde{S})|}{MN\overline{f}(S)\left[3MN-M-N-1\right]}, 
+    \end{equation}
+    where $\overline{f}(S)$ is the domain mean, $\overline{f}(\tilde{S})$ is the mean over a subset of the domain
+    $\tilde{S}$, and $D$ is the set of all possible subdomains.'' 
+
+\end{quote}
+
+\textbf{(TS3)} Please check and confirm adjustments made to the equation to fit the two-column-layout.
+
+\begin{quote}
+    We would like to suggest the following simplified expression which reduces notational complexity while retaining clarity, 
+
+    ``The percent difference is calculated as 
+        \begin{equation}
+            \% \text{ difference} = 100\times\left(\frac{\overline{[\mathrm{CCN}]}_{\text{Scenario}} - \overline{[\mathrm{CCN}]}_{\text{No het.}}}{\overline{[\mathrm{\mathrm{CCN}}]}_{\text{No het.}}}\right),
+        \end{equation}
+    where $\overline{[\mathrm{CCN}]}$ is the horizontally averaged
+    concentration of CCN at time $t$ and vertical level $z$ that activate
+    at supersaturation $S_{\mathrm{env}}$.''
+\end{quote}
+
+\textbf{(TS4)} Please provide date of last access.
+
+\begin{quote}
+    We have added last access dates to the Code and data availability section:\\
+    ``WRF-PartMC is open source and maintained on GitHub: https://github.com/open-atmos/wrf-partmc.git (last access: 3 Apr. 2026). The version of
+WRF-PartMC used in this paper was coupled with the multiphase chemistry model MOSAIC and custom initialization code was written for 
+specifying the emissions initial conditions unique to each emissions scenario alongside specific namelist configurations for particle-resolved 
+LES. The model code (including the WRF base model v3.9.1, PartMC aerosol model v2.6.1, and MOSAIC chemistry model) 
+used for this publication has been archived on Zenodo with the following DOI: https://doi.org/10.5281/zenodo.18644307 (last access: 3 Apr. 2026).
+All simulation outputs and scripts used to generate figures in this paper are available via the Illinois Data Bank: https://doi.org/10.13012/B2IDB-9622921\_V3 (last access: 3 Apr. 2026).''
+\end{quote}
+
+\textbf{(TS5)} Please confirm that your interactive computing environment (10.13012/B2IDB-9622921\_V3) provides a well-defined structure for data, code, text, documentation, runtime environment, and user interface controls for a piece of research. An interactive computing environment should be complete in a way that everything one needs to execute is available and no other assets must be downloaded. If this is the case, please provide an Interactive computing environment (ICE) statement with DOI and citation. If this is not the case, we will insert it as code availability.
+
+\begin{quote}
+    10.13012/B2IDB-9622921\_V3 contains processed simulation output and code for generating figures, but does not include the model code necessary to run simulations described in this manuscript. Model code is contained in the Zenodo archive mentioned in the code availability statement. Therefore, we believe this repository does not meet the interactive computing environment definition. 
+\end{quote}
+
+\textbf{(TS6)} Please note that the funding information has been added to this paper. Please check if it is correct. Please also double-check your acknowledgements to see whether repeated information can be removed or changed accordingly. Thanks.
+
+\begin{quote}
+    We would like to suggest the following formatting for the Financial support section: \\
+    ``This research has been supported by the U.S. Department of Energy, Office of Science, Biological and Environmental Research program (grant no. DE-SC0022130), and by the National Science Foundation (grant no. AGS 19-41110).'' \\ 
+
+    Along with this change, the acknowledgements may be removed. 
+\end{quote}
+
+\textbf{(TS7)} Please check; should this be updated with the final revised version at \url{https://www.mdpi.com/2073-4433/14/7/1136?}
+
+\begin{quote}
+    Thank you for identifying this error. We have updated the citation to link to the published version. 
+    ``Brasseur, G. P., Barth, M., Kazil, J., Patton, E. G., and
+    Wang, Y.: Segregation of Fast-Reactive Species in
+    Atmospheric Turbulent Flow, Atmosphere, 14, 1136,
+    https://doi.org/10.3390/atmos14071136, 2023.''
+\end{quote}
+
+\textbf{(TS8)} Please provide DOI or page range.
+
+\begin{quote}
+    We have added a DOI for the requested citation:\\ 
+    ``Salmon, L. G., Nazaroff, W. W., Ligocki, M. P., Jones, M. C.,
+and Cass, G. R.: Nitric acid concentrations in southern
+California museums, Environmental science \& technology., 24, 35
+https://doi.org/10.1021/es00077a009, 1990.''
+\end{quote}
+
+\end{document}
